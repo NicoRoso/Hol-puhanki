@@ -6,7 +6,7 @@ public class FireballCurveAttackState : FireballBaseState
 {
     public override void EnterState(FireballStateManager fireball)
     {
-        fireball.IncreaseSizeToNormal(0.7f);
+        fireball.IncreaseSizeToNormal(0.4f);
         fireball.StartCurveAttackControl();
     }
     public override void UpdateState(FireballStateManager fireball)

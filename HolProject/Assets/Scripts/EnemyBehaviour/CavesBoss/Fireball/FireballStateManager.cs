@@ -7,12 +7,13 @@ using UnityEngine;
 
 public class FireballStateManager : MonoBehaviour
 {
-    [SerializeField] public  Transform _rotateCenter;
-    [SerializeField] public float _rotateSpeed;
-    public float flyAwaySpeed;
+    public Transform _rotateCenter { get; private set; }
+    public float _rotateSpeed { get; private set; }
+    public float flyAwaySpeed { get; private set; }
     public FireballBaseState currentState;
     public FireballCurveAttackState curveAttack = new FireballCurveAttackState();
     public FireballStraightAttackState straightAttack = new FireballStraightAttackState();
+    public FireballRoundAttackState roundAttack = new FireballRoundAttackState();
 
     bool shouldStop = false;
     private void Start()
@@ -79,6 +80,7 @@ public class FireballStateManager : MonoBehaviour
         {
             yield return null;
         }
+        
         //explosion collider and effect
         Destroy(gameObject);
         yield break;
@@ -88,20 +90,22 @@ public class FireballStateManager : MonoBehaviour
     {
         StartCoroutine(RotationRulesChanger());
     }
-    public void SetStop()
+    public void SetRotStop()
     {
         shouldStop = true;
     }
 
-    public void OnSpawn(FireballBaseState state,Action stopRotation, float rotationSpeed, float flyAwaySpeed)
+    public void OnSpawn(FireballBaseState state,ref Action stopRotation, Transform bossTransform, float rotationSpeed, float flyAwaySpeed)
     {
+        stopRotation += SetRotStop;
         _rotateSpeed = rotationSpeed;
         this.flyAwaySpeed = flyAwaySpeed;
         SetState(state);
-        stopRotation += SetStop;
+        _rotateCenter = bossTransform;
     }
-    public void OnSpawn(FireballBaseState state)
+    public void OnSpawn(FireballBaseState state, Transform bossTransform, Vector3 direction)
     {
+        _rotateCenter = bossTransform;
         SetState(state);
     }
 }
