@@ -24,6 +24,8 @@ public class BossStateManager : MonoBehaviour
 
     [SerializeField] float _rotationSpeed;
     [SerializeField] int maxAttacksInARow;
+    [SerializeField] public float _barrierVisualFadeTime;
+    [SerializeField] int weakStateMaxTime;
 
     [SerializeField] public GameObject _fireballPrefab;
     [SerializeField] float _curveFireballRotationSpeed;
@@ -41,25 +43,38 @@ public class BossStateManager : MonoBehaviour
     [SerializeField] List<Transform> _tpPoints;
     [SerializeField] List<BossSpawner> _spawnPoints;
     [SerializeField] List<GameObject> _possibleMinions;
+    [SerializeField] MeshRenderer _barrierVisual;
 
     public bool bossfightStarted = false;
+    [HideInInspector]
+    public bool isKillable = false;
+    BossHealth bossHealth;
     int attacksInARow;
     public void SwitchState(BossBaseState newState)
     {
         currentState = newState;
         currentState.EnterState(this);
-        Debug.Log(currentState);
+        //Debug.Log(currentState);
     }
     private void Start()
     {
+        bossHealth = GetComponent<BossHealth>();
         attacksInARow = 0;
         player = GameObject.FindObjectOfType<TestPlayerExistance>().transform;
+        SwitchBarrierState(false);
         SwitchState(bossIdle);
     }
     private void Update()
     {
         currentState.UpdateState(this);
         RotateToTarget();
+        
+        if(Input.GetKeyDown(KeyCode.J)) //test
+        {
+            bossHealth.TakeDamage(200);
+        }
+        
+
     }
 
     // curve attack
@@ -199,7 +214,6 @@ public class BossStateManager : MonoBehaviour
     }
     //
 
-
     public void SpawnMinions()
     {
         foreach(BossSpawner bossSpawner in _spawnPoints)
@@ -212,7 +226,7 @@ public class BossStateManager : MonoBehaviour
         StartCoroutine(WaitforSecondsBeforeNexstState(8));
     }
 
-    IEnumerator WaitforSecondsBeforeNexstState(float seconds)
+    public IEnumerator WaitforSecondsBeforeNexstState(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         TryMakeNextAttack();
@@ -242,7 +256,34 @@ public class BossStateManager : MonoBehaviour
         {
             attacksInARow = 0;
             SwitchState(bossWeak);
+            StartCoroutine(WaitOnWeakState());
         }
     }
+    IEnumerator WaitOnWeakState()
+    {
+        yield return new WaitForSeconds(weakStateMaxTime);
+        if(currentState == bossWeak)
+        {
+            TryMakeNextAttack();
+            SwitchBarrierState(true);
+        }
+        yield break;
+    }
+    public void SwitchBarrierState(bool hidden)
+    {
+        _barrierVisual.enabled = hidden;
+        isKillable = hidden;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(true) // если оружие
+        {
+            //урон брать из оружия
+            //playerstatsys.attack
+
+        }
+    }
+    
 
 }
