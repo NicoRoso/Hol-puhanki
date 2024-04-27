@@ -6,7 +6,7 @@ public class BossRoundFireState : BossBaseState
 {
     public override void EnterState(BossStateManager boss)
     {
-        boss.StartRoundAttack();
+        boss._animator.SetTrigger("centerAttack");
     }
     public override void UpdateState(BossStateManager boss)
     {
