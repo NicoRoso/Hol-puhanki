@@ -54,11 +54,10 @@ public class PlayerDash : MonoBehaviour
             GetComponent<CharacterController>().Move(moveDirection * _dashSpeed * Time.deltaTime);
             yield return null;
         }
-
+        _trailRenderer.enabled = false;
         yield return new WaitForSeconds(_dashCooldown);
 
         _canDash = true;
         OnDashed(false);
-        _trailRenderer.enabled = false;
     }
 }
