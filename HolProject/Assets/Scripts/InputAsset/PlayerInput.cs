@@ -240,7 +240,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ]
         },
         {
-
             ""name"": ""Hotbar"",
             ""id"": ""0e7e9c58-2d97-43ef-a495-154080bb7dc8"",
             ""actions"": [
@@ -248,14 +247,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""1st slot"",
                     ""type"": ""Button"",
                     ""id"": ""e728a930-1039-4889-b8fd-2f507310f9d4"",
-
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-
                     ""name"": ""2nd slot"",
                     ""type"": ""Button"",
                     ""id"": ""5c3461b8-4735-4b06-9d84-6520c15d0628"",
@@ -277,7 +274,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""4th slot"",
                     ""type"": ""Button"",
                     ""id"": ""016df86a-c607-4de6-89d9-031d986787f9"",
-
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -293,7 +289,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""1st slot"",
-
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -316,7 +311,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""3rd slot"",
-
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -384,7 +378,115 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenAndClose"",
-
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Pause"",
+            ""id"": ""697d8c3a-bb00-46fc-bde4-0567c1418fa3"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9e03b7ea-8872-4c3d-b9d4-a9ed7f22d68e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9894bdeb-b6f3-4503-94e1-379357030fb0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a506efb2-a88d-4627-aa7c-ead5fb83a5d8"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""DialogueActivator"",
+            ""id"": ""39fad1a9-73c3-454c-af9c-ccf08a74a69c"",
+            ""actions"": [
+                {
+                    ""name"": ""Activated"",
+                    ""type"": ""Button"",
+                    ""id"": ""154613f6-a6b1-43ea-a82d-3a81bbe314a4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextSentence"",
+                    ""type"": ""Button"",
+                    ""id"": ""978286cd-7360-4ebf-a336-a2fbb86e2b2d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c3f94884-393a-41b4-8b75-60b86fff1cbb"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Activated"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c923ac09-b80a-423e-8f1e-325f13c7ab8e"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Activated"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d42eb62f-fda8-4cc1-8e82-25ef4dd82021"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSentence"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d4307e2-489c-4e90-9675-63abb4671661"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSentence"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -402,7 +504,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Dash
         m_Dash = asset.FindActionMap("Dash", throwIfNotFound: true);
         m_Dash_Dash = m_Dash.FindAction("Dash", throwIfNotFound: true);
-
         // Hotbar
         m_Hotbar = asset.FindActionMap("Hotbar", throwIfNotFound: true);
         m_Hotbar__1stslot = m_Hotbar.FindAction("1st slot", throwIfNotFound: true);
@@ -415,7 +516,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // InventoryBtns
         m_InventoryBtns = asset.FindActionMap("InventoryBtns", throwIfNotFound: true);
         m_InventoryBtns_OpenAndClose = m_InventoryBtns.FindAction("OpenAndClose", throwIfNotFound: true);
-
+        // Pause
+        m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
+        m_Pause_Pause = m_Pause.FindAction("Pause", throwIfNotFound: true);
+        // DialogueActivator
+        m_DialogueActivator = asset.FindActionMap("DialogueActivator", throwIfNotFound: true);
+        m_DialogueActivator_Activated = m_DialogueActivator.FindAction("Activated", throwIfNotFound: true);
+        m_DialogueActivator_NextSentence = m_DialogueActivator.FindAction("NextSentence", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -612,7 +719,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public DashActions @Dash => new DashActions(this);
 
-
     // Hotbar
     private readonly InputActionMap m_Hotbar;
     private List<IHotbarActions> m_HotbarActionsCallbackInterfaces = new List<IHotbarActions>();
@@ -775,6 +881,105 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public InventoryBtnsActions @InventoryBtns => new InventoryBtnsActions(this);
 
+    // Pause
+    private readonly InputActionMap m_Pause;
+    private List<IPauseActions> m_PauseActionsCallbackInterfaces = new List<IPauseActions>();
+    private readonly InputAction m_Pause_Pause;
+    public struct PauseActions
+    {
+        private @PlayerInput m_Wrapper;
+        public PauseActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Pause_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Pause; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseActions set) { return set.Get(); }
+        public void AddCallbacks(IPauseActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PauseActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+        }
+
+        private void UnregisterCallbacks(IPauseActions instance)
+        {
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+        }
+
+        public void RemoveCallbacks(IPauseActions instance)
+        {
+            if (m_Wrapper.m_PauseActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPauseActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PauseActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PauseActions @Pause => new PauseActions(this);
+
+    // DialogueActivator
+    private readonly InputActionMap m_DialogueActivator;
+    private List<IDialogueActivatorActions> m_DialogueActivatorActionsCallbackInterfaces = new List<IDialogueActivatorActions>();
+    private readonly InputAction m_DialogueActivator_Activated;
+    private readonly InputAction m_DialogueActivator_NextSentence;
+    public struct DialogueActivatorActions
+    {
+        private @PlayerInput m_Wrapper;
+        public DialogueActivatorActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Activated => m_Wrapper.m_DialogueActivator_Activated;
+        public InputAction @NextSentence => m_Wrapper.m_DialogueActivator_NextSentence;
+        public InputActionMap Get() { return m_Wrapper.m_DialogueActivator; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueActivatorActions set) { return set.Get(); }
+        public void AddCallbacks(IDialogueActivatorActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Add(instance);
+            @Activated.started += instance.OnActivated;
+            @Activated.performed += instance.OnActivated;
+            @Activated.canceled += instance.OnActivated;
+            @NextSentence.started += instance.OnNextSentence;
+            @NextSentence.performed += instance.OnNextSentence;
+            @NextSentence.canceled += instance.OnNextSentence;
+        }
+
+        private void UnregisterCallbacks(IDialogueActivatorActions instance)
+        {
+            @Activated.started -= instance.OnActivated;
+            @Activated.performed -= instance.OnActivated;
+            @Activated.canceled -= instance.OnActivated;
+            @NextSentence.started -= instance.OnNextSentence;
+            @NextSentence.performed -= instance.OnNextSentence;
+            @NextSentence.canceled -= instance.OnNextSentence;
+        }
+
+        public void RemoveCallbacks(IDialogueActivatorActions instance)
+        {
+            if (m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDialogueActivatorActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DialogueActivatorActions @DialogueActivator => new DialogueActivatorActions(this);
     public interface IMovementActions
     {
         void OnWalk(InputAction.CallbackContext context);
@@ -787,7 +992,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnDash(InputAction.CallbackContext context);
     }
-
     public interface IHotbarActions
     {
         void On_1stslot(InputAction.CallbackContext context);
@@ -802,6 +1006,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IInventoryBtnsActions
     {
         void OnOpenAndClose(InputAction.CallbackContext context);
-
+    }
+    public interface IPauseActions
+    {
+        void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IDialogueActivatorActions
+    {
+        void OnActivated(InputAction.CallbackContext context);
+        void OnNextSentence(InputAction.CallbackContext context);
     }
 }
