@@ -41,4 +41,21 @@ public class HotbarInventorySlot : MonoBehaviour, IDropHandler
         }
     }
 
+    private void GetSlot()
+    {
+        _slotIcon = transform.GetChild(0).GetComponent<Image>();
+    }
+
+    public void SetImage(Sprite icon)
+    {
+        if (_slotIcon is null) GetSlot();
+        _slotIcon.enabled = true;
+        _slotIcon.sprite = icon;
+    }
+
+    public void RemoveImage()
+    {
+        if (_slotIcon is null) GetSlot();
+        _slotIcon.enabled = false;
+    }
 }
