@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class BossStateManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class BossStateManager : MonoBehaviour
     public BossWeaknessState bossWeak = new BossWeaknessState();
     public BossDeathState bossDeath = new BossDeathState();
     Action rotationStop;
+    Transform player;
 
     [SerializeField] public GameObject _fireballPrefab;
     [SerializeField] float _curveFireballRotationSpeed;
@@ -23,6 +25,10 @@ public class BossStateManager : MonoBehaviour
     [SerializeField] float _straightFireballSpeed;
     [SerializeField] int _roundAttackWavesAmount;
     [SerializeField] float _roundAttackWavesSpawnDelay;
+    [SerializeField] int _amountOfTps;
+    [SerializeField] float _afterTpsDelay;
+
+    [SerializeField] List<Transform> _tpPoints;
     public void SwitchState(BossBaseState newState)
     {
         currentState = newState;
@@ -30,7 +36,8 @@ public class BossStateManager : MonoBehaviour
     }
     private void Start()
     {
-        SwitchState(bossRoundFire);
+        player = GameObject.FindObjectOfType<TestPlayerExistance>().transform;
+        SwitchState(bossTpFire);
     }
 
 
@@ -108,7 +115,46 @@ public class BossStateManager : MonoBehaviour
         StartCoroutine(RoundWavesSpawnCycle(_roundAttackWavesAmount,_roundAttackWavesSpawnDelay));
     }
     //
-
-
-
+    List<Transform> GetRandomTpPointsFromList(int amount)
+    {
+        List<Transform> tpPoints = new List<Transform> ();
+        foreach(Transform t in _tpPoints)
+        {
+            tpPoints.Add(t);
+        }
+        List<Transform> randPoints = new List<Transform>();
+        for(int i = 0; i < amount; i++)
+        {
+            int randNumber = UnityEngine.Random.Range(0, tpPoints.Count);
+            randPoints.Add(tpPoints[randNumber]);
+            tpPoints.Remove(tpPoints[randNumber]);
+            if (tpPoints.Count == 0) break;
+        }
+        return randPoints;
+    }
+    IEnumerator TpFireCycle(int amountOfTps)
+    {
+        int TpsDone = 0;
+        while (TpsDone < amountOfTps)
+        {
+            TpToPointAndFire(GetRandomTpPointsFromList(amountOfTps)[TpsDone]);
+            TpsDone++;
+            yield return new WaitForSeconds(_afterTpsDelay);
+        }
+        yield break;
+    }
+    void TpToPointAndFire(Transform point)
+    {
+        transform.position = point.position;
+        transform.LookAt(player);
+        Quaternion newRot = transform.rotation;
+        newRot.x = 0;
+        newRot.z = 0;
+        transform.rotation = newRot;
+        SummonStraightFireball(transform.forward + transform.position, new FireballStraightAttackState());
+    }
+    public void StartTpAttack()
+    {
+        StartCoroutine(TpFireCycle(_amountOfTps));
+    }
 }
