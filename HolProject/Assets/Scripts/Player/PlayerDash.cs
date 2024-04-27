@@ -10,10 +10,17 @@ public class PlayerDash : MonoBehaviour
     private float _lastDashTime;
     private bool _canDash = true;
 
+    [SerializeField] TrailRenderer _trailRenderer;
+
     public static Action<bool> OnDashed;
 
     [SerializeField] private AudioClip _dashClip;
     public static Action<AudioClip, float, float> OnDashedSounded;
+
+    private void Awake()
+    {
+        _trailRenderer.enabled = false;
+    }
 
     private void OnEnable()
     {
@@ -35,6 +42,7 @@ public class PlayerDash : MonoBehaviour
 
     private IEnumerator DashCoroutine(Vector3 moveDirection)
     {
+        _trailRenderer.enabled = true;
         _lastDashTime = Time.time;
         _canDash = false;
         OnDashed(true);
@@ -51,5 +59,6 @@ public class PlayerDash : MonoBehaviour
 
         _canDash = true;
         OnDashed(false);
+        _trailRenderer.enabled = false;
     }
 }

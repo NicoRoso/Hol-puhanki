@@ -80,6 +80,6 @@ public class Movement : MonoBehaviour
 
     public void PlaySoundWithRandom()
     {
-        OnMovedSounded?.Invoke(_footstepsClip, 0.9f, 1.2f);
+        OnMovedSounded?.Invoke(_footstepsClip, 1f, 1f);
     }
 }
