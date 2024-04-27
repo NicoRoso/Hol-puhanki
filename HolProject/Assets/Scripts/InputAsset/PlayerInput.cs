@@ -354,6 +354,34 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""InventoryBtns"",
+            ""id"": ""73b25e44-11d7-4211-95d8-89d412817fbc"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenAndClose"",
+                    ""type"": ""Button"",
+                    ""id"": ""52308eba-f677-4c70-99b0-7edbc0b68f94"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a899951e-636d-4352-bd16-1a1f9c2a0c2c"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenAndClose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -376,6 +404,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // UsePoution
         m_UsePoution = asset.FindActionMap("UsePoution", throwIfNotFound: true);
         m_UsePoution_UsePotion = m_UsePoution.FindAction("UsePotion", throwIfNotFound: true);
+        // InventoryBtns
+        m_InventoryBtns = asset.FindActionMap("InventoryBtns", throwIfNotFound: true);
+        m_InventoryBtns_OpenAndClose = m_InventoryBtns.FindAction("OpenAndClose", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -687,6 +718,52 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public UsePoutionActions @UsePoution => new UsePoutionActions(this);
+
+    // InventoryBtns
+    private readonly InputActionMap m_InventoryBtns;
+    private List<IInventoryBtnsActions> m_InventoryBtnsActionsCallbackInterfaces = new List<IInventoryBtnsActions>();
+    private readonly InputAction m_InventoryBtns_OpenAndClose;
+    public struct InventoryBtnsActions
+    {
+        private @PlayerInput m_Wrapper;
+        public InventoryBtnsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OpenAndClose => m_Wrapper.m_InventoryBtns_OpenAndClose;
+        public InputActionMap Get() { return m_Wrapper.m_InventoryBtns; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InventoryBtnsActions set) { return set.Get(); }
+        public void AddCallbacks(IInventoryBtnsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces.Add(instance);
+            @OpenAndClose.started += instance.OnOpenAndClose;
+            @OpenAndClose.performed += instance.OnOpenAndClose;
+            @OpenAndClose.canceled += instance.OnOpenAndClose;
+        }
+
+        private void UnregisterCallbacks(IInventoryBtnsActions instance)
+        {
+            @OpenAndClose.started -= instance.OnOpenAndClose;
+            @OpenAndClose.performed -= instance.OnOpenAndClose;
+            @OpenAndClose.canceled -= instance.OnOpenAndClose;
+        }
+
+        public void RemoveCallbacks(IInventoryBtnsActions instance)
+        {
+            if (m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInventoryBtnsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InventoryBtnsActions @InventoryBtns => new InventoryBtnsActions(this);
     public interface IMovementActions
     {
         void OnWalk(InputAction.CallbackContext context);
@@ -709,5 +786,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IUsePoutionActions
     {
         void OnUsePotion(InputAction.CallbackContext context);
+    }
+    public interface IInventoryBtnsActions
+    {
+        void OnOpenAndClose(InputAction.CallbackContext context);
     }
 }

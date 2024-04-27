@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
 
     private void SelectItem(int id)
     {
-        if (id != _currentItemID+1)
+        if (id != _currentItemID+1 && _items[id-1] is not null)
         {
             SwordStatChange(false);
 
@@ -93,12 +93,38 @@ public class Inventory : MonoBehaviour
             _slots[_currentItemID].RemoveImage();
             StartCoroutine( DrinkPotion((Potion)item));
             _items[_currentItemID] = null;
+            FindNextItem();
         }
         else if (item is HealthPotion)
         {
             _slots[_currentItemID].RemoveImage();
             _playerStatSys.AddHP(((HealthPotion)item).value);
             _items[_currentItemID] = null;
+            FindNextItem();
+        }
+    }
+
+    void FindNextItem()
+    {
+        int i = _currentItemID-1;
+        while (i >= 0)
+        {
+            if (_items[i] is not null)
+            {
+                SelectItem(i+1);
+                return;
+            }
+            i--;
+        }
+        i = _currentItemID + 1;
+        while (i <= _slots.Count)
+        {
+            if (_items[i] is not null)
+            {
+                SelectItem(i+1);
+                return;
+            }
+            i++;
         }
     }
 

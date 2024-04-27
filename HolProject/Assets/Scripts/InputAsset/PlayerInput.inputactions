@@ -332,6 +332,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "InventoryBtns",
+            "id": "73b25e44-11d7-4211-95d8-89d412817fbc",
+            "actions": [
+                {
+                    "name": "OpenAndClose",
+                    "type": "Button",
+                    "id": "52308eba-f677-4c70-99b0-7edbc0b68f94",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a899951e-636d-4352-bd16-1a1f9c2a0c2c",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenAndClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
