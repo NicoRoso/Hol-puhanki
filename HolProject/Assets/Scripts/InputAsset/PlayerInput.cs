@@ -238,6 +238,76 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DialogueActivator"",
+            ""id"": ""1e753758-3022-48d4-b255-ec6db14ebf4c"",
+            ""actions"": [
+                {
+                    ""name"": ""Activated"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b24c712-b593-4670-a2a5-965e688021a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextSentence"",
+                    ""type"": ""Button"",
+                    ""id"": ""5b1e60d4-9063-4575-ae21-ea247f33cd80"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""affe88cb-e227-4e01-866f-644f8c6083ff"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Activated"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""edd4b273-aae6-4e8a-97a0-f2c4c1c80470"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Activated"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a9d16f0-c087-4f9a-97fc-37ecfa7acdee"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSentence"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c257f4bd-4a9d-4381-9018-47312c4ad7d0"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSentence"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -251,6 +321,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Dash
         m_Dash = asset.FindActionMap("Dash", throwIfNotFound: true);
         m_Dash_Dash = m_Dash.FindAction("Dash", throwIfNotFound: true);
+        // DialogueActivator
+        m_DialogueActivator = asset.FindActionMap("DialogueActivator", throwIfNotFound: true);
+        m_DialogueActivator_Activated = m_DialogueActivator.FindAction("Activated", throwIfNotFound: true);
+        m_DialogueActivator_NextSentence = m_DialogueActivator.FindAction("NextSentence", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -446,6 +520,60 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public DashActions @Dash => new DashActions(this);
+
+    // DialogueActivator
+    private readonly InputActionMap m_DialogueActivator;
+    private List<IDialogueActivatorActions> m_DialogueActivatorActionsCallbackInterfaces = new List<IDialogueActivatorActions>();
+    private readonly InputAction m_DialogueActivator_Activated;
+    private readonly InputAction m_DialogueActivator_NextSentence;
+    public struct DialogueActivatorActions
+    {
+        private @PlayerInput m_Wrapper;
+        public DialogueActivatorActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Activated => m_Wrapper.m_DialogueActivator_Activated;
+        public InputAction @NextSentence => m_Wrapper.m_DialogueActivator_NextSentence;
+        public InputActionMap Get() { return m_Wrapper.m_DialogueActivator; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueActivatorActions set) { return set.Get(); }
+        public void AddCallbacks(IDialogueActivatorActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Add(instance);
+            @Activated.started += instance.OnActivated;
+            @Activated.performed += instance.OnActivated;
+            @Activated.canceled += instance.OnActivated;
+            @NextSentence.started += instance.OnNextSentence;
+            @NextSentence.performed += instance.OnNextSentence;
+            @NextSentence.canceled += instance.OnNextSentence;
+        }
+
+        private void UnregisterCallbacks(IDialogueActivatorActions instance)
+        {
+            @Activated.started -= instance.OnActivated;
+            @Activated.performed -= instance.OnActivated;
+            @Activated.canceled -= instance.OnActivated;
+            @NextSentence.started -= instance.OnNextSentence;
+            @NextSentence.performed -= instance.OnNextSentence;
+            @NextSentence.canceled -= instance.OnNextSentence;
+        }
+
+        public void RemoveCallbacks(IDialogueActivatorActions instance)
+        {
+            if (m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDialogueActivatorActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DialogueActivatorActions @DialogueActivator => new DialogueActivatorActions(this);
     public interface IMovementActions
     {
         void OnWalk(InputAction.CallbackContext context);
@@ -457,5 +585,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IDashActions
     {
         void OnDash(InputAction.CallbackContext context);
+    }
+    public interface IDialogueActivatorActions
+    {
+        void OnActivated(InputAction.CallbackContext context);
+        void OnNextSentence(InputAction.CallbackContext context);
     }
 }
