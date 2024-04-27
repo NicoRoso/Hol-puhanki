@@ -12,6 +12,9 @@ public class PlayerDash : MonoBehaviour
 
     public static Action<bool> OnDashed;
 
+    [SerializeField] private AudioClip _dashClip;
+    public static Action<AudioClip, float, float> OnDashedSounded;
+
     private void OnEnable()
     {
         Movement.OnDashed += Dash;
@@ -35,6 +38,7 @@ public class PlayerDash : MonoBehaviour
         _lastDashTime = Time.time;
         _canDash = false;
         OnDashed(true);
+        OnDashedSounded?.Invoke(_dashClip, 1f, 1f);
 
         float startTime = Time.time;
         while (Time.time < startTime + _dashTime)

@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
 
     [Header("AudioActions")]
     public static Action<AudioClip[], float, float> OnMovedSounded;
+    public static Action<AudioClip, float, float> OnSounded;
 
 
     private void Awake()
@@ -72,7 +73,12 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void PlaySound()
+    public void PlaySound(AudioClip clip)
+    {
+        OnSounded?.Invoke(clip, 1f, 1f);
+    }
+
+    public void PlaySoundWithRandom()
     {
         OnMovedSounded?.Invoke(_footstepsClip, 0.9f, 1.2f);
     }

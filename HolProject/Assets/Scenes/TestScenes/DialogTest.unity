@@ -141,6 +141,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4056099079655418966, guid: ae774394c58593a468567327dd90fe77,
+        type: 3}
+      propertyPath: _dashClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 53763cbfc92bd16428895b34399780fb, type: 3}
     - target: {fileID: 5669605018693665612, guid: ae774394c58593a468567327dd90fe77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -193,19 +198,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5815899353226223415, guid: ae774394c58593a468567327dd90fe77,
         type: 3}
+      propertyPath: _dashClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 53763cbfc92bd16428895b34399780fb, type: 3}
+    - target: {fileID: 5815899353226223415, guid: ae774394c58593a468567327dd90fe77,
+        type: 3}
+      propertyPath: _footstepsClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fd6558f28af850948a69e44767f41d2e, type: 3}
+    - target: {fileID: 5815899353226223415, guid: ae774394c58593a468567327dd90fe77,
+        type: 3}
       propertyPath: _footstepsClip.Array.size
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5815899353226223415, guid: ae774394c58593a468567327dd90fe77,
         type: 3}
       propertyPath: _footstepsClip.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 72f526a6a9890f643a88e85a61c86c8a, type: 3}
+      objectReference: {fileID: 8300000, guid: afd9f3759822c864780161ead74ffc03, type: 3}
     - target: {fileID: 5815899353226223415, guid: ae774394c58593a468567327dd90fe77,
         type: 3}
       propertyPath: _footstepsClip.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 85016e0f2b01da248b9663dd49a161b0, type: 3}
+      objectReference: {fileID: 8300000, guid: 454d8ec2f8df0e74e8f18181f19dc4b8, type: 3}
     - target: {fileID: 5815899353226223415, guid: ae774394c58593a468567327dd90fe77,
         type: 3}
       propertyPath: _footstepsClip.Array.data[2]
@@ -760,8 +775,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66
-  m_fontSizeBase: 66
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -796,7 +811,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 5.72184, y: 89.52012, z: 3.7022934, w: 4.3755417}
+  m_margin: {x: 25.384438, y: 100.75602, z: 3.7022934, w: 4.3755417}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1506,7 +1521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1570711545
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1878,13 +1893,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67
-  m_fontSizeBase: 67
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 5
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1914,7 +1929,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 5.72184, y: 2.3560581, z: 116.11993, w: 20.867945}
+  m_margin: {x: 28.19358, y: 2.3560581, z: 116.11993, w: 20.867945}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

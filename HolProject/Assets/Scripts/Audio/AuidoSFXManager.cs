@@ -13,11 +13,15 @@ public class AuidoSFXMangaer : MonoBehaviour
     private void OnEnable()
     {
         Movement.OnMovedSounded += PlayRandomClipSound;
+        Movement.OnSounded += PlaySound;
+        PlayerDash.OnDashedSounded += PlaySound;
     }
 
     private void OnDisable()
     {
         Movement.OnMovedSounded -= PlayRandomClipSound;
+        Movement.OnSounded -= PlaySound;
+        PlayerDash.OnDashedSounded -= PlaySound;
     }
 
     private void PlaySound(AudioClip clip, float pithchMin, float pitchMax)
