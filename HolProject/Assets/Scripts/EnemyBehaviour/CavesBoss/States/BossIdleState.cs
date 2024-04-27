@@ -19,6 +19,7 @@ public class BossIdleState : BossBaseState
         if(boss.bossfightStarted)
         {
             boss.bossfightStarted = false;
+            boss.SwitchBarrierState(true);
             boss.TryMakeNextAttack();
             return;
         }
