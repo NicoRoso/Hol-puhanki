@@ -67,10 +67,7 @@ public class BossStateManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
-        RotateToTarget();
-       
-        
-
+        if(currentState != bossDeath) RotateToTarget();
     }
 
     // curve attack
@@ -278,6 +275,7 @@ public class BossStateManager : MonoBehaviour
             bossHealth.TakeDamage((int)GameObject.FindObjectOfType<PlayerStatSys>().Attack());
             if (bossHealth.GetHealth() <= 0)
             {
+                
                 _animator.SetTrigger("isDead");
             }
         }

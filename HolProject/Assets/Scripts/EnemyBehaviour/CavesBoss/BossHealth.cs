@@ -33,6 +33,10 @@ public class BossHealth : MonoBehaviour
             ShowHP(false);
             health = 0;
             boss.SwitchState(boss.bossDeath);
+            foreach (Collider collider in GetComponents<Collider>())
+            {
+                collider.enabled = false;
+            }
             return;
         }
         boss._animator.SetTrigger("isHit");

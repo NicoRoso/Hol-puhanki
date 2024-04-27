@@ -43,7 +43,7 @@ public class SkeletonStateManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (isRotating && (currnetState == skeletonAttack)) RotateToTarget();
+        if (isRotating && (currnetState == skeletonAttack) && !isDead) RotateToTarget();
     }
     public void SwitchState(SkeletonBaseState newState)
     {
@@ -93,15 +93,17 @@ public class SkeletonStateManager : MonoBehaviour
             SwitchState(skeletonWalk);
         }
     }
+    bool isDead = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<SwordAttack>(out SwordAttack sword))
         {
             enemyHealth.TakeDamage((int)GameObject.FindObjectOfType<PlayerStatSys>().Attack());
             if (enemyHealth.GetHealth() > 0) animator.SetTrigger("isHit");
-            if (enemyHealth.GetHealth() <= 0)
+            if (enemyHealth.GetHealth() <= 0 && !isDead)
             {
                 animator.SetTrigger("isDead");
+                isDead = true;
                 SetSpeed(0);
             }
         }
