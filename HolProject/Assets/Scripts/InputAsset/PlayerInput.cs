@@ -238,6 +238,122 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Hotbar"",
+            ""id"": ""0e7e9c58-2d97-43ef-a495-154080bb7dc8"",
+            ""actions"": [
+                {
+                    ""name"": ""1st slot"",
+                    ""type"": ""Button"",
+                    ""id"": ""e728a930-1039-4889-b8fd-2f507310f9d4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""2nd slot"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c3461b8-4735-4b06-9d84-6520c15d0628"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""3rd slot"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d2b1275-918d-4c2a-a2be-1107ba13fde2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""4th slot"",
+                    ""type"": ""Button"",
+                    ""id"": ""016df86a-c607-4de6-89d9-031d986787f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9d0b994e-f85b-442e-b318-92ecfe16e24c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""1st slot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f9c9688-5171-465c-bf02-d16acae56e81"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""2nd slot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f24788aa-5541-4144-b300-56b2ebb8d838"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""3rd slot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d8d89f2-26d6-460e-b41b-eb0afb42ee0a"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""4th slot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UsePoution"",
+            ""id"": ""4ebe9a21-8cca-421e-84d4-d8976ce8bc93"",
+            ""actions"": [
+                {
+                    ""name"": ""UsePotion"",
+                    ""type"": ""Button"",
+                    ""id"": ""fd6d9092-881b-4702-9939-0706311e880f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dbdb9f36-deef-4278-9f9c-4109a7653db7"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UsePotion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -251,6 +367,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Dash
         m_Dash = asset.FindActionMap("Dash", throwIfNotFound: true);
         m_Dash_Dash = m_Dash.FindAction("Dash", throwIfNotFound: true);
+        // Hotbar
+        m_Hotbar = asset.FindActionMap("Hotbar", throwIfNotFound: true);
+        m_Hotbar__1stslot = m_Hotbar.FindAction("1st slot", throwIfNotFound: true);
+        m_Hotbar__2ndslot = m_Hotbar.FindAction("2nd slot", throwIfNotFound: true);
+        m_Hotbar__3rdslot = m_Hotbar.FindAction("3rd slot", throwIfNotFound: true);
+        m_Hotbar__4thslot = m_Hotbar.FindAction("4th slot", throwIfNotFound: true);
+        // UsePoution
+        m_UsePoution = asset.FindActionMap("UsePoution", throwIfNotFound: true);
+        m_UsePoution_UsePotion = m_UsePoution.FindAction("UsePotion", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -446,6 +571,122 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public DashActions @Dash => new DashActions(this);
+
+    // Hotbar
+    private readonly InputActionMap m_Hotbar;
+    private List<IHotbarActions> m_HotbarActionsCallbackInterfaces = new List<IHotbarActions>();
+    private readonly InputAction m_Hotbar__1stslot;
+    private readonly InputAction m_Hotbar__2ndslot;
+    private readonly InputAction m_Hotbar__3rdslot;
+    private readonly InputAction m_Hotbar__4thslot;
+    public struct HotbarActions
+    {
+        private @PlayerInput m_Wrapper;
+        public HotbarActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @_1stslot => m_Wrapper.m_Hotbar__1stslot;
+        public InputAction @_2ndslot => m_Wrapper.m_Hotbar__2ndslot;
+        public InputAction @_3rdslot => m_Wrapper.m_Hotbar__3rdslot;
+        public InputAction @_4thslot => m_Wrapper.m_Hotbar__4thslot;
+        public InputActionMap Get() { return m_Wrapper.m_Hotbar; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(HotbarActions set) { return set.Get(); }
+        public void AddCallbacks(IHotbarActions instance)
+        {
+            if (instance == null || m_Wrapper.m_HotbarActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HotbarActionsCallbackInterfaces.Add(instance);
+            @_1stslot.started += instance.On_1stslot;
+            @_1stslot.performed += instance.On_1stslot;
+            @_1stslot.canceled += instance.On_1stslot;
+            @_2ndslot.started += instance.On_2ndslot;
+            @_2ndslot.performed += instance.On_2ndslot;
+            @_2ndslot.canceled += instance.On_2ndslot;
+            @_3rdslot.started += instance.On_3rdslot;
+            @_3rdslot.performed += instance.On_3rdslot;
+            @_3rdslot.canceled += instance.On_3rdslot;
+            @_4thslot.started += instance.On_4thslot;
+            @_4thslot.performed += instance.On_4thslot;
+            @_4thslot.canceled += instance.On_4thslot;
+        }
+
+        private void UnregisterCallbacks(IHotbarActions instance)
+        {
+            @_1stslot.started -= instance.On_1stslot;
+            @_1stslot.performed -= instance.On_1stslot;
+            @_1stslot.canceled -= instance.On_1stslot;
+            @_2ndslot.started -= instance.On_2ndslot;
+            @_2ndslot.performed -= instance.On_2ndslot;
+            @_2ndslot.canceled -= instance.On_2ndslot;
+            @_3rdslot.started -= instance.On_3rdslot;
+            @_3rdslot.performed -= instance.On_3rdslot;
+            @_3rdslot.canceled -= instance.On_3rdslot;
+            @_4thslot.started -= instance.On_4thslot;
+            @_4thslot.performed -= instance.On_4thslot;
+            @_4thslot.canceled -= instance.On_4thslot;
+        }
+
+        public void RemoveCallbacks(IHotbarActions instance)
+        {
+            if (m_Wrapper.m_HotbarActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IHotbarActions instance)
+        {
+            foreach (var item in m_Wrapper.m_HotbarActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_HotbarActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public HotbarActions @Hotbar => new HotbarActions(this);
+
+    // UsePoution
+    private readonly InputActionMap m_UsePoution;
+    private List<IUsePoutionActions> m_UsePoutionActionsCallbackInterfaces = new List<IUsePoutionActions>();
+    private readonly InputAction m_UsePoution_UsePotion;
+    public struct UsePoutionActions
+    {
+        private @PlayerInput m_Wrapper;
+        public UsePoutionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @UsePotion => m_Wrapper.m_UsePoution_UsePotion;
+        public InputActionMap Get() { return m_Wrapper.m_UsePoution; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UsePoutionActions set) { return set.Get(); }
+        public void AddCallbacks(IUsePoutionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UsePoutionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UsePoutionActionsCallbackInterfaces.Add(instance);
+            @UsePotion.started += instance.OnUsePotion;
+            @UsePotion.performed += instance.OnUsePotion;
+            @UsePotion.canceled += instance.OnUsePotion;
+        }
+
+        private void UnregisterCallbacks(IUsePoutionActions instance)
+        {
+            @UsePotion.started -= instance.OnUsePotion;
+            @UsePotion.performed -= instance.OnUsePotion;
+            @UsePotion.canceled -= instance.OnUsePotion;
+        }
+
+        public void RemoveCallbacks(IUsePoutionActions instance)
+        {
+            if (m_Wrapper.m_UsePoutionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUsePoutionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UsePoutionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UsePoutionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UsePoutionActions @UsePoution => new UsePoutionActions(this);
     public interface IMovementActions
     {
         void OnWalk(InputAction.CallbackContext context);
@@ -457,5 +698,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IDashActions
     {
         void OnDash(InputAction.CallbackContext context);
+    }
+    public interface IHotbarActions
+    {
+        void On_1stslot(InputAction.CallbackContext context);
+        void On_2ndslot(InputAction.CallbackContext context);
+        void On_3rdslot(InputAction.CallbackContext context);
+        void On_4thslot(InputAction.CallbackContext context);
+    }
+    public interface IUsePoutionActions
+    {
+        void OnUsePotion(InputAction.CallbackContext context);
     }
 }

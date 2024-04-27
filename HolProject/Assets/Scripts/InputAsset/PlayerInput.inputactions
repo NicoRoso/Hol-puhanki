@@ -216,6 +216,122 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Hotbar",
+            "id": "0e7e9c58-2d97-43ef-a495-154080bb7dc8",
+            "actions": [
+                {
+                    "name": "1st slot",
+                    "type": "Button",
+                    "id": "e728a930-1039-4889-b8fd-2f507310f9d4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "2nd slot",
+                    "type": "Button",
+                    "id": "5c3461b8-4735-4b06-9d84-6520c15d0628",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "3rd slot",
+                    "type": "Button",
+                    "id": "0d2b1275-918d-4c2a-a2be-1107ba13fde2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "4th slot",
+                    "type": "Button",
+                    "id": "016df86a-c607-4de6-89d9-031d986787f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9d0b994e-f85b-442e-b318-92ecfe16e24c",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "1st slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f9c9688-5171-465c-bf02-d16acae56e81",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "2nd slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f24788aa-5541-4144-b300-56b2ebb8d838",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "3rd slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d8d89f2-26d6-460e-b41b-eb0afb42ee0a",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "4th slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UsePoution",
+            "id": "4ebe9a21-8cca-421e-84d4-d8976ce8bc93",
+            "actions": [
+                {
+                    "name": "UsePotion",
+                    "type": "Button",
+                    "id": "fd6d9092-881b-4702-9939-0706311e880f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dbdb9f36-deef-4278-9f9c-4109a7653db7",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UsePotion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

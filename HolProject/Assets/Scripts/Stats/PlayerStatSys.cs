@@ -25,12 +25,10 @@ public class PlayerStatSys : MonoBehaviour
         _parametrs.Add(_def); 
         _parametrs.Add(_critCh); 
         _parametrs.Add(_critDmg);
-
-        RemoveHP(100);
     }
 
     #region HP section
-    private int GetHP() { return _hp; }
+    public int GetHP() { return _hp; }
     private void MaxHP() {  _hp = (int)_hpMax.value; }
     public void AddHP(int amount) { _hp += (_hp + amount > _hpMax.value ? (int)_hpMax.value : amount); }
     public void AddHP(float amount) { AddHP((int)amount); }
@@ -67,7 +65,14 @@ public class PlayerStatSys : MonoBehaviour
             }
         }
     }
-# endregion
+
+    public void RemoveStatByName(StatName name, float amount, bool isPercent = false)
+    {
+        amount *= -1;
+        GainStatByName(name, amount, isPercent);
+    }
+
+#endregion
 
     private void Death() 
     {
