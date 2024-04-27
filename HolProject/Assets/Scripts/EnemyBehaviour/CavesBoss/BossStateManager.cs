@@ -37,7 +37,7 @@ public class BossStateManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindObjectOfType<TestPlayerExistance>().transform;
-        SwitchState(bossTpFire);
+        SwitchState(bossRoundFire);
     }
 
 
@@ -90,14 +90,14 @@ public class BossStateManager : MonoBehaviour
     //round attack
     void SummonRoundWave()
     {
-        SummonStraightFireball(transform.position + new Vector3(0.5f,0,0), new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + new Vector3(-0.5f, 0, 0), new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + new Vector3(0, 0, 0.5f), new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + new Vector3(0, 0, -0.5f), new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + new Vector3(0.25f, 0, 0.25f), new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + new Vector3(0.25f, 0, -0.25f), new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + new Vector3(-0.25f, 0, 0.25f), new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + new Vector3(-0.25f, 0, -0.25f), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + transform.forward * 0.5f, new FireballRoundAttackState());
+        SummonStraightFireball(transform.position - transform.forward * 0.5f, new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + transform.right * 0.5f, new FireballRoundAttackState());
+        SummonStraightFireball(transform.position - transform.right * 0.5f, new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + (transform.forward + transform.right).normalized*0.5f, new FireballRoundAttackState());
+        SummonStraightFireball(transform.position - (transform.forward + transform.right).normalized * 0.5f, new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + (-transform.forward + transform.right).normalized * 0.5f, new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + (transform.forward - transform.right).normalized * 0.5f, new FireballRoundAttackState());
     }
     IEnumerator RoundWavesSpawnCycle(int waves, float breakTime)
     {
