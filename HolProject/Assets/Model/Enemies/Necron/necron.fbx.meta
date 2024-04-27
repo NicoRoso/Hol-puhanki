@@ -187,7 +187,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.695962
-        functionName: StartCurveAttack
+        functionName: StartCenterAttack
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: cbd047cf25aa9a04ba50cf7600b50a10,
           type: 3}

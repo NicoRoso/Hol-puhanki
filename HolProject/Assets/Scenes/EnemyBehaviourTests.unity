@@ -9383,6 +9383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 919132148721986681}
   _rotationSpeed: 2
+  maxAttacksInARow: 4
   _fireballPrefab: {fileID: 2975428854460859988, guid: 9f282b73211cd4c44a4e1e321bc167da,
     type: 3}
   _curveFireballRotationSpeed: 300
@@ -9410,6 +9411,7 @@ MonoBehaviour:
   - {fileID: 1753568879}
   _possibleMinions:
   - {fileID: 9130387924304541084, guid: 90a37858ca375b549916c7db3174a7c0, type: 3}
+  bossfightStarted: 0
 --- !u!4 &983820447069446212
 Transform:
   m_ObjectHideFlags: 0

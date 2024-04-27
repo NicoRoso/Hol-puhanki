@@ -16,12 +16,14 @@ public class BossStateManager : MonoBehaviour
     public BossDeathState bossDeath = new BossDeathState();
     public BossIdleState bossIdle = new BossIdleState();
     Action rotationStop;
+    public Action changeAttack;
     Transform player;
 
     [SerializeField] public Animator _animator;
 
 
     [SerializeField] float _rotationSpeed;
+    [SerializeField] int maxAttacksInARow;
 
     [SerializeField] public GameObject _fireballPrefab;
     [SerializeField] float _curveFireballRotationSpeed;
@@ -39,18 +41,24 @@ public class BossStateManager : MonoBehaviour
     [SerializeField] List<Transform> _tpPoints;
     [SerializeField] List<BossSpawner> _spawnPoints;
     [SerializeField] List<GameObject> _possibleMinions;
+
+    public bool bossfightStarted = false;
+    int attacksInARow;
     public void SwitchState(BossBaseState newState)
     {
         currentState = newState;
         currentState.EnterState(this);
+        Debug.Log(currentState);
     }
     private void Start()
     {
+        attacksInARow = 0;
         player = GameObject.FindObjectOfType<TestPlayerExistance>().transform;
-        SwitchState(bossCurveFire);
+        SwitchState(bossIdle);
     }
     private void Update()
     {
+        currentState.UpdateState(this);
         RotateToTarget();
     }
 
@@ -80,6 +88,7 @@ public class BossStateManager : MonoBehaviour
         rotationStop?.Invoke();
         yield return new WaitForSeconds(0.8f);
         _animator.SetTrigger("centerAttackEndDown");
+        TryMakeNextAttack();
         yield break;
     }
     void StartCurveAttack()
@@ -123,6 +132,8 @@ public class BossStateManager : MonoBehaviour
             wavesPassed++;
             yield return new WaitForSeconds(breakTime);
         }
+        _animator.SetTrigger("centerAttackEnd");
+        TryMakeNextAttack();
         yield break;
     }
     public void StartRoundAttack()
@@ -163,6 +174,7 @@ public class BossStateManager : MonoBehaviour
         newRot.z = 0;
         newRot.x = 0;
         transform.rotation = newRot;
+        TryMakeNextAttack();
         yield break;
     }
     void TpToPointAndFire(Transform point)
@@ -197,6 +209,14 @@ public class BossStateManager : MonoBehaviour
                 bossSpawner.SpawnEnemy(_possibleMinions[UnityEngine.Random.Range(0, _possibleMinions.Count)]);
             }
         }
+        StartCoroutine(WaitforSecondsBeforeNexstState(2));
+    }
+
+    IEnumerator WaitforSecondsBeforeNexstState(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        TryMakeNextAttack();
+        yield break;
     }
     public void RotateToTarget()
     {
@@ -204,6 +224,25 @@ public class BossStateManager : MonoBehaviour
         direction.y = 0f;
         Quaternion newRotation = Quaternion.LookRotation(direction).normalized;
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, _rotationSpeed * Time.deltaTime);
+    }
+    void StartCenterAttack()
+    {
+        if (currentState == bossCurveFire) StartCurveAttack();
+        if (currentState == bossRoundFire) StartRoundAttack();
+    }
+
+    public void TryMakeNextAttack()
+    {
+        if(attacksInARow < maxAttacksInARow)
+        {
+            changeAttack?.Invoke();
+            attacksInARow++;
+        }
+        else
+        {
+            attacksInARow = 0;
+            SwitchState(bossWeak);
+        }
     }
 
 }
