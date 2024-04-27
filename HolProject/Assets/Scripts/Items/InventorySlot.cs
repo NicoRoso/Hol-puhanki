@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
+        public Inventory inventory;
     [SerializeField] Image _slotIcon;
+    public int id;
     public void OnDrop(PointerEventData eventData)
     {
-        
+
         if (transform.childCount == 0)
         {
             GameObject dropped = eventData.pointerDrag;
@@ -21,14 +23,21 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             GameObject dropped = eventData.pointerDrag;
             DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
 
-            if (!draggableItem.isSword)
-            {
-                GameObject current = transform.GetChild(0).gameObject;
-                DraggableItem currentDraggable = current.GetComponent<DraggableItem>();
 
-                currentDraggable.transform.SetParent(draggableItem.parentAfterDrag);
-                draggableItem.parentAfterDrag = transform;
+            GameObject current = transform.GetChild(0).gameObject;
+            DraggableItem currentDraggable = current.GetComponent<DraggableItem>();
+
+            currentDraggable.transform.SetParent(draggableItem.parentAfterDrag);
+            try
+            {
+                inventory.Swap(draggableItem.parentAfterDrag.gameObject.GetComponent<InventorySlot>().id, id);
             }
+            catch
+            {
+                inventory.CrossSwap(draggableItem.parentAfterDrag.gameObject.GetComponent<HotbarInventorySlot>().id, id);
+            }
+            draggableItem.parentAfterDrag = transform;
+
         }
     }
 

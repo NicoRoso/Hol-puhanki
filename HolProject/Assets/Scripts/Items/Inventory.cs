@@ -30,12 +30,25 @@ public class Inventory : MonoBehaviour
         _hotbarSlots = _hotBar._slots;
 
         _invUI = FindObjectOfType<InventoryUI>();
-        foreach (var slot in _invUI.GetComponentsInChildren<HotbarInventorySlot>()) { _inventoryHotbarSlots.Add(slot); }
-        foreach (var slot in _invUI.GetComponentsInChildren<InventorySlot>()) { _inventorySlots.Add(slot); }
+        int i = 0;
+        foreach (var slot in _invUI.GetComponentsInChildren<HotbarInventorySlot>()) 
+        {
+            _inventoryHotbarSlots.Add(slot);
+            slot.id = i; 
+            i++;
+            slot.inventory = this;
+        }
+        i= 0;
+        foreach (var slot in _invUI.GetComponentsInChildren<InventorySlot>()) {
+            _inventorySlots.Add(slot); 
+            slot.id = i;
+            i++; 
+            slot.inventory = this; 
+        }
 
         _invUI.gameObject.SetActive(false);
 
-        ImagesReset();
+        HotbarImagesReset();
 
         _currentItemID = 0;
         _hotBar.SelectSlotByKey(0);
@@ -53,6 +66,37 @@ public class Inventory : MonoBehaviour
         _playerInput.InventoryBtns.OpenAndClose.performed += ctx => OpenCloseInventory();
     }
 
+    public void Swap(int id, int newId, bool flag=false)
+    {
+        if (!flag)
+        {
+            var x = _hotbarItems[newId];
+            _hotbarItems[newId] = _hotbarItems[id];
+            _hotbarItems[id] = x;
+        }
+        else 
+        {
+            var x = _inventoryItems[newId];
+            _inventoryItems[newId] = _inventoryItems[id];
+            _inventoryItems[id] = x;
+        }
+    }
+    public void CrossSwap(int id, int newId, bool flag = false)
+    {
+        if (!flag)
+        {
+            var x = _hotbarItems[newId];
+            _hotbarItems[newId] = _inventoryItems[id];
+            _inventoryItems[id] = x;
+        }
+        else
+        {
+            var x = _inventoryItems[newId];
+            _inventoryItems[newId] = _hotbarItems[id];
+            _hotbarItems[id] = x;
+        }
+    }
+
     void OpenCloseInventory()
     {
         bool invOpen = _invUI.gameObject.activeSelf;
@@ -61,6 +105,7 @@ public class Inventory : MonoBehaviour
 
         if (!invOpen)
         {
+            InventoryImagesReset();
             for (int i = 0; i < 4; i++)
             {
                 if (_hotbarItems[i] is not null)
@@ -86,6 +131,8 @@ public class Inventory : MonoBehaviour
                     _inventorySlots[i].RemoveImage();
             }
         }
+
+
         else
         {
             for (int i = 0; i < 4; i++)
@@ -95,10 +142,11 @@ public class Inventory : MonoBehaviour
                 else
                     _hotbarSlots[i].RemoveImage();
             }
+            if (_hotbarItems[_currentItemID] is null) FindNextItem();
         }
     }
 
-    void ImagesReset()
+    void HotbarImagesReset()
     {
         int i = 0;
         while (_hotbarItems[i] is not null)
@@ -113,9 +161,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    void InventoryImagesReset()
+    {
+        foreach (var im in _inventoryHotbarSlots) { im.RemoveImage(); }
+        foreach (var im in _inventorySlots) { im.RemoveImage(); }
+    }
     private void SelectItem(int id)
     {
-        if (id != _currentItemID+1 && _hotbarItems[id] is not null)
+        if (id != _currentItemID+1 && _hotbarItems[id-1] is not null)
         {
             SwordStatChange(false);
 
