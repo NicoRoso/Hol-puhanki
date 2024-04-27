@@ -88,7 +88,7 @@ public class BossStateManager : MonoBehaviour
         rotationStop?.Invoke();
         yield return new WaitForSeconds(0.8f);
         _animator.SetTrigger("centerAttackEndDown");
-        TryMakeNextAttack();
+        StartCoroutine(WaitforSecondsBeforeNexstState(2));
         yield break;
     }
     void StartCurveAttack()
@@ -133,7 +133,7 @@ public class BossStateManager : MonoBehaviour
             yield return new WaitForSeconds(breakTime);
         }
         _animator.SetTrigger("centerAttackEnd");
-        TryMakeNextAttack();
+        StartCoroutine(WaitforSecondsBeforeNexstState(1));
         yield break;
     }
     public void StartRoundAttack()
@@ -174,7 +174,7 @@ public class BossStateManager : MonoBehaviour
         newRot.z = 0;
         newRot.x = 0;
         transform.rotation = newRot;
-        TryMakeNextAttack();
+        StartCoroutine(WaitforSecondsBeforeNexstState(1));
         yield break;
     }
     void TpToPointAndFire(Transform point)
@@ -209,7 +209,7 @@ public class BossStateManager : MonoBehaviour
                 bossSpawner.SpawnEnemy(_possibleMinions[UnityEngine.Random.Range(0, _possibleMinions.Count)]);
             }
         }
-        StartCoroutine(WaitforSecondsBeforeNexstState(2));
+        StartCoroutine(WaitforSecondsBeforeNexstState(8));
     }
 
     IEnumerator WaitforSecondsBeforeNexstState(float seconds)
