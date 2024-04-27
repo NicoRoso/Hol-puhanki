@@ -8,11 +8,11 @@ public class PlayerStatSys : MonoBehaviour
 {
     [SerializeField] private int _hp=100;
 
-    private Stat _hpMax = new Stat("MaxHP", 100);
-    private Stat _atc = new Stat("Atack", 3);
-    private Stat _def = new Stat("Defence", 1);
-    private Stat _critCh = new Stat("Crit Chance", 15, 100);
-    private Stat _critDmg = new Stat("Crit Damage", 1.1f);
+    private Stat _hpMax = new Stat(StatName.MaxHp, 100);
+    private Stat _atc = new Stat(StatName.Atack, 3);
+    private Stat _def = new Stat(StatName.Defence, 1);
+    private Stat _critCh = new Stat(StatName.CritChance, 15, 100);
+    private Stat _critDmg = new Stat(StatName.CritDamage, 1.1f);
 
     [SerializeField] private List<Stat> _parametrs = new List<Stat>();
 
@@ -24,10 +24,12 @@ public class PlayerStatSys : MonoBehaviour
         _parametrs.Add(_atc); 
         _parametrs.Add(_def); 
         _parametrs.Add(_critCh); 
-        _parametrs.Add(_critDmg); 
+        _parametrs.Add(_critDmg);
+
+        RemoveHP(100);
     }
 
-    #region HP
+    #region HP section
     private int GetHP() { return _hp; }
     private void MaxHP() {  _hp = (int)_hpMax.value; }
     public void AddHP(int amount) { _hp += (_hp + amount > _hpMax.value ? (int)_hpMax.value : amount); }
@@ -36,7 +38,7 @@ public class PlayerStatSys : MonoBehaviour
     private void RemoveHP(int amount)
     {
         _hp -= amount;
-        if (_hp < 0)
+        if (_hp <= 0)
         {
             _hp = 0;
             Death();
@@ -45,14 +47,15 @@ public class PlayerStatSys : MonoBehaviour
 
     private void RemoveHP(float amount) { RemoveHP((int)amount); }
 
-    #endregion
+    #endregion 
 
     public void GetDamage(int amount) { RemoveHP(amount / _def.value); }
-
     public void Attack() { float damage = _atc.value * (UnityEngine.Random.Range(0, 100) > _critCh.value ? 1 : _critDmg.value); }
+
+    # region Stat section
     private void GainStat(int id, float amount) { _parametrs[id].GainStat(amount); }
     private void GainStatPercent(int id, float percent) { _parametrs[id].GainStatPercent(percent); }
-    public void GainStatByName(string name, float amount, bool isPercent=false) 
+    public void GainStatByName(StatName name, float amount, bool isPercent=false) 
     {
         for (int i = 0; i < _parametrs.Count; i++)
         {
@@ -64,8 +67,13 @@ public class PlayerStatSys : MonoBehaviour
             }
         }
     }
+# endregion
 
-    private void Death() {  }
+    private void Death() 
+    {
+        GameObject.FindGameObjectWithTag("CardsHolder").GetComponent<Animator>().SetTrigger("AppearCards");
+        Time.timeScale = 0;
+    }
 }
 
 
