@@ -3,17 +3,22 @@ using UnityEngine;
 using TMPro;
 using UnityEditor.Rendering;
 using System.Collections;
+using System;
 
 public class DialogManager : MonoBehaviour
 {
     private Queue<string> sentences;
 
     private PlayerInput _playerInput;
+    private int currentSentenceIndex = 0;
 
     [SerializeField] private TMP_Text _nameCharacter;
     [SerializeField] private TMP_Text _dialogeText;
 
     [SerializeField] private Animator _animator;
+
+    [SerializeField] private AudioClip[] voiceClips;
+    public static Action<AudioClip> OnVoiceSounded;
 
     private void Awake()
     {
@@ -39,6 +44,7 @@ public class DialogManager : MonoBehaviour
         _nameCharacter.text = dialogue.name;
 
         sentences.Clear();
+        currentSentenceIndex = 0;
 
         foreach (string sentence in dialogue.sentences)
         {
@@ -58,6 +64,16 @@ public class DialogManager : MonoBehaviour
 
         string sentence = sentences.Dequeue();
         StartCoroutine(TypeSentence(sentence));
+
+        if (currentSentenceIndex < voiceClips.Length)
+        {
+            AudioClip clip = voiceClips[currentSentenceIndex];
+            if (clip != null)
+            {
+                OnVoiceSounded?.Invoke(clip);
+            }
+            currentSentenceIndex++;
+        }
     }
 
     private IEnumerator TypeSentence(string sentence)
