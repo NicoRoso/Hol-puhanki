@@ -240,6 +240,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ]
         },
         {
+
             ""name"": ""Hotbar"",
             ""id"": ""0e7e9c58-2d97-43ef-a495-154080bb7dc8"",
             ""actions"": [
@@ -247,12 +248,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""1st slot"",
                     ""type"": ""Button"",
                     ""id"": ""e728a930-1039-4889-b8fd-2f507310f9d4"",
+
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
+
                     ""name"": ""2nd slot"",
                     ""type"": ""Button"",
                     ""id"": ""5c3461b8-4735-4b06-9d84-6520c15d0628"",
@@ -274,6 +277,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""4th slot"",
                     ""type"": ""Button"",
                     ""id"": ""016df86a-c607-4de6-89d9-031d986787f9"",
+
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -289,6 +293,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""1st slot"",
+
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -311,6 +316,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""3rd slot"",
+
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -378,6 +384,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""OpenAndClose"",
+
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -395,6 +402,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Dash
         m_Dash = asset.FindActionMap("Dash", throwIfNotFound: true);
         m_Dash_Dash = m_Dash.FindAction("Dash", throwIfNotFound: true);
+
         // Hotbar
         m_Hotbar = asset.FindActionMap("Hotbar", throwIfNotFound: true);
         m_Hotbar__1stslot = m_Hotbar.FindAction("1st slot", throwIfNotFound: true);
@@ -407,6 +415,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // InventoryBtns
         m_InventoryBtns = asset.FindActionMap("InventoryBtns", throwIfNotFound: true);
         m_InventoryBtns_OpenAndClose = m_InventoryBtns.FindAction("OpenAndClose", throwIfNotFound: true);
+
     }
 
     public void Dispose()
@@ -603,6 +612,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public DashActions @Dash => new DashActions(this);
 
+
     // Hotbar
     private readonly InputActionMap m_Hotbar;
     private List<IHotbarActions> m_HotbarActionsCallbackInterfaces = new List<IHotbarActions>();
@@ -764,6 +774,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public InventoryBtnsActions @InventoryBtns => new InventoryBtnsActions(this);
+
     public interface IMovementActions
     {
         void OnWalk(InputAction.CallbackContext context);
@@ -776,6 +787,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnDash(InputAction.CallbackContext context);
     }
+
     public interface IHotbarActions
     {
         void On_1stslot(InputAction.CallbackContext context);
@@ -790,5 +802,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IInventoryBtnsActions
     {
         void OnOpenAndClose(InputAction.CallbackContext context);
+
     }
 }

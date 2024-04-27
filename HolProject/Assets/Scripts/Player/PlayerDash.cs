@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +9,18 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float _dashCooldown;
     private float _lastDashTime;
     private bool _canDash = true;
+
+    [SerializeField] TrailRenderer _trailRenderer;
+
+    public static Action<bool> OnDashed;
+
+    [SerializeField] private AudioClip _dashClip;
+    public static Action<AudioClip, float, float> OnDashedSounded;
+
+    private void Awake()
+    {
+        _trailRenderer.enabled = false;
+    }
 
     private void OnEnable()
     {
@@ -29,8 +42,11 @@ public class PlayerDash : MonoBehaviour
 
     private IEnumerator DashCoroutine(Vector3 moveDirection)
     {
+        _trailRenderer.enabled = true;
         _lastDashTime = Time.time;
         _canDash = false;
+        OnDashed(true);
+        OnDashedSounded?.Invoke(_dashClip, 1f, 1f);
 
         float startTime = Time.time;
         while (Time.time < startTime + _dashTime)
@@ -38,9 +54,10 @@ public class PlayerDash : MonoBehaviour
             GetComponent<CharacterController>().Move(moveDirection * _dashSpeed * Time.deltaTime);
             yield return null;
         }
-
+        _trailRenderer.enabled = false;
         yield return new WaitForSeconds(_dashCooldown);
 
         _canDash = true;
+        OnDashed(false);
     }
 }

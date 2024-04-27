@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class Movement : MonoBehaviour
@@ -18,6 +15,13 @@ public class Movement : MonoBehaviour
     [Header("Actions")]
     public static Action<Vector2> OnMoved;
     public static Action<Vector3> OnDashed;
+
+    [SerializeField] private AudioClip[] _footstepsClip;
+
+    [Header("AudioActions")]
+    public static Action<AudioClip[], float, float> OnMovedSounded;
+    public static Action<AudioClip, float, float> OnSounded;
+
 
     private void Awake()
     {
@@ -67,5 +71,15 @@ public class Movement : MonoBehaviour
             moveDirectionRelativeToCamera = Quaternion.Euler(0f, cameraRotationAngle, 0f) * moveDirection;
             _characterController.Move(moveDirectionRelativeToCamera * _moveSpeed * Time.fixedDeltaTime);
         }
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        OnSounded?.Invoke(clip, 1f, 1f);
+    }
+
+    public void PlaySoundWithRandom()
+    {
+        OnMovedSounded?.Invoke(_footstepsClip, 1f, 1f);
     }
 }
