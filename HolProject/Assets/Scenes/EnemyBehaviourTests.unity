@@ -384,7 +384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &311707787
 Transform:
   m_ObjectHideFlags: 0
@@ -561,7 +561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &805298904
 Transform:
   m_ObjectHideFlags: 0
@@ -1705,7 +1705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1999935145
 Transform:
   m_ObjectHideFlags: 0
@@ -9459,7 +9459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &919132148721986681
 Animator:
   serializedVersion: 5
@@ -11604,7 +11604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &8481652230160665288
 GameObject:
   m_ObjectHideFlags: 0
@@ -12591,9 +12591,9 @@ SceneRoots:
   - {fileID: 1691207209}
   - {fileID: 1996266203}
   - {fileID: 1913859444}
+  - {fileID: 4000011574179697}
   - {fileID: 1999935145}
   - {fileID: 311707787}
-  - {fileID: 4000011574179697}
   - {fileID: 543450652924671682}
-  - {fileID: 8481652230161159846}
   - {fileID: 805298904}
+  - {fileID: 8481652230161159846}
