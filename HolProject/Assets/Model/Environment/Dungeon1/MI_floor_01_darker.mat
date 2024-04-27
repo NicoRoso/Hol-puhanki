@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2909443207229127912
+--- !u!114 &-2135465325954418667
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Arches_01
+  m_Name: MI_floor_01_darker
   m_Shader: {fileID: 4800000, guid: ee7e4c9a5f6364b688a332c67fc32cca, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -41,19 +41,19 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BASE_COLOR_MAP:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 5d47f925d4e045545981ea0e0c3aa0cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BUMP_MAP:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: edcea2dca39c3e64eb2eeddd00a00327, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 039c2bbae7e525146b3b85f6a79f4649, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d47f925d4e045545981ea0e0c3aa0cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: e5f7f5fc891c8a6439da788d48c4b078, type: 3}
+        m_Texture: {fileID: 2800000, guid: edcea2dca39c3e64eb2eeddd00a00327, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ClearCoatMap:
@@ -85,15 +85,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 039c2bbae7e525146b3b85f6a79f4649, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d47f925d4e045545981ea0e0c3aa0cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 53d079104a88c7f4d9e735b80d112fd5, type: 3}
+        m_Texture: {fileID: 2800000, guid: e5b33aa8dc23b1a408eecda2e2023cdb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: a7dc86ac23a9e71488399f88655e0943, type: 3}
+        m_Texture: {fileID: 2800000, guid: 58eb5c6d497e54c4787a5ee3b62707c8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -109,11 +109,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _REFLECTIONS_ROUGHNESS_MAP:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e5b33aa8dc23b1a408eecda2e2023cdb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: 75c5cf52192f7534681c931b60dedfc3, type: 3}
+        m_Texture: {fileID: 2800000, guid: e5b33aa8dc23b1a408eecda2e2023cdb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TRANSPARENCY_MAP:
@@ -154,20 +154,20 @@ Material:
     - _EMISSION_WEIGHT: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _METALNESS: 1
-    - _Metallic: 0.2
+    - _Metallic: 0
     - _Mode: 0
-    - _OcclusionStrength: 0.33
+    - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _REFLECTIONS_IOR: 1.52
-    - _REFLECTIONS_ROUGHNESS: 0.5527864
+    - _REFLECTIONS_ROUGHNESS: 1
     - _REFLECTIONS_WEIGHT: 1
     - _ReceiveShadows: 1
-    - _Smoothness: 0.308
+    - _Smoothness: 0.074349605
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -175,7 +175,7 @@ Material:
     - _Surface: 0
     - _TRANSPARENCY: 0
     - _UVSec: 0
-    - _UseAoMap: 0
+    - _UseAoMap: 1
     - _UseColorMap: 1
     - _UseEmissiveMap: 0
     - _UseMetallicMap: 0
@@ -185,8 +185,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BASE_COLOR: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.83624065, g: 0.83624065, b: 0.83624065, a: 1}
+    - _Color: {r: 0.40904236, g: 0.40904236, b: 0.40904236, a: 1}
     - _EMISSION_COLOR: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
