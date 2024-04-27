@@ -14,8 +14,14 @@ public class BossStateManager : MonoBehaviour
     public BossTpFireState bossTpFire = new BossTpFireState();
     public BossWeaknessState bossWeak = new BossWeaknessState();
     public BossDeathState bossDeath = new BossDeathState();
+    public BossIdleState bossIdle = new BossIdleState();
     Action rotationStop;
     Transform player;
+
+    [SerializeField] public Animator _animator;
+
+
+    [SerializeField] float _rotationSpeed;
 
     [SerializeField] public GameObject _fireballPrefab;
     [SerializeField] float _curveFireballRotationSpeed;
@@ -28,6 +34,8 @@ public class BossStateManager : MonoBehaviour
     [SerializeField] int _amountOfTps;
     [SerializeField] float _afterTpsDelay;
 
+    [SerializeField] Transform _centerPoint;
+
     [SerializeField] List<Transform> _tpPoints;
     [SerializeField] List<BossSpawner> _spawnPoints;
     [SerializeField] List<GameObject> _possibleMinions;
@@ -39,9 +47,12 @@ public class BossStateManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindObjectOfType<TestPlayerExistance>().transform;
-        SwitchState(bossSummon);
+        SwitchState(bossCurveFire);
     }
-
+    private void Update()
+    {
+        RotateToTarget();
+    }
 
     // curve attack
     public void SummonCurveFireball(Vector3 pos, float rotSpeed, float flyAwaySpeed)
@@ -51,10 +62,10 @@ public class BossStateManager : MonoBehaviour
     }
     void SummonCurveWave(float rotSpeed,float flyAwaySpeed)
     {
-        SummonCurveFireball(transform.position + new Vector3(1, 0, 0), rotSpeed, flyAwaySpeed);
-        SummonCurveFireball(transform.position + new Vector3(-1, 0, 0), rotSpeed, flyAwaySpeed);
-        SummonCurveFireball(transform.position + new Vector3(0, 0, 1), rotSpeed, flyAwaySpeed);
-        SummonCurveFireball(transform.position + new Vector3(0, 0, -1), rotSpeed, flyAwaySpeed);
+        SummonCurveFireball(transform.position + new Vector3(1, 1.5f, 0), rotSpeed, flyAwaySpeed);
+        SummonCurveFireball(transform.position + new Vector3(-1, 1.5f, 0), rotSpeed, flyAwaySpeed);
+        SummonCurveFireball(transform.position + new Vector3(0, 1.5f, 1), rotSpeed, flyAwaySpeed);
+        SummonCurveFireball(transform.position + new Vector3(0, 1.5f, -1), rotSpeed, flyAwaySpeed);
     }
     IEnumerator CurveWavesSpawnCycle(int waves, float breakTime, float rotSpeed, float flyAwaySpeed)
     {
@@ -67,9 +78,11 @@ public class BossStateManager : MonoBehaviour
         }
         yield return new WaitForSeconds(breakTime);
         rotationStop?.Invoke();
+        yield return new WaitForSeconds(0.8f);
+        _animator.SetTrigger("centerAttackEndDown");
         yield break;
     }
-    public void StartCurveAttack()
+    void StartCurveAttack()
     {
         StartCoroutine(CurveWavesSpawnCycle(_curveAttackWavesAmount,_curveAttackWavesSpawnDelay,_curveFireballRotationSpeed,_curveFireballFlyAwaySpeed));
     }
@@ -92,14 +105,14 @@ public class BossStateManager : MonoBehaviour
     //round attack
     void SummonRoundWave()
     {
-        SummonStraightFireball(transform.position + transform.forward * 0.5f, new FireballRoundAttackState());
-        SummonStraightFireball(transform.position - transform.forward * 0.5f, new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + transform.right * 0.5f, new FireballRoundAttackState());
-        SummonStraightFireball(transform.position - transform.right * 0.5f, new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + (transform.forward + transform.right).normalized*0.5f, new FireballRoundAttackState());
-        SummonStraightFireball(transform.position - (transform.forward + transform.right).normalized * 0.5f, new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + (-transform.forward + transform.right).normalized * 0.5f, new FireballRoundAttackState());
-        SummonStraightFireball(transform.position + (transform.forward - transform.right).normalized * 0.5f, new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + transform.forward * 0.1f + new Vector3(0,1.5f,0), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position - transform.forward * 0.1f + new Vector3(0, 1.5f, 0), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + transform.right * 0.1f + new Vector3(0, 1.5f, 0), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position - transform.right * 0.1f + new Vector3(0, 1.5f, 0), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + (transform.forward + transform.right).normalized*0.1f + new Vector3(0, 1.5f, 0), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position - (transform.forward + transform.right).normalized * 0.1f + new Vector3(0, 1.5f, 0), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + (-transform.forward + transform.right).normalized * 0.1f + new Vector3(0, 1.5f, 0), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + (transform.forward - transform.right).normalized * 0.1f + new Vector3(0, 1.5f, 0), new FireballRoundAttackState());
     }
     IEnumerator RoundWavesSpawnCycle(int waves, float breakTime)
     {
@@ -143,17 +156,30 @@ public class BossStateManager : MonoBehaviour
             TpsDone++;
             yield return new WaitForSeconds(_afterTpsDelay);
         }
+        yield return new WaitForSeconds(_afterTpsDelay);
+        transform.position = _centerPoint.position;
+        transform.LookAt(player);
+        Quaternion newRot = transform.rotation;
+        newRot.z = 0;
+        newRot.x = 0;
+        transform.rotation = newRot;
         yield break;
     }
     void TpToPointAndFire(Transform point)
     {
         transform.position = point.position;
         transform.LookAt(player);
+        _animator.SetTrigger("frontAttack");
         Quaternion newRot = transform.rotation;
         newRot.x = 0;
         newRot.z = 0;
         transform.rotation = newRot;
+    }
+    void TrippleShot()
+    {
         SummonStraightFireball(transform.forward + transform.position, new FireballStraightAttackState());
+        SummonStraightFireball(transform.forward + transform.right * 0.3f + transform.position, new FireballStraightAttackState());
+        SummonStraightFireball(transform.forward - transform.right * 0.3f + transform.position, new FireballStraightAttackState());
     }
     public void StartTpAttack()
     {
@@ -172,4 +198,12 @@ public class BossStateManager : MonoBehaviour
             }
         }
     }
+    public void RotateToTarget()
+    {
+        Vector3 direction = (player.transform.position - transform.position);
+        direction.y = 0f;
+        Quaternion newRotation = Quaternion.LookRotation(direction).normalized;
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, _rotationSpeed * Time.deltaTime);
+    }
+
 }

@@ -11,7 +11,9 @@ public class FireballCurveAttackState : FireballBaseState
     }
     public override void UpdateState(FireballStateManager fireball)
     {
-        fireball.transform.RotateAround(fireball._rotateCenter.position, new Vector3(0, 1, 0), fireball._rotateSpeed * Time.deltaTime);
+        Vector3 newCenterRot = fireball._rotateCenter.position;
+        newCenterRot.y = 1;
+        fireball.transform.RotateAround(newCenterRot, new Vector3(0, 1, 0), fireball._rotateSpeed * Time.deltaTime);
         fireball.GoFurtherFromCenter();
     }
 }

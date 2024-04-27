@@ -27,7 +27,9 @@ public class FireballStateManager : MonoBehaviour
 
     public void GoFurtherFromCenter()
     {
-        transform.position = transform.position + ((transform.position - _rotateCenter.position).normalized)*Time.deltaTime*flyAwaySpeed;
+        Vector3 newPos = _rotateCenter.position;
+        newPos.y = transform.position.y;
+        transform.position = transform.position + ((transform.position - newPos).normalized)*Time.deltaTime*flyAwaySpeed;
     }
     public void IncreaseSizeToNormal(float time)
     {
@@ -70,13 +72,13 @@ public class FireballStateManager : MonoBehaviour
         _rotateSpeed = 0;
         yield return null;
         Vector3 currentPos = transform.position;
-        transform.DOMove(currentPos + new Vector3(0, 1, 0), 0.5f).SetEase(Ease.InOutExpo);
-        while (transform.position.y < currentPos.y + 1)
-        {
-            yield return null;
-        }
-        transform.DOMove(currentPos + new Vector3(0, -1.25f, 0), 0.4f).SetEase(Ease.InOutExpo);
-        while (transform.position.y > currentPos.y - 1.2f)
+        //transform.DOMove(currentPos + new Vector3(0, 1, 0), 0.25f).SetEase(Ease.InOutExpo);
+        //while (transform.position.y < currentPos.y + 1)
+        //{
+        //    yield return null;
+        //}
+        transform.DOMove(currentPos + new Vector3(0, -1.5f, 0), 0.25f).SetEase(Ease.InExpo);
+        while (transform.position.y > currentPos.y - 1.5f)
         {
             yield return null;
         }
