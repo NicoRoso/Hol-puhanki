@@ -47,6 +47,7 @@ public class PlayerDash : MonoBehaviour
         _canDash = false;
         OnDashed(true);
         OnDashedSounded?.Invoke(_dashClip, 1f, 1f);
+        GetComponent<PlayerStatSys>().enabled = false;
 
         float startTime = Time.time;
         while (Time.time < startTime + _dashTime)
@@ -59,5 +60,6 @@ public class PlayerDash : MonoBehaviour
 
         _canDash = true;
         OnDashed(false);
+        GetComponent<PlayerStatSys>().enabled = true;
     }
 }
