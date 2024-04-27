@@ -212,7 +212,39 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.6104513
+        functionName: StartStopRotation
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 790f1774c1ddab4469c524b99804c605,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.8105771
+        functionName: CheckIfTooFar
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 790f1774c1ddab4469c524b99804c605,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.87410927
+        functionName: StartStopRotation
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 790f1774c1ddab4469c524b99804c605,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.89311165
+        functionName: CheckIfAnimation
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 790f1774c1ddab4469c524b99804c605,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
