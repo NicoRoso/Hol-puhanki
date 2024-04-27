@@ -96,7 +96,11 @@ public class WizardStateManager : MonoBehaviour
         {
             //урон брать из оружия
             //playerstatsys.attack
-
+            //animator.SetTrigger("isHit");
+            if(enemyHealth.GetHealth() <= 0)
+            {
+                SwitchState(wizzardDeath);
+            }
         }
     }
 }
