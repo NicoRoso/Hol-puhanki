@@ -16,7 +16,9 @@ public class PlayerStatSys : MonoBehaviour
 
     [SerializeField] private List<Stat> _parametrs = new List<Stat>();
 
-
+    [Header("Actions")]
+    public static Action<int> OnToMaxHp;
+    public static Action<int> OnToHp;
 
     private void Start()
     {
@@ -26,13 +28,16 @@ public class PlayerStatSys : MonoBehaviour
         _parametrs.Add(_critCh); 
         _parametrs.Add(_critDmg);
 
-        RemoveHP(100);
+        OnToMaxHp?.Invoke(_hp);
+        OnToHp?.Invoke(_hp);
+
+        //RemoveHP(100);
     }
 
     #region HP section
     private int GetHP() { return _hp; }
     private void MaxHP() {  _hp = (int)_hpMax.value; }
-    public void AddHP(int amount) { _hp += (_hp + amount > _hpMax.value ? (int)_hpMax.value : amount); }
+    public void AddHP(int amount) { _hp += (_hp + amount > _hpMax.value ? (int)_hpMax.value : amount); OnToHp?.Invoke(_hp);}
     public void AddHP(float amount) { AddHP((int)amount); }
     
     private void RemoveHP(int amount)
@@ -49,7 +54,7 @@ public class PlayerStatSys : MonoBehaviour
 
     #endregion 
 
-    public void GetDamage(int amount) { RemoveHP(amount / _def.value); }
+    public void GetDamage(int amount) { RemoveHP(amount / _def.value); OnToHp?.Invoke(_hp); }
     public void Attack() { float damage = _atc.value * (UnityEngine.Random.Range(0, 100) > _critCh.value ? 1 : _critDmg.value); }
 
     # region Stat section
@@ -73,6 +78,18 @@ public class PlayerStatSys : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("CardsHolder").GetComponent<Animator>().SetTrigger("AppearCards");
         Time.timeScale = 0;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GetDamage(20);
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            AddHP(20);
+        }
     }
 }
 
