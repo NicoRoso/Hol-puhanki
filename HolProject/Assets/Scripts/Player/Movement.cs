@@ -22,9 +22,15 @@ public class Movement : MonoBehaviour
     public static Action<AudioClip[], float, float> OnMovedSounded;
     public static Action<AudioClip, float, float> OnSounded;
 
+    [SerializeField] private GameObject _pause;
 
     private void Awake()
     {
+        if (_pause != null)
+        {
+            _pause.SetActive(true);
+        }
+
         _characterController = GetComponent<CharacterController>();
         _playerInput = new PlayerInput();
         _playerInput.Enable();
