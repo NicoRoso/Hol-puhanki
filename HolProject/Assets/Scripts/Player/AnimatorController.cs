@@ -8,6 +8,7 @@ public class AnimatorController : MonoBehaviour
     private const string SPEED = "Speed";
     private const string ATTACK = "AttackIndex";
     private const string IsDashed = "IsDashed";
+    private const string TakeHill = "Hill";
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -40,6 +41,11 @@ public class AnimatorController : MonoBehaviour
     private void Dash(bool value)
     {
         _animator.SetBool(IsDashed, value);
+    }
+
+    private void TakeHelth()
+    {
+        _animator.SetTrigger(TakeHill);
     }
 
 }
