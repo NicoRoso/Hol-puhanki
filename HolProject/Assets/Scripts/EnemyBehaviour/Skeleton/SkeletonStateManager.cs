@@ -41,7 +41,7 @@ public class SkeletonStateManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (isRotating) RotateToTarget();
+        if (isRotating && (currnetState == skeletonAttack)) RotateToTarget();
     }
     public void SwitchState(SkeletonBaseState newState)
     {

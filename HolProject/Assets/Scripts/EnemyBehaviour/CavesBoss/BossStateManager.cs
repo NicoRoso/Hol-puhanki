@@ -68,11 +68,7 @@ public class BossStateManager : MonoBehaviour
     {
         currentState.UpdateState(this);
         RotateToTarget();
-        
-        if(Input.GetKeyDown(KeyCode.J)) //test
-        {
-            bossHealth.TakeDamage(200);
-        }
+       
         
 
     }

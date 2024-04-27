@@ -11,7 +11,6 @@ public class SkeletonWalkState : SkeletonBaseState
     }
     public override void UpdateState(SkeletonStateManager skelet)
     {
-        //Debug.Log(skelet.GetRemainingDistance());
         if((skelet._attackDistance >= skelet.GetRemainingDistance()) && (skelet.GetRemainingDistance() != 0))
         {
             skelet.SwitchState(skelet.skeletonAttack);
