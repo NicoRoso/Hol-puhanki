@@ -10,7 +10,6 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] Slider _hpBar;
     bool damageable = true;
     int health;
-    bool showHp = false;
     private void Awake()
     {
         health = _maxHealth;
