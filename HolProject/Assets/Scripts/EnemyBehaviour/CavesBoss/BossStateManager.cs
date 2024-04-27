@@ -29,6 +29,8 @@ public class BossStateManager : MonoBehaviour
     [SerializeField] float _afterTpsDelay;
 
     [SerializeField] List<Transform> _tpPoints;
+    [SerializeField] List<BossSpawner> _spawnPoints;
+    [SerializeField] List<GameObject> _possibleMinions;
     public void SwitchState(BossBaseState newState)
     {
         currentState = newState;
@@ -37,7 +39,7 @@ public class BossStateManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindObjectOfType<TestPlayerExistance>().transform;
-        SwitchState(bossRoundFire);
+        SwitchState(bossSummon);
     }
 
 
@@ -156,5 +158,18 @@ public class BossStateManager : MonoBehaviour
     public void StartTpAttack()
     {
         StartCoroutine(TpFireCycle(_amountOfTps));
+    }
+    //
+
+
+    public void SpawnMinions()
+    {
+        foreach(BossSpawner bossSpawner in _spawnPoints)
+        {
+            if(UnityEngine.Random.Range(0,2) == 0)
+            {
+                bossSpawner.SpawnEnemy(_possibleMinions[UnityEngine.Random.Range(0, _possibleMinions.Count)]);
+            }
+        }
     }
 }
