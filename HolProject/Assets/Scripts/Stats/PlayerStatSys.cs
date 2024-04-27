@@ -31,13 +31,14 @@ public class PlayerStatSys : MonoBehaviour
         OnToMaxHp?.Invoke(_hp);
         OnToHp?.Invoke(_hp);
 
-        //RemoveHP(100);
     }
 
     #region HP section
-    private int GetHP() { return _hp; }
+    public int GetHP() { return _hp; }
     private void MaxHP() {  _hp = (int)_hpMax.value; }
-    public void AddHP(int amount) { _hp += (_hp + amount > _hpMax.value ? (int)_hpMax.value : amount); OnToHp?.Invoke(_hp);}
+
+    public void AddHP(int amount) { _hp = (_hp + amount > _hpMax.value ? (int)_hpMax.value : _hp + amount); OnToHp?.Invoke(_hp);}
+
     public void AddHP(float amount) { AddHP((int)amount); }
     
     private void RemoveHP(int amount)
@@ -72,7 +73,14 @@ public class PlayerStatSys : MonoBehaviour
             }
         }
     }
-# endregion
+
+    public void RemoveStatByName(StatName name, float amount, bool isPercent = false)
+    {
+        amount *= -1;
+        GainStatByName(name, amount, isPercent);
+    }
+
+#endregion
 
     private void Death() 
     {

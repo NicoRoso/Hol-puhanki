@@ -240,22 +240,44 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""DialogueActivator"",
-            ""id"": ""1e753758-3022-48d4-b255-ec6db14ebf4c"",
+
+            ""name"": ""Hotbar"",
+            ""id"": ""0e7e9c58-2d97-43ef-a495-154080bb7dc8"",
             ""actions"": [
                 {
-                    ""name"": ""Activated"",
+                    ""name"": ""1st slot"",
                     ""type"": ""Button"",
-                    ""id"": ""6b24c712-b593-4670-a2a5-965e688021a0"",
+                    ""id"": ""e728a930-1039-4889-b8fd-2f507310f9d4"",
+
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""NextSentence"",
+
+                    ""name"": ""2nd slot"",
                     ""type"": ""Button"",
-                    ""id"": ""5b1e60d4-9063-4575-ae21-ea247f33cd80"",
+                    ""id"": ""5c3461b8-4735-4b06-9d84-6520c15d0628"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""3rd slot"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d2b1275-918d-4c2a-a2be-1107ba13fde2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""4th slot"",
+                    ""type"": ""Button"",
+                    ""id"": ""016df86a-c607-4de6-89d9-031d986787f9"",
+
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -265,45 +287,104 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""affe88cb-e227-4e01-866f-644f8c6083ff"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""id"": ""9d0b994e-f85b-442e-b318-92ecfe16e24c"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Activated"",
+                    ""action"": ""1st slot"",
+
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""edd4b273-aae6-4e8a-97a0-f2c4c1c80470"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""id"": ""4f9c9688-5171-465c-bf02-d16acae56e81"",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Activated"",
+                    ""action"": ""2nd slot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9a9d16f0-c087-4f9a-97fc-37ecfa7acdee"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""f24788aa-5541-4144-b300-56b2ebb8d838"",
+                    ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NextSentence"",
+                    ""action"": ""3rd slot"",
+
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c257f4bd-4a9d-4381-9018-47312c4ad7d0"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""id"": ""0d8d89f2-26d6-460e-b41b-eb0afb42ee0a"",
+                    ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""NextSentence"",
+                    ""action"": ""4th slot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UsePoution"",
+            ""id"": ""4ebe9a21-8cca-421e-84d4-d8976ce8bc93"",
+            ""actions"": [
+                {
+                    ""name"": ""UsePotion"",
+                    ""type"": ""Button"",
+                    ""id"": ""fd6d9092-881b-4702-9939-0706311e880f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dbdb9f36-deef-4278-9f9c-4109a7653db7"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UsePotion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""InventoryBtns"",
+            ""id"": ""73b25e44-11d7-4211-95d8-89d412817fbc"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenAndClose"",
+                    ""type"": ""Button"",
+                    ""id"": ""52308eba-f677-4c70-99b0-7edbc0b68f94"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a899951e-636d-4352-bd16-1a1f9c2a0c2c"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenAndClose"",
+
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -321,10 +402,20 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Dash
         m_Dash = asset.FindActionMap("Dash", throwIfNotFound: true);
         m_Dash_Dash = m_Dash.FindAction("Dash", throwIfNotFound: true);
-        // DialogueActivator
-        m_DialogueActivator = asset.FindActionMap("DialogueActivator", throwIfNotFound: true);
-        m_DialogueActivator_Activated = m_DialogueActivator.FindAction("Activated", throwIfNotFound: true);
-        m_DialogueActivator_NextSentence = m_DialogueActivator.FindAction("NextSentence", throwIfNotFound: true);
+
+        // Hotbar
+        m_Hotbar = asset.FindActionMap("Hotbar", throwIfNotFound: true);
+        m_Hotbar__1stslot = m_Hotbar.FindAction("1st slot", throwIfNotFound: true);
+        m_Hotbar__2ndslot = m_Hotbar.FindAction("2nd slot", throwIfNotFound: true);
+        m_Hotbar__3rdslot = m_Hotbar.FindAction("3rd slot", throwIfNotFound: true);
+        m_Hotbar__4thslot = m_Hotbar.FindAction("4th slot", throwIfNotFound: true);
+        // UsePoution
+        m_UsePoution = asset.FindActionMap("UsePoution", throwIfNotFound: true);
+        m_UsePoution_UsePotion = m_UsePoution.FindAction("UsePotion", throwIfNotFound: true);
+        // InventoryBtns
+        m_InventoryBtns = asset.FindActionMap("InventoryBtns", throwIfNotFound: true);
+        m_InventoryBtns_OpenAndClose = m_InventoryBtns.FindAction("OpenAndClose", throwIfNotFound: true);
+
     }
 
     public void Dispose()
@@ -521,59 +612,169 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public DashActions @Dash => new DashActions(this);
 
-    // DialogueActivator
-    private readonly InputActionMap m_DialogueActivator;
-    private List<IDialogueActivatorActions> m_DialogueActivatorActionsCallbackInterfaces = new List<IDialogueActivatorActions>();
-    private readonly InputAction m_DialogueActivator_Activated;
-    private readonly InputAction m_DialogueActivator_NextSentence;
-    public struct DialogueActivatorActions
+
+    // Hotbar
+    private readonly InputActionMap m_Hotbar;
+    private List<IHotbarActions> m_HotbarActionsCallbackInterfaces = new List<IHotbarActions>();
+    private readonly InputAction m_Hotbar__1stslot;
+    private readonly InputAction m_Hotbar__2ndslot;
+    private readonly InputAction m_Hotbar__3rdslot;
+    private readonly InputAction m_Hotbar__4thslot;
+    public struct HotbarActions
     {
         private @PlayerInput m_Wrapper;
-        public DialogueActivatorActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Activated => m_Wrapper.m_DialogueActivator_Activated;
-        public InputAction @NextSentence => m_Wrapper.m_DialogueActivator_NextSentence;
-        public InputActionMap Get() { return m_Wrapper.m_DialogueActivator; }
+        public HotbarActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @_1stslot => m_Wrapper.m_Hotbar__1stslot;
+        public InputAction @_2ndslot => m_Wrapper.m_Hotbar__2ndslot;
+        public InputAction @_3rdslot => m_Wrapper.m_Hotbar__3rdslot;
+        public InputAction @_4thslot => m_Wrapper.m_Hotbar__4thslot;
+        public InputActionMap Get() { return m_Wrapper.m_Hotbar; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(DialogueActivatorActions set) { return set.Get(); }
-        public void AddCallbacks(IDialogueActivatorActions instance)
+        public static implicit operator InputActionMap(HotbarActions set) { return set.Get(); }
+        public void AddCallbacks(IHotbarActions instance)
         {
-            if (instance == null || m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Add(instance);
-            @Activated.started += instance.OnActivated;
-            @Activated.performed += instance.OnActivated;
-            @Activated.canceled += instance.OnActivated;
-            @NextSentence.started += instance.OnNextSentence;
-            @NextSentence.performed += instance.OnNextSentence;
-            @NextSentence.canceled += instance.OnNextSentence;
+            if (instance == null || m_Wrapper.m_HotbarActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_HotbarActionsCallbackInterfaces.Add(instance);
+            @_1stslot.started += instance.On_1stslot;
+            @_1stslot.performed += instance.On_1stslot;
+            @_1stslot.canceled += instance.On_1stslot;
+            @_2ndslot.started += instance.On_2ndslot;
+            @_2ndslot.performed += instance.On_2ndslot;
+            @_2ndslot.canceled += instance.On_2ndslot;
+            @_3rdslot.started += instance.On_3rdslot;
+            @_3rdslot.performed += instance.On_3rdslot;
+            @_3rdslot.canceled += instance.On_3rdslot;
+            @_4thslot.started += instance.On_4thslot;
+            @_4thslot.performed += instance.On_4thslot;
+            @_4thslot.canceled += instance.On_4thslot;
         }
 
-        private void UnregisterCallbacks(IDialogueActivatorActions instance)
+        private void UnregisterCallbacks(IHotbarActions instance)
         {
-            @Activated.started -= instance.OnActivated;
-            @Activated.performed -= instance.OnActivated;
-            @Activated.canceled -= instance.OnActivated;
-            @NextSentence.started -= instance.OnNextSentence;
-            @NextSentence.performed -= instance.OnNextSentence;
-            @NextSentence.canceled -= instance.OnNextSentence;
+            @_1stslot.started -= instance.On_1stslot;
+            @_1stslot.performed -= instance.On_1stslot;
+            @_1stslot.canceled -= instance.On_1stslot;
+            @_2ndslot.started -= instance.On_2ndslot;
+            @_2ndslot.performed -= instance.On_2ndslot;
+            @_2ndslot.canceled -= instance.On_2ndslot;
+            @_3rdslot.started -= instance.On_3rdslot;
+            @_3rdslot.performed -= instance.On_3rdslot;
+            @_3rdslot.canceled -= instance.On_3rdslot;
+            @_4thslot.started -= instance.On_4thslot;
+            @_4thslot.performed -= instance.On_4thslot;
+            @_4thslot.canceled -= instance.On_4thslot;
         }
 
-        public void RemoveCallbacks(IDialogueActivatorActions instance)
+        public void RemoveCallbacks(IHotbarActions instance)
         {
-            if (m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_HotbarActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IDialogueActivatorActions instance)
+        public void SetCallbacks(IHotbarActions instance)
         {
-            foreach (var item in m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_HotbarActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_DialogueActivatorActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_HotbarActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public DialogueActivatorActions @DialogueActivator => new DialogueActivatorActions(this);
+    public HotbarActions @Hotbar => new HotbarActions(this);
+
+    // UsePoution
+    private readonly InputActionMap m_UsePoution;
+    private List<IUsePoutionActions> m_UsePoutionActionsCallbackInterfaces = new List<IUsePoutionActions>();
+    private readonly InputAction m_UsePoution_UsePotion;
+    public struct UsePoutionActions
+    {
+        private @PlayerInput m_Wrapper;
+        public UsePoutionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @UsePotion => m_Wrapper.m_UsePoution_UsePotion;
+        public InputActionMap Get() { return m_Wrapper.m_UsePoution; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UsePoutionActions set) { return set.Get(); }
+        public void AddCallbacks(IUsePoutionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UsePoutionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UsePoutionActionsCallbackInterfaces.Add(instance);
+            @UsePotion.started += instance.OnUsePotion;
+            @UsePotion.performed += instance.OnUsePotion;
+            @UsePotion.canceled += instance.OnUsePotion;
+        }
+
+        private void UnregisterCallbacks(IUsePoutionActions instance)
+        {
+            @UsePotion.started -= instance.OnUsePotion;
+            @UsePotion.performed -= instance.OnUsePotion;
+            @UsePotion.canceled -= instance.OnUsePotion;
+        }
+
+        public void RemoveCallbacks(IUsePoutionActions instance)
+        {
+            if (m_Wrapper.m_UsePoutionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUsePoutionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UsePoutionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UsePoutionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UsePoutionActions @UsePoution => new UsePoutionActions(this);
+
+    // InventoryBtns
+    private readonly InputActionMap m_InventoryBtns;
+    private List<IInventoryBtnsActions> m_InventoryBtnsActionsCallbackInterfaces = new List<IInventoryBtnsActions>();
+    private readonly InputAction m_InventoryBtns_OpenAndClose;
+    public struct InventoryBtnsActions
+    {
+        private @PlayerInput m_Wrapper;
+        public InventoryBtnsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OpenAndClose => m_Wrapper.m_InventoryBtns_OpenAndClose;
+        public InputActionMap Get() { return m_Wrapper.m_InventoryBtns; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InventoryBtnsActions set) { return set.Get(); }
+        public void AddCallbacks(IInventoryBtnsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces.Add(instance);
+            @OpenAndClose.started += instance.OnOpenAndClose;
+            @OpenAndClose.performed += instance.OnOpenAndClose;
+            @OpenAndClose.canceled += instance.OnOpenAndClose;
+        }
+
+        private void UnregisterCallbacks(IInventoryBtnsActions instance)
+        {
+            @OpenAndClose.started -= instance.OnOpenAndClose;
+            @OpenAndClose.performed -= instance.OnOpenAndClose;
+            @OpenAndClose.canceled -= instance.OnOpenAndClose;
+        }
+
+        public void RemoveCallbacks(IInventoryBtnsActions instance)
+        {
+            if (m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInventoryBtnsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InventoryBtnsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InventoryBtnsActions @InventoryBtns => new InventoryBtnsActions(this);
+
     public interface IMovementActions
     {
         void OnWalk(InputAction.CallbackContext context);
@@ -586,9 +787,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnDash(InputAction.CallbackContext context);
     }
-    public interface IDialogueActivatorActions
+
+    public interface IHotbarActions
     {
-        void OnActivated(InputAction.CallbackContext context);
-        void OnNextSentence(InputAction.CallbackContext context);
+        void On_1stslot(InputAction.CallbackContext context);
+        void On_2ndslot(InputAction.CallbackContext context);
+        void On_3rdslot(InputAction.CallbackContext context);
+        void On_4thslot(InputAction.CallbackContext context);
+    }
+    public interface IUsePoutionActions
+    {
+        void OnUsePotion(InputAction.CallbackContext context);
+    }
+    public interface IInventoryBtnsActions
+    {
+        void OnOpenAndClose(InputAction.CallbackContext context);
+
     }
 }
