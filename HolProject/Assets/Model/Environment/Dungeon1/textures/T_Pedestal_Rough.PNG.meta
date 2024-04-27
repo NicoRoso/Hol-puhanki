@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1217933649ce76246a04dcf194afdb66
+guid: 85a5e5f186b21114e8288ab677164bec
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -54,7 +54,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 1
+  textureType: 0
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -62,9 +62,9 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
+  ignorePngGamma: 1
   applyGammaDecoding: 0
-  swizzle: 50462976
+  swizzle: 134742280
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3

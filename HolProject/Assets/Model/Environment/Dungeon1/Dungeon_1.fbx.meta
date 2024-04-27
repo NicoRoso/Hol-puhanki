@@ -53,7 +53,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MI_Furniture_01.001
-    second: {fileID: 2100000, guid: 7025e0861278d0d42a631420be270be7, type: 2}
+    second: {fileID: 2100000, guid: df6b3e5c9670a064899368407cbe3a4f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -138,7 +138,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MI_Wood_Trim.001
-    second: {fileID: 2100000, guid: 742fd425e1c5540458a3d37f97bec58d, type: 2}
+    second: {fileID: 2100000, guid: dc7d401041f6bc643b0904b09216f60f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
