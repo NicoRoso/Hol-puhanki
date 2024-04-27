@@ -12,9 +12,14 @@ public class Inventory : MonoBehaviour
     [SerializeField] private PlayerStatSys _playerStatSys;
     [Space]
 
-    [SerializeField] List<ItemBase> _items;
-    [SerializeField] List<SelectSlot> _slots;
+    [SerializeField] List<ItemBase> _hotbarItems;
+    [SerializeField] List<SelectSlot> _hotbarSlots;
+    [SerializeField] List<HotbarInventorySlot> _inventoryHotbarSlots;
+    [SerializeField] List<ItemBase> _inventoryItems;
+    [SerializeField] List<InventorySlot> _inventorySlots;
+
     [SerializeField] HotbarSelecting _hotBar;
+    [SerializeField] InventoryUI _invUI;
     [SerializeField] int _currentItemID;
 
     private void Start()
@@ -22,7 +27,13 @@ public class Inventory : MonoBehaviour
         _playerStatSys = FindObjectOfType<PlayerStatSys>();
 
         _hotBar = FindObjectOfType<HotbarSelecting>();
-         _slots = _hotBar._slots;
+        _hotbarSlots = _hotBar._slots;
+
+        _invUI = FindObjectOfType<InventoryUI>();
+        foreach (var slot in _invUI.GetComponentsInChildren<HotbarInventorySlot>()) { _inventoryHotbarSlots.Add(slot); }
+        foreach (var slot in _invUI.GetComponentsInChildren<InventorySlot>()) { _inventorySlots.Add(slot); }
+
+        _invUI.gameObject.SetActive(false);
 
         ImagesReset();
 
@@ -39,27 +50,72 @@ public class Inventory : MonoBehaviour
         _playerInput.Hotbar._4thslot.performed += ctx => SelectItem(4);
 
         _playerInput.UsePoution.UsePotion.performed += ctx => DrinkPot();
+        _playerInput.InventoryBtns.OpenAndClose.performed += ctx => OpenCloseInventory();
     }
 
+    void OpenCloseInventory()
+    {
+        bool invOpen = _invUI.gameObject.activeSelf;
+        _hotBar.gameObject.SetActive(invOpen);
+        _invUI.gameObject.SetActive(!invOpen);
+
+        if (!invOpen)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (_hotbarItems[i] is not null)
+                {
+                    _inventoryHotbarSlots[i].SetImage(_hotbarItems[i]._icon);
+                    if (_hotbarItems[i] is Sword) {
+                        _inventoryHotbarSlots[i].gameObject.GetComponentInChildren<DraggableItem>().isSword = true;
+                    }
+                    else
+                        _inventoryHotbarSlots[i].gameObject.GetComponentInChildren<DraggableItem>().isSword = false;
+                }
+                else
+                    _inventoryHotbarSlots[i].RemoveImage();
+            }
+            for (int i = 0; i < 15; i++)
+            {
+                if (_inventoryItems[i] is not null) 
+                { 
+                    _inventorySlots[i].SetImage(_inventoryItems[i]._icon);
+                    _inventorySlots[i].gameObject.GetComponentInChildren<DraggableItem>().isSword = false;
+                }
+                else
+                    _inventorySlots[i].RemoveImage();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (_hotbarItems[i] is not null)
+                    _hotbarSlots[i].SetImage(_hotbarItems[i]._icon);
+                else
+                    _hotbarSlots[i].RemoveImage();
+            }
+        }
+    }
 
     void ImagesReset()
     {
         int i = 0;
-        while (_items[i] is not null)
+        while (_hotbarItems[i] is not null)
         {
-            _slots[i].SetImage(_items[i]._icon);
+            _hotbarSlots[i].SetImage(_hotbarItems[i]._icon);
             i++;
         }
-        while (i < _slots.Count)
+        while (i < _hotbarSlots.Count)
         {
-            _slots[i].RemoveImage();
+            _hotbarSlots[i].RemoveImage();
             i++;
         }
     }
 
     private void SelectItem(int id)
     {
-        if (id != _currentItemID+1 && _items[id-1] is not null)
+        if (id != _currentItemID+1 && _hotbarItems[id] is not null)
         {
             SwordStatChange(false);
 
@@ -74,7 +130,7 @@ public class Inventory : MonoBehaviour
 
     private void SwordStatChange(bool gain)
     {
-        var item = _items[_currentItemID];
+        var item = _hotbarItems[_currentItemID];
         if (item is Sword)
         {
             foreach (Stat stat in ((Sword)item).parametrs)
@@ -87,19 +143,19 @@ public class Inventory : MonoBehaviour
 
     private void DrinkPot()
     {
-        var item = _items[_currentItemID];
+        var item = _hotbarItems[_currentItemID];
         if (item is Potion)
         {
-            _slots[_currentItemID].RemoveImage();
+            _hotbarSlots[_currentItemID].RemoveImage();
             StartCoroutine( DrinkPotion((Potion)item));
-            _items[_currentItemID] = null;
+            _hotbarItems[_currentItemID] = null;
             FindNextItem();
         }
         else if (item is HealthPotion)
         {
-            _slots[_currentItemID].RemoveImage();
+            _hotbarSlots[_currentItemID].RemoveImage();
             _playerStatSys.AddHP(((HealthPotion)item).value);
-            _items[_currentItemID] = null;
+            _hotbarItems[_currentItemID] = null;
             FindNextItem();
         }
     }
@@ -109,7 +165,7 @@ public class Inventory : MonoBehaviour
         int i = _currentItemID-1;
         while (i >= 0)
         {
-            if (_items[i] is not null)
+            if (_hotbarItems[i] is not null)
             {
                 SelectItem(i+1);
                 return;
@@ -117,9 +173,9 @@ public class Inventory : MonoBehaviour
             i--;
         }
         i = _currentItemID + 1;
-        while (i <= _slots.Count)
+        while (i <= _hotbarSlots.Count)
         {
-            if (_items[i] is not null)
+            if (_hotbarItems[i] is not null)
             {
                 SelectItem(i+1);
                 return;
