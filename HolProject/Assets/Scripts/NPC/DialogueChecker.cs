@@ -15,7 +15,7 @@ public class DialogueChecker : MonoBehaviour
     {
         _outline = GetComponent<Outline>();
         _playerInput = new PlayerInput();
-        _playerInput.DialogueActivator.Activated.performed += ctx => ToTriggerDialogue();
+       // _playerInput.DialogueActivator.Activated.performed += ctx => ToTriggerDialogue();
     }
 
     private void OnEnable()
