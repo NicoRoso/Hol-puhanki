@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class Potion : ItemBase
+public class HealthPotion : ItemBase
 {
-    public Stat parametr;
-    public float duration;
+    public int value;
 }

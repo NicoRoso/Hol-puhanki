@@ -13,7 +13,6 @@ public class SelectSlot : MonoBehaviour
     private void GetSlot()
     {
         _slotIcon= transform.GetChild(0).GetComponent<Image>();
-        print(_slotIcon);
     }
     public void OnSlotSelect()
     {

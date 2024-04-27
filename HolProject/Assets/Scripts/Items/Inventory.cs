@@ -87,9 +87,26 @@ public class Inventory : MonoBehaviour
 
     private void DrinkPot()
     {
-        if (_items[_currentItemID] is Potion)
+        var item = _items[_currentItemID];
+        if (item is Potion)
         {
             _slots[_currentItemID].RemoveImage();
+            StartCoroutine( DrinkPotion((Potion)item));
+            _items[_currentItemID] = null;
+        }
+        else if (item is HealthPotion)
+        {
+            _slots[_currentItemID].RemoveImage();
+            _playerStatSys.AddHP(((HealthPotion)item).value);
+            _items[_currentItemID] = null;
         }
     }
+
+    public IEnumerator DrinkPotion(Potion potion)
+    {
+        _playerStatSys.GainStatByName(potion.parametr.statName, potion.parametr.value);
+        yield return new WaitForSeconds(potion.duration);
+        _playerStatSys.RemoveStatByName(potion.parametr.statName, potion.parametr.value);
+    }
+
 }

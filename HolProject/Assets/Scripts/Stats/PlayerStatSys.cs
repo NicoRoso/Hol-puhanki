@@ -30,7 +30,7 @@ public class PlayerStatSys : MonoBehaviour
     #region HP section
     public int GetHP() { return _hp; }
     private void MaxHP() {  _hp = (int)_hpMax.value; }
-    public void AddHP(int amount) { _hp += (_hp + amount > _hpMax.value ? (int)_hpMax.value : amount); }
+    public void AddHP(int amount) { _hp = (_hp + amount > _hpMax.value ? (int)_hpMax.value : _hp + amount); }
     public void AddHP(float amount) { AddHP((int)amount); }
     
     private void RemoveHP(int amount)

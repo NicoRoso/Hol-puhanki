@@ -1191,7 +1191,7 @@ MonoBehaviour:
   _items:
   - {fileID: 11400000, guid: 5d4bd8d1397c7364a8733adbf8250fdd, type: 2}
   - {fileID: 11400000, guid: 7e321e797875fbf488b037a33664d8f8, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 43eecc27033095f47a91746b5ceaa33a, type: 2}
   - {fileID: 0}
   _slots: []
   _hotBar: {fileID: 0}
