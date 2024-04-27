@@ -24,6 +24,10 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private GameObject _pause;
 
+    [Header("Gravity")]
+    [SerializeField] private float _gravity = 9.81f;
+    private Vector3 _fallVelocity = Vector3.zero;
+
     private void Awake()
     {
         if (_pause != null)
@@ -77,6 +81,14 @@ public class Movement : MonoBehaviour
             moveDirectionRelativeToCamera = Quaternion.Euler(0f, cameraRotationAngle, 0f) * moveDirection;
             _characterController.Move(moveDirectionRelativeToCamera * _moveSpeed * Time.fixedDeltaTime);
         }
+
+        ApplyGravity();
+    }
+
+    private void ApplyGravity()
+    {
+        _fallVelocity.y -= _gravity * Time.deltaTime;
+        _characterController.Move(_fallVelocity * Time.deltaTime);
     }
 
     public void PlaySound(AudioClip clip)
