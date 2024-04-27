@@ -670,6 +670,9 @@ MonoBehaviour:
   _curveFireballFlyAwaySpeed: 2
   _curveAttackWavesAmount: 5
   _curveAttackWavesSpawnDelay: 1
+  _straightFireballSpeed: 10
+  _roundAttackWavesAmount: 7
+  _roundAttackWavesSpawnDelay: 0.25
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

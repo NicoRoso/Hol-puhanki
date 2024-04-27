@@ -103,9 +103,33 @@ public class FireballStateManager : MonoBehaviour
         SetState(state);
         _rotateCenter = bossTransform;
     }
-    public void OnSpawn(FireballBaseState state, Transform bossTransform, Vector3 direction)
+    public void OnSpawn(FireballBaseState state, Transform bossTransform, Vector3 direction, float speed)
     {
         _rotateCenter = bossTransform;
+        currentDir = direction;
+        currentSpeed = speed;
         SetState(state);
+    }
+    Vector3 currentDir;
+    float currentSpeed;
+    void StraightFlyInDirectionWithSpeed(Vector3 direction, float speed)
+    {
+        transform.position += direction * speed * Time.deltaTime;
+    }
+    IEnumerator StraightFly()
+    {
+        float timer = 0;
+        while(timer < 10)
+        {
+            StraightFlyInDirectionWithSpeed(currentDir,currentSpeed);
+            timer+= Time.deltaTime;
+            yield return null;
+        }
+        Destroy(gameObject);
+        yield break;
+    }
+    public void StartStraightAttack()
+    {
+        StartCoroutine(StraightFly());
     }
 }

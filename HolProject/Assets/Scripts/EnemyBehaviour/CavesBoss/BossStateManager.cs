@@ -16,10 +16,13 @@ public class BossStateManager : MonoBehaviour
     Action rotationStop;
 
     [SerializeField] public GameObject _fireballPrefab;
-    [SerializeField] public float _curveFireballRotationSpeed;
-    [SerializeField] public float _curveFireballFlyAwaySpeed;
-    [SerializeField] public int _curveAttackWavesAmount;
-    [SerializeField] public float _curveAttackWavesSpawnDelay;
+    [SerializeField] float _curveFireballRotationSpeed;
+    [SerializeField] float _curveFireballFlyAwaySpeed;
+    [SerializeField] int _curveAttackWavesAmount;
+    [SerializeField] float _curveAttackWavesSpawnDelay;
+    [SerializeField] float _straightFireballSpeed;
+    [SerializeField] int _roundAttackWavesAmount;
+    [SerializeField] float _roundAttackWavesSpawnDelay;
     public void SwitchState(BossBaseState newState)
     {
         currentState = newState;
@@ -27,17 +30,15 @@ public class BossStateManager : MonoBehaviour
     }
     private void Start()
     {
-        SwitchState(bossCurveFire);
+        SwitchState(bossRoundFire);
     }
+
+
+    // curve attack
     public void SummonCurveFireball(Vector3 pos, float rotSpeed, float flyAwaySpeed)
     {
         GameObject fireball = Instantiate(_fireballPrefab, pos, Quaternion.identity, null);
         fireball.GetComponent<FireballStateManager>().OnSpawn(new FireballCurveAttackState(), ref rotationStop, transform, rotSpeed, flyAwaySpeed);
-    }
-    public void SummonStraightFireball(Vector3 pos, FireballBaseState state, Vector3 dir)
-    {
-        GameObject fireball = Instantiate(_fireballPrefab, pos, Quaternion.identity, null);
-        fireball.GetComponent<FireballStateManager>().OnSpawn(state, transform, dir);
     }
     void SummonCurveWave(float rotSpeed,float flyAwaySpeed)
     {
@@ -59,8 +60,55 @@ public class BossStateManager : MonoBehaviour
         rotationStop?.Invoke();
         yield break;
     }
-    public void StartCurveAttack(int waves, float breakTime, float rotSpeed, float flyAwaySpeed)
+    public void StartCurveAttack()
     {
-        StartCoroutine(CurveWavesSpawnCycle(waves,breakTime,rotSpeed,flyAwaySpeed));
+        StartCoroutine(CurveWavesSpawnCycle(_curveAttackWavesAmount,_curveAttackWavesSpawnDelay,_curveFireballRotationSpeed,_curveFireballFlyAwaySpeed));
     }
+    public void IncreaseRotateSpeed()
+    {
+        _curveFireballRotationSpeed += Time.deltaTime * 2;
+    }
+
+    //
+    // staright attacks
+    void SummonStraightFireball(Vector3 pos, FireballBaseState state)
+    {
+        GameObject fireball = Instantiate(_fireballPrefab, pos, Quaternion.identity, null);
+        Vector3 direction = fireball.transform.position - transform.position;
+        direction.y = 0;
+        direction = direction.normalized;
+        fireball.GetComponent<FireballStateManager>().OnSpawn(state, transform, direction,_straightFireballSpeed);
+    }
+
+    //round attack
+    void SummonRoundWave()
+    {
+        SummonStraightFireball(transform.position + new Vector3(0.5f,0,0), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + new Vector3(-0.5f, 0, 0), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + new Vector3(0, 0, 0.5f), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + new Vector3(0, 0, -0.5f), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + new Vector3(0.25f, 0, 0.25f), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + new Vector3(0.25f, 0, -0.25f), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + new Vector3(-0.25f, 0, 0.25f), new FireballRoundAttackState());
+        SummonStraightFireball(transform.position + new Vector3(-0.25f, 0, -0.25f), new FireballRoundAttackState());
+    }
+    IEnumerator RoundWavesSpawnCycle(int waves, float breakTime)
+    {
+        int wavesPassed = 0;
+        while (wavesPassed < waves)
+        {
+            SummonRoundWave();
+            wavesPassed++;
+            yield return new WaitForSeconds(breakTime);
+        }
+        yield break;
+    }
+    public void StartRoundAttack()
+    {
+        StartCoroutine(RoundWavesSpawnCycle(_roundAttackWavesAmount,_roundAttackWavesSpawnDelay));
+    }
+    //
+
+
+
 }

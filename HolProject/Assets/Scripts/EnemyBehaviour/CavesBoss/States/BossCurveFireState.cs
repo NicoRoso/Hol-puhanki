@@ -6,10 +6,10 @@ public class BossCurveFireState : BossBaseState
 {
     public override void EnterState(BossStateManager boss)
     {
-        boss.StartCurveAttack(boss._curveAttackWavesAmount, boss._curveAttackWavesSpawnDelay, boss._curveFireballRotationSpeed,boss._curveFireballFlyAwaySpeed);
+        boss.StartCurveAttack();
     }
     public override void UpdateState(BossStateManager boss)
     {
-
+        boss.IncreaseRotateSpeed();
     }
 }
