@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float _dashCooldown;
     private float _lastDashTime;
     private bool _canDash = true;
+
+    public static Action<bool> OnDashed;
 
     private void OnEnable()
     {
@@ -31,6 +34,7 @@ public class PlayerDash : MonoBehaviour
     {
         _lastDashTime = Time.time;
         _canDash = false;
+        OnDashed(true);
 
         float startTime = Time.time;
         while (Time.time < startTime + _dashTime)
@@ -42,5 +46,6 @@ public class PlayerDash : MonoBehaviour
         yield return new WaitForSeconds(_dashCooldown);
 
         _canDash = true;
+        OnDashed(false);
     }
 }
