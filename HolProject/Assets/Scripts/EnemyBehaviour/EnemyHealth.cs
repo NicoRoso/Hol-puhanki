@@ -8,12 +8,14 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int _maxHealth;
     [SerializeField] float _iFrameDuration;
     [SerializeField] Slider _hpBar;
+    Animator animator;
     bool damageable = true;
     int health;
     private void Awake()
     {
         health = _maxHealth;
         ShowHP(false);
+        animator = GetComponent<Animator>();
     }
     public void TakeDamage(int damage)
     {
@@ -24,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
         {
             ShowHP(false);
             health = 0;
-            //смерть
+            animator.SetTrigger("isDead");
             return;
         }
         //звук
@@ -45,4 +47,9 @@ public class EnemyHealth : MonoBehaviour
     {
         _hpBar.gameObject.SetActive(visible);
     }
+    public int GetHealth()
+    {
+        return health;
+    }
+
 }

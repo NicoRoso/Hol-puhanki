@@ -5,6 +5,7 @@ using UnityEngine;
 public class Damager : MonoBehaviour
 {
     [SerializeField] int _damage;
+    [SerializeField] bool _destroyObjectOnCollision;
     Collider damageCollider;
     private void Start()
     {
@@ -16,6 +17,7 @@ public class Damager : MonoBehaviour
         //{
             //other.какой-то метод(_damage);
             //damageCollider.enabled = false;
+            //уничтожать, если условие
         //}
     }
 }
