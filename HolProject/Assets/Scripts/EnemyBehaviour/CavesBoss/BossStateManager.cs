@@ -60,7 +60,7 @@ public class BossStateManager : MonoBehaviour
     {
         bossHealth = GetComponent<BossHealth>();
         attacksInARow = 0;
-        player = GameObject.FindObjectOfType<TestPlayerExistance>().transform;
+        player = GameObject.FindObjectOfType<PlayerStatSys>().transform;
         SwitchBarrierState(false);
         SwitchState(bossIdle);
     }
@@ -273,13 +273,15 @@ public class BossStateManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(true) // если оружие
+        if (other.gameObject.TryGetComponent<SwordAttack>(out SwordAttack sword) && !isKillable)
         {
-            //урон брать из оружия
-            //playerstatsys.attack
-
+            bossHealth.TakeDamage((int)GameObject.FindObjectOfType<PlayerStatSys>().Attack());
+            if (bossHealth.GetHealth() <= 0)
+            {
+                _animator.SetTrigger("isDead");
+            }
         }
     }
-    
+
 
 }

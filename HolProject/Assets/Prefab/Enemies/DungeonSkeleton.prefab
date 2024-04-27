@@ -1510,8 +1510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41595c227b5ec64faa899d75521dfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 200
-  _iFrameDuration: 0.2
+  _maxHealth: 10
+  _iFrameDuration: 0.5
   _hpBar: {fileID: 8983943836913227650}
 --- !u!136 &5006994751786898817
 CapsuleCollider:

@@ -56,7 +56,7 @@ public class PlayerStatSys : MonoBehaviour
     #endregion 
 
     public void GetDamage(int amount) { RemoveHP(amount / _def.value); OnToHp?.Invoke(_hp); }
-    public void Attack() { float damage = _atc.value * (UnityEngine.Random.Range(0, 100) > _critCh.value ? 1 : _critDmg.value); }
+    public float Attack() { return _atc.value * (UnityEngine.Random.Range(0, 100) > _critCh.value ? 1 : _critDmg.value); }
 
     # region Stat section
     private void GainStat(int id, float amount) { _parametrs[id].GainStat(amount); }

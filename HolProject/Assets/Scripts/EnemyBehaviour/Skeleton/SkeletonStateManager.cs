@@ -21,11 +21,13 @@ public class SkeletonStateManager : MonoBehaviour
     public Animator animator;
     GameObject player;
     bool isRotating = false;
+    EnemyHealth enemyHealth;
     Transform currentTarget;
     private void Start()
     {
-        player = GameObject.FindObjectOfType<TestPlayerExistance>().gameObject;
+        player = GameObject.FindObjectOfType<PlayerStatSys>().gameObject;
         navMeshAgent = GetComponent<NavMeshAgent>();
+        enemyHealth = GetComponent<EnemyHealth>();
         animator = GetComponent<Animator>();
         transform.LookAt(player.transform);
         SetTarget(player.transform);
@@ -89,6 +91,19 @@ public class SkeletonStateManager : MonoBehaviour
         if (!animator.GetBool("isAttacking"))
         {
             SwitchState(skeletonWalk);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<SwordAttack>(out SwordAttack sword))
+        {
+            enemyHealth.TakeDamage((int)GameObject.FindObjectOfType<PlayerStatSys>().Attack());
+            if (enemyHealth.GetHealth() > 0) animator.SetTrigger("isHit");
+            if (enemyHealth.GetHealth() <= 0)
+            {
+                animator.SetTrigger("isDead");
+                SetSpeed(0);
+            }
         }
     }
 }

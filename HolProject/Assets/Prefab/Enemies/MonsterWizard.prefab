@@ -531,8 +531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41595c227b5ec64faa899d75521dfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 150
-  _iFrameDuration: 0.2
+  _maxHealth: 7
+  _iFrameDuration: 0.5
   _hpBar: {fileID: 5708575338718593912}
 --- !u!136 &6274008377988986741
 CapsuleCollider:
@@ -1829,7 +1829,7 @@ RectTransform:
   m_Father: {fileID: 1999124953192610711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

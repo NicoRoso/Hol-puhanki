@@ -2388,8 +2388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1aa3a4915cb48543a6ca63a21be2179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1000
-  _iFrameDuration: 0.2
+  _maxHealth: 50
+  _iFrameDuration: 0.5
   maxHitsInARow: 4
   _hpBar: {fileID: 3898439829233768204}
 --- !u!136 &7438160653811087868

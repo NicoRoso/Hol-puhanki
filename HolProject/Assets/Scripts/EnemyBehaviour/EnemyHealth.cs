@@ -41,7 +41,8 @@ public class EnemyHealth : MonoBehaviour
     }
     private void Update()
     {
-        _hpBar.value = health/_maxHealth;
+        _hpBar.value = (float)health/_maxHealth;
+        //Debug.Log((float)(health / _maxHealth) + " " + health + " " + _maxHealth);
     }
     void ShowHP(bool visible)
     {
