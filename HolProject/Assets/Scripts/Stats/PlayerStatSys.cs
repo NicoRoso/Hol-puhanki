@@ -79,18 +79,6 @@ public class PlayerStatSys : MonoBehaviour
         GameObject.FindGameObjectWithTag("CardsHolder").GetComponent<Animator>().SetTrigger("AppearCards");
         Time.timeScale = 0;
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GetDamage(20);
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            AddHP(20);
-        }
-    }
 }
 
 
