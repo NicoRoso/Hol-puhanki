@@ -9934,6 +9934,8 @@ GameObject:
   - component: {fileID: 4147574931217305765}
   - component: {fileID: 3143406993329050269}
   - component: {fileID: 8095829226302248109}
+  - component: {fileID: 7633228524846643237}
+  - component: {fileID: 395824243947331757}
   m_Layer: 0
   m_Name: OnDropExplosion
   m_TagString: Untagged
@@ -15048,6 +15050,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7633228524846643237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943186877789595102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed54c0ee41017946820e4b8521e0680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: exp
+    clip: {fileID: 8300000, guid: e4183d1577d77964ab452d3c76d048fe, type: 3}
+    volume: 0.1
+    pitch: 0.9
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+--- !u!114 &395824243947331757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943186877789595102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948b5f001f1cb254fb111f621e8518e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundName: exp
 --- !u!1 &7250026647952947060
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class Damager : MonoBehaviour
             if(_destroyObjectOnCollision)
             {
                 playerConnect?.Invoke();
+                //player.GetComponent<AudioManager>().Play("fireballConnect");
                 Destroy(gameObject);
             }
             else
