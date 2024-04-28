@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb4cd7c295713b4f8a307ceb427c6fd, type: 3}
   m_Name: New Potion
   m_EditorClassIdentifier: 
-  _name: p1
-  _desc: Potion
+  _name: "\u0417\u0435\u043B\u044C\u0435 \u0441\u0438\u043B\u044B"
+  _desc: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442 \u0443\u0440\u043E\u043D
+    \u043D\u0430 5 \u0441\u0435\u043A\u0443\u043D\u0434"
   _model: {fileID: 0}
-  _icon: {fileID: 21300000, guid: 535946dee5e538a478f870df4697b948, type: 3}
+  _icon: {fileID: 21300000, guid: 57a859ffb34a55949a8bf37cb355a04e, type: 3}
   parametr:
     <statName>k__BackingField: 1
     <value>k__BackingField: 1

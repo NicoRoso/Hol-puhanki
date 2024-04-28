@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c8950d7ad145a4e8dfcdc97a3d8803, type: 3}
   m_Name: New Sword
   m_EditorClassIdentifier: 
-  _name: Sw1
-  _desc: Sword
+  _name: "\u041C\u0435\u0447 "
+  _desc: "\u041E\u0441\u0442\u0440\u044B\u0439 \u043C\u0435\u0447"
   _model: {fileID: 0}
-  _icon: {fileID: 21300000, guid: 5bd5f06201bd542499010b70a3b7ba93, type: 3}
+  _icon: {fileID: 21300000, guid: 25e9eb79542576a4d9d334b6a194a1a7, type: 3}
   parametrs:
   - <statName>k__BackingField: 1
     <value>k__BackingField: 3

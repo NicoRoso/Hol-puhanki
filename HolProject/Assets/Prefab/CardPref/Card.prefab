@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9207019615103058392
 Transform:
   m_ObjectHideFlags: 0
@@ -413,6 +413,28 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475393256517742788, guid: 997ee15ade3ad4c418c7cd0b9db920e9,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d771379784a52941b1bb648a3ce7e14,
+        type: 2}
+    - target: {fileID: 3475393256517742788, guid: 997ee15ade3ad4c418c7cd0b9db920e9,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4551798558209662947, guid: 997ee15ade3ad4c418c7cd0b9db920e9,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d771379784a52941b1bb648a3ce7e14,
+        type: 2}
+    - target: {fileID: 4551798558209662947, guid: 997ee15ade3ad4c418c7cd0b9db920e9,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6353969742737026057, guid: 997ee15ade3ad4c418c7cd0b9db920e9,
         type: 3}
