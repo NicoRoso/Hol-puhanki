@@ -217,9 +217,9 @@ public class BossStateManager : MonoBehaviour
     void TrippleShot()
     {
         audioManager.Play("throw" + UnityEngine.Random.Range(2, 7));
-        SummonStraightFireball(transform.forward + transform.position, new FireballStraightAttackState());
-        SummonStraightFireball(transform.forward + transform.right * 0.3f + transform.position, new FireballStraightAttackState());
-        SummonStraightFireball(transform.forward - transform.right * 0.3f + transform.position, new FireballStraightAttackState());
+        SummonStraightFireball(transform.forward + transform.position + new Vector3(0,1.5f,0), new FireballStraightAttackState());
+        SummonStraightFireball(transform.forward + transform.right * 0.3f + transform.position + new Vector3(0, 1.5f, 0), new FireballStraightAttackState());
+        SummonStraightFireball(transform.forward - transform.right * 0.3f + transform.position + new Vector3(0, 1.5f, 0), new FireballStraightAttackState());
     }
     public void StartTpAttack()
     {

@@ -48,6 +48,7 @@ public class SpawnerBehaviour : MonoBehaviour
     IEnumerator Spawn(GameObject enemy)
     {
         TurnOnPortal();
+        GetComponent<AudioManager>().Play("portal" + UnityEngine.Random.Range(1,3));
         yield return new WaitForSeconds(_imageAppearDuration);
         TurnOnAppear();
         CreateGo(enemy);

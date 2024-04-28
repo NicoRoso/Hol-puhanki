@@ -14428,6 +14428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9061958243927739126}
   - component: {fileID: 2682843032399883706}
+  - component: {fileID: 7619698538636474765}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -14469,6 +14470,33 @@ MonoBehaviour:
   - {fileID: 4117246247236190632}
   - {fileID: 5559070632609613}
   _imageAppearDuration: 2
+--- !u!114 &7619698538636474765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6523942573246694702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed54c0ee41017946820e4b8521e0680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: portal1
+    clip: {fileID: 8300000, guid: 1edde1110fc81c0418c44320cca66acb, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: portal2
+    clip: {fileID: 8300000, guid: 46bead9882c496340a374eb1209a51f0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
 --- !u!1 &7467159399343829009
 GameObject:
   m_ObjectHideFlags: 0
