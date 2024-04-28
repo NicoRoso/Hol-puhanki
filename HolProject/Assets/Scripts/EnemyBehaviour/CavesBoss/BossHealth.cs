@@ -13,6 +13,10 @@ public class BossHealth : MonoBehaviour
     int health;
     int hitsInARow = 0;
     BossStateManager boss;
+    public int GetHealth()
+    {
+        return health;
+    }
     private void Awake()
     {
         health = _maxHealth;
@@ -29,6 +33,10 @@ public class BossHealth : MonoBehaviour
             ShowHP(false);
             health = 0;
             boss.SwitchState(boss.bossDeath);
+            foreach (Collider collider in GetComponents<Collider>())
+            {
+                collider.enabled = false;
+            }
             return;
         }
         boss._animator.SetTrigger("isHit");
@@ -50,7 +58,8 @@ public class BossHealth : MonoBehaviour
     }
     private void Update()
     {
-        _hpBar.value = health / _maxHealth;
+        //Debug.Log(health + " " + (float)((float)health / (float)_maxHealth) + " " + _maxHealth);
+        _hpBar.value = (float)((float)health / (float)_maxHealth);
     }
     void ShowHP(bool visible)
     {

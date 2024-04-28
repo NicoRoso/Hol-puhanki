@@ -515,7 +515,7 @@ MonoBehaviour:
   _moveSpeed: 3
   _rotationSpeed: 7
   _attackDistance: 15
-  _fireballPrefab: {fileID: 2975428854460859988, guid: 9f282b73211cd4c44a4e1e321bc167da,
+  _fireballPrefab: {fileID: 849680003184708499, guid: 722097be613015d4492e6c195eac923e,
     type: 3}
   _fireballSpeed: 15
   animator: {fileID: 0}
@@ -531,8 +531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41595c227b5ec64faa899d75521dfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 150
-  _iFrameDuration: 0.2
+  _maxHealth: 7
+  _iFrameDuration: 0.5
   _hpBar: {fileID: 5708575338718593912}
 --- !u!136 &6274008377988986741
 CapsuleCollider:
@@ -1829,7 +1829,7 @@ RectTransform:
   m_Father: {fileID: 1999124953192610711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

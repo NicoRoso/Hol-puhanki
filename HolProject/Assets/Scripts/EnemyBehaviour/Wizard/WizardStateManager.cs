@@ -29,7 +29,7 @@ public class WizardStateManager : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         enemyHealth = GetComponent<EnemyHealth>();
-        player = GameObject.FindObjectOfType<TestPlayerExistance>().transform;
+        player = GameObject.FindObjectOfType<PlayerStatSys>().transform;
         SetTarget(player);
         SwitchState(wizardWalk);
     }
@@ -92,14 +92,16 @@ public class WizardStateManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (true) // если оружие
-        {
-            //урон брать из оружия
-            //playerstatsys.attack
-            //animator.SetTrigger("isHit");
-            if(enemyHealth.GetHealth() <= 0)
+        if (other.gameObject.TryGetComponent<SwordAttack>(out SwordAttack sword))
+        {           
+            enemyHealth.TakeDamage((int)GameObject.FindObjectOfType<PlayerStatSys>().Attack());
+            if (enemyHealth.GetHealth() <= 0)
             {
                 SwitchState(wizzardDeath);
+            }
+            else
+            {
+                animator.SetTrigger("isHit");
             }
         }
     }

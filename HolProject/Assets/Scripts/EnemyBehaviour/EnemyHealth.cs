@@ -26,7 +26,12 @@ public class EnemyHealth : MonoBehaviour
         {
             ShowHP(false);
             health = 0;
-            animator.SetTrigger("isDead");
+            if(!isDead) animator.SetTrigger("isDead");
+            isDead = true;
+            foreach(Collider collider in GetComponents<Collider>())
+            {
+                collider.enabled = false;
+            }
             return;
         }
         //звук
@@ -41,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void Update()
     {
-        _hpBar.value = health/_maxHealth;
+        _hpBar.value = (float)health/_maxHealth;
     }
     void ShowHP(bool visible)
     {
@@ -51,5 +56,6 @@ public class EnemyHealth : MonoBehaviour
     {
         return health;
     }
+    bool isDead = false;
 
 }

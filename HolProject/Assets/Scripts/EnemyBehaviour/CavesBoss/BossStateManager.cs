@@ -43,7 +43,8 @@ public class BossStateManager : MonoBehaviour
     [SerializeField] List<Transform> _tpPoints;
     [SerializeField] List<BossSpawner> _spawnPoints;
     [SerializeField] List<GameObject> _possibleMinions;
-    [SerializeField] MeshRenderer _barrierVisual;
+    [SerializeField] GameObject _barrierVisual;
+    [SerializeField] ParticleSystem _tpParticle;
 
     public bool bossfightStarted = false;
     [HideInInspector]
@@ -60,17 +61,14 @@ public class BossStateManager : MonoBehaviour
     {
         bossHealth = GetComponent<BossHealth>();
         attacksInARow = 0;
-        player = GameObject.FindObjectOfType<TestPlayerExistance>().transform;
+        player = GameObject.FindObjectOfType<PlayerStatSys>().transform;
         SwitchBarrierState(false);
         SwitchState(bossIdle);
     }
     private void Update()
     {
         currentState.UpdateState(this);
-        RotateToTarget();
-       
-        
-
+        if(currentState != bossDeath) RotateToTarget();
     }
 
     // curve attack
@@ -174,17 +172,23 @@ public class BossStateManager : MonoBehaviour
         int TpsDone = 0;
         while (TpsDone < amountOfTps)
         {
+            SetTpParticles(true);
+            yield return new WaitForSeconds(0.5f);
             TpToPointAndFire(GetRandomTpPointsFromList(amountOfTps)[TpsDone]);
+            SetTpParticles(false);
             TpsDone++;
             yield return new WaitForSeconds(_afterTpsDelay);
         }
         yield return new WaitForSeconds(_afterTpsDelay);
+        SetTpParticles(true);
+        yield return new WaitForSeconds(0.5f);
         transform.position = _centerPoint.position;
         transform.LookAt(player);
         Quaternion newRot = transform.rotation;
         newRot.z = 0;
         newRot.x = 0;
         transform.rotation = newRot;
+        SetTpParticles(false);
         StartCoroutine(WaitforSecondsBeforeNexstState(1));
         yield break;
     }
@@ -267,19 +271,50 @@ public class BossStateManager : MonoBehaviour
     }
     public void SwitchBarrierState(bool hidden)
     {
-        _barrierVisual.enabled = hidden;
+        //_barrierVisual.enabled = hidden;
+        SetBarriarParticles(hidden);
         isKillable = hidden;
     }
-
-    private void OnTriggerEnter(Collider other)
+    void SetBarriarParticles(bool mode)
     {
-        if(true) // если оружие
+        foreach(ParticleSystem particleSystem in _barrierVisual.GetComponentsInChildren<ParticleSystem>())
         {
-            //урон брать из оружия
-            //playerstatsys.attack
-
+            if(mode)
+            {
+                particleSystem.loop = true;
+                particleSystem.time = 0;
+                particleSystem.Play();
+            }
+            else
+            {
+                particleSystem.Stop();
+            }
         }
     }
-    
+    void SetTpParticles(bool mode)
+    {
+        if (mode)
+        {
+            _tpParticle.time = 0;
+            _tpParticle.Play();
+        }
+        else
+        {
+            _tpParticle.Stop();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<SwordAttack>(out SwordAttack sword) && !isKillable)
+        {
+            bossHealth.TakeDamage((int)GameObject.FindObjectOfType<PlayerStatSys>().Attack());
+            if (bossHealth.GetHealth() <= 0)
+            {
+                
+                _animator.SetTrigger("isDead");
+            }
+        }
+    }
+
 
 }
