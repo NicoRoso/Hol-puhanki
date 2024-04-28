@@ -1863,9 +1863,10 @@ PrefabInstance:
       objectReference: {fileID: 805298904}
     - target: {fileID: 4486774231232484913, guid: 237716a808f8f2b46ac10d1302170b22,
         type: 3}
-      propertyPath: bossfightStarted
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: _fireballPrefab
+      value: 
+      objectReference: {fileID: 849680003184708499, guid: 722097be613015d4492e6c195eac923e,
+        type: 3}
     - target: {fileID: 4486774231232484913, guid: 237716a808f8f2b46ac10d1302170b22,
         type: 3}
       propertyPath: _tpPoints.Array.data[0]
@@ -1921,23 +1922,6 @@ PrefabInstance:
       propertyPath: _spawnPoints.Array.data[6]
       value: 
       objectReference: {fileID: 1753568879}
-    - target: {fileID: 4486774231232484913, guid: 237716a808f8f2b46ac10d1302170b22,
-        type: 3}
-      propertyPath: _possibleMinions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486774231232484913, guid: 237716a808f8f2b46ac10d1302170b22,
-        type: 3}
-      propertyPath: _possibleMinions.Array.data[0]
-      value: 
-      objectReference: {fileID: 8289904149058567388, guid: 11453059344e31f4982fbb0b234d25d4,
-        type: 3}
-    - target: {fileID: 4486774231232484913, guid: 237716a808f8f2b46ac10d1302170b22,
-        type: 3}
-      propertyPath: _possibleMinions.Array.data[1]
-      value: 
-      objectReference: {fileID: 1404723133704483948, guid: f8cde4d7eb81435499fe5e3ae8c77747,
-        type: 3}
     - target: {fileID: 8757526925905677121, guid: 237716a808f8f2b46ac10d1302170b22,
         type: 3}
       propertyPath: m_Name

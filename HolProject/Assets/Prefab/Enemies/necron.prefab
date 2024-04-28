@@ -2346,7 +2346,7 @@ MonoBehaviour:
   maxAttacksInARow: 4
   _barrierVisualFadeTime: 1
   weakStateMaxTime: 10
-  _fireballPrefab: {fileID: 2975428854460859988, guid: 9f282b73211cd4c44a4e1e321bc167da,
+  _fireballPrefab: {fileID: 849680003184708499, guid: 722097be613015d4492e6c195eac923e,
     type: 3}
   _curveFireballRotationSpeed: 300
   _curveFireballFlyAwaySpeed: 3
@@ -2372,9 +2372,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _possibleMinions:
-  - {fileID: 9130387924304541084, guid: 90a37858ca375b549916c7db3174a7c0, type: 3}
+  - {fileID: 8289904149058567388, guid: 11453059344e31f4982fbb0b234d25d4, type: 3}
+  - {fileID: 1404723133704483948, guid: f8cde4d7eb81435499fe5e3ae8c77747, type: 3}
   _barrierVisual: {fileID: 3052891136938735952}
-  bossfightStarted: 0
+  bossfightStarted: 1
   isKillable: 0
 --- !u!114 &2444778400035454684
 MonoBehaviour:
