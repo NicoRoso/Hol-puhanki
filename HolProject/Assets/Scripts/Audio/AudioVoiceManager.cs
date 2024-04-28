@@ -23,6 +23,7 @@ public class AudioVoiceManager : MonoBehaviour
 
     private void PlaySound(AudioClip clip)
     {
+        audioSource.Stop();
         audioSource.PlayOneShot(clip);
     }
 }
