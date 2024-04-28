@@ -20,11 +20,14 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private AudioClip[] voiceClips;
     public static Action<AudioClip> OnVoiceSounded;
 
+    [SerializeField] GameObject _bookDung;
+
     private void Awake()
     {
         _playerInput = new PlayerInput();
         _playerInput.DialogueActivator.NextSentence.performed += ctx => DisplayNextSentence();
         sentences = new Queue<string>();
+        _bookDung.SetActive(false);
     }
 
     private void OnEnable()
@@ -90,5 +93,6 @@ public class DialogManager : MonoBehaviour
     {
         _animator.SetBool("IsOpen", false);
         FindObjectOfType<DialogTrigger>().enabled = true;
+        _bookDung.SetActive(true);
     }
 }
