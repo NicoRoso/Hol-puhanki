@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler //, IPointerClickHandler
+public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     public Image image;
+    public string nameObj;
+    public string desc;
     [HideInInspector] public Transform parentAfterDrag;
     public bool isSword;
     public void OnBeginDrag(PointerEventData eventData)
@@ -16,6 +18,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
+        GameObject.FindGameObjectWithTag("InfoWindow").GetComponent<InfoWindow>().Fill(nameObj, desc, image.sprite);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -29,11 +32,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         image.raycastTarget = true;
     }
 
-    /*public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        var infoWindow = GameObject.FindGameObjectWithTag("InfoWindow");
-
-
-    }*/
+        GameObject.FindGameObjectWithTag("InfoWindow").GetComponent<InfoWindow>().Fill(nameObj, desc, image.sprite);
+    }
 
 }

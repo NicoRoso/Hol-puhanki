@@ -18,7 +18,7 @@ public class DialogManager : MonoBehaviour
     private void Awake()
     {
         _playerInput = new PlayerInput();
-        //_playerInput.DialogueActivator.NextSentence.performed += ctx => DisplayNextSentence();
+        _playerInput.DialogueActivator.NextSentence.performed += ctx => DisplayNextSentence();
         sentences = new Queue<string>();
     }
 

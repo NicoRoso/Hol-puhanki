@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: New Potion
   m_EditorClassIdentifier: 
   _name: p1
+  _desc: Potion
   _model: {fileID: 0}
   _icon: {fileID: 21300000, guid: 535946dee5e538a478f870df4697b948, type: 3}
   parametr:

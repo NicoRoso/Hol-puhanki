@@ -132,6 +132,7 @@ public class Inventory : MonoBehaviour
 
         if (!invOpen)
         {
+            FindAnyObjectByType<InfoWindow>().Clear();
             InventoryImagesReset();
             for (int i = 0; i < 4; i++)
             {
@@ -140,11 +141,16 @@ public class Inventory : MonoBehaviour
                     var x = Instantiate(_slotIconPrefab);
                     x.GetComponent<Image>().sprite = (_hotbarItems[i]._icon);
                     x.transform.SetParent(_inventoryHotbarSlots[i].transform);
-                    if (_hotbarItems[i] is Sword) {
+                    if (_hotbarItems[i] is Sword)
+                    {
                         x.GetComponent<DraggableItem>().isSword = true;
                     }
                     else
+                    {
                         x.GetComponent<DraggableItem>().isSword = false;
+                    }
+                    x.GetComponent<DraggableItem>().nameObj = _hotbarItems[i]._name;
+                    x.GetComponent<DraggableItem>().desc = _hotbarItems[i]._desc;
                     _inventoryHotbarSlots[i].GetComponent<HotbarInventorySlot>()._slotIcon = x.GetComponent<Image>();
                 }
             }
