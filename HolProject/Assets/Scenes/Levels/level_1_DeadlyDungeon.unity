@@ -38080,6 +38080,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map_Palete
       objectReference: {fileID: 0}
+    - target: {fileID: 8265634549337947843, guid: 48b2d3740456aed45a7e3196e0413dba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8783111554489897447, guid: 48b2d3740456aed45a7e3196e0413dba,
         type: 3}
       propertyPath: m_IsActive
