@@ -4946,8 +4946,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: fire
-    clip: {fileID: 8300000, guid: 1a028434dddcb8149ae1d8001da71174, type: 3}
-    volume: 0.5
+    clip: {fileID: 8300000, guid: 4e356109a0ab7ec428182a057d8ca5f5, type: 3}
+    volume: 0.2
     pitch: 1
     loop: 1
     spatialBlend: 1
