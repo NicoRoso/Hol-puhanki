@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Skills.unity
     guid: a3d3bb387ab6c304b87b9ebb22aa60d6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Menu.unity
+    guid: a7f89a2e98ac7c544abeeb5444283624
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/DialogTest.unity
+    guid: 5239b68d259d1e54aa42babcc3e2f663
   m_configObjects: {}

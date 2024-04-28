@@ -19,6 +19,7 @@ public class AnimatorController : MonoBehaviour
         Movement.OnMoved += OnMove;
         PlayerAttack.attackAction += Attack;
         PlayerDash.OnDashed += Dash;
+        Inventory.OnDrinked += TakeHelth;
     }
 
     private void OnDisable()
@@ -26,6 +27,7 @@ public class AnimatorController : MonoBehaviour
         Movement.OnMoved -= OnMove;
         PlayerAttack.attackAction -= Attack;
         PlayerDash.OnDashed -= Dash;
+        Inventory.OnDrinked -= TakeHelth;
     }
 
     private void OnMove(Vector2 moveInput) 

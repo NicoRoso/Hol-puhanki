@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject _slotIconPrefab;
     [SerializeField] int _currentItemID;
 
+    public static Action OnDrinked;
     private void Start()
     {
         _playerStatSys = FindObjectOfType<PlayerStatSys>();
@@ -252,6 +254,8 @@ public class Inventory : MonoBehaviour
             _hotbarItems[_currentItemID] = null;
             FindNextItem();
         }
+
+        OnDrinked?.Invoke();
     }
 
     void FindNextItem()
