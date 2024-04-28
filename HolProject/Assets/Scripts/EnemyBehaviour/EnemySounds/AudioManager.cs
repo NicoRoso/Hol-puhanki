@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] AudioMixerGroup _mixerGroup;
     public Sound[] sounds;
     private void Awake()
     {
+        
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -18,6 +21,7 @@ public class AudioManager : MonoBehaviour
             s.source.dopplerLevel = 0;
             s.source.spatialBlend = s.spatialBlend;
             s.source.playOnAwake = false;
+            s.source.outputAudioMixerGroup = _mixerGroup;
         }
     }
     public void Play(string name)
