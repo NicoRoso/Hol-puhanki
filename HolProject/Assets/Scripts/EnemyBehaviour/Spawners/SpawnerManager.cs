@@ -61,7 +61,7 @@ public class SpawnerManager : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log(CountEnemies());
+        StaticWavesValue.EraseData();
     }
     bool enemiesOver = false;
     private void Update()
