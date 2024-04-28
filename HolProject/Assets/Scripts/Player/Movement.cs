@@ -54,8 +54,11 @@ public class Movement : MonoBehaviour
 
     private void Move(Vector2 moveInput)
     {
-        _moveInput = moveInput;
-        OnMoved?.Invoke(_moveInput);
+        if (Time.timeScale != 0)
+        {
+            _moveInput = moveInput;
+            OnMoved?.Invoke(_moveInput);
+        }
     }
 
     private void StopMoving()
@@ -66,8 +69,11 @@ public class Movement : MonoBehaviour
 
     private void PerformedDash()
     {
-        Vector3 dashDirection = moveDirectionRelativeToCamera;
-        OnDashed?.Invoke(dashDirection);
+        if (Time.timeScale != 0)
+        {
+            Vector3 dashDirection = moveDirectionRelativeToCamera;
+            OnDashed?.Invoke(dashDirection);
+        }
     }
 
     private void FixedUpdate()

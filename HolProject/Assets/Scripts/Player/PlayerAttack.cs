@@ -34,11 +34,14 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackFunction()
     {
-        if (_countAttackClick < 3 && !isAttacking)
+        if (Time.timeScale != 0)
         {
-            _countAttackClick++;
-            isAttacking = true;
-            attackAction?.Invoke(_countAttackClick);
+            if (_countAttackClick < 3 && !isAttacking)
+            {
+                _countAttackClick++;
+                isAttacking = true;
+                attackAction?.Invoke(_countAttackClick);
+            }
         }
     }
 
