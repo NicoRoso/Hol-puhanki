@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/EnemyBehaviourTests.unity
+    guid: 4757599251abbcb4fad9c827a0316a15
+  - enabled: 1
+    path: Assets/Scenes/Skills.unity
+    guid: a3d3bb387ab6c304b87b9ebb22aa60d6
   m_configObjects: {}

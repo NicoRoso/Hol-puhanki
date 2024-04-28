@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatSys : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerStatSys : MonoBehaviour
     private Stat _def = new Stat(StatName.Defence, 1);
     private Stat _critCh = new Stat(StatName.CritChance, 15, 100);
     private Stat _critDmg = new Stat(StatName.CritDamage, 1.1f);
+    private bool isNotDead = true;
 
     [SerializeField] private List<Stat> _parametrs = new List<Stat>();
 
@@ -84,8 +86,11 @@ public class PlayerStatSys : MonoBehaviour
 
     private void Death() 
     {
-        GameObject.FindGameObjectWithTag("CardsHolder").GetComponent<Animator>().SetTrigger("AppearCards");
-        Time.timeScale = 0;
+        if (isNotDead)
+        {
+            GameObject.FindAnyObjectByType<LoadScreen>().LoadLevel("Skills");
+            isNotDead = false;
+        }
     }
 }
 
