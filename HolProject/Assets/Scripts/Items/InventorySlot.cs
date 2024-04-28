@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
         public Inventory inventory;
-    [SerializeField] Image _slotIcon;
+    public Image _slotIcon;
     public int id;
     public void OnDrop(PointerEventData eventData)
     {
@@ -16,27 +16,40 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         {
             GameObject dropped = eventData.pointerDrag;
             DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
-            if (!draggableItem.isSword) draggableItem.parentAfterDrag = transform;
+            if (!draggableItem.isSword)
+            {
+                try
+                {
+                    inventory.Change(draggableItem.parentAfterDrag.gameObject.GetComponent<InventorySlot>().id, id, true);
+                }
+                catch
+                {
+                    inventory.CrossChange(draggableItem.parentAfterDrag.gameObject.GetComponent<HotbarInventorySlot>().id, id, true);
+                }
+                if (!draggableItem.isSword) draggableItem.parentAfterDrag = transform;
+            }
         }
         else
         {
             GameObject dropped = eventData.pointerDrag;
             DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
 
-
-            GameObject current = transform.GetChild(0).gameObject;
-            DraggableItem currentDraggable = current.GetComponent<DraggableItem>();
-
-            currentDraggable.transform.SetParent(draggableItem.parentAfterDrag);
-            try
+            if (!draggableItem.isSword)
             {
-                inventory.Swap(draggableItem.parentAfterDrag.gameObject.GetComponent<InventorySlot>().id, id);
+                GameObject current = transform.GetChild(0).gameObject;
+                DraggableItem currentDraggable = current.GetComponent<DraggableItem>();
+
+                currentDraggable.transform.SetParent(draggableItem.parentAfterDrag);
+                try
+                {
+                    inventory.Swap(draggableItem.parentAfterDrag.gameObject.GetComponent<InventorySlot>().id, id, true);
+                }
+                catch
+                {
+                    inventory.CrossSwap(draggableItem.parentAfterDrag.gameObject.GetComponent<HotbarInventorySlot>().id, id, true);
+                }
+                draggableItem.parentAfterDrag = transform;
             }
-            catch
-            {
-                inventory.CrossSwap(draggableItem.parentAfterDrag.gameObject.GetComponent<HotbarInventorySlot>().id, id);
-            }
-            draggableItem.parentAfterDrag = transform;
 
         }
     }

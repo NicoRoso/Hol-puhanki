@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] HotbarSelecting _hotBar;
     [SerializeField] InventoryUI _invUI;
+    [SerializeField] GameObject _slotIconPrefab;
     [SerializeField] int _currentItemID;
 
     private void Start()
@@ -66,6 +67,32 @@ public class Inventory : MonoBehaviour
         _playerInput.InventoryBtns.OpenAndClose.performed += ctx => OpenCloseInventory();
     }
 
+    public void Change(int id, int newId, bool flag = false)
+    {
+        if (!flag)
+        {
+            _hotbarItems[newId] = _hotbarItems[id];
+            _hotbarItems[id] = null;
+        }
+        else
+        {
+            _inventoryItems[newId] = _inventoryItems[id];
+            _inventoryItems[id] = null;
+        }
+    }
+    public void CrossChange(int id, int newId, bool flag = false)
+    {
+        if (!flag)
+        {
+            _hotbarItems[newId] = _inventoryItems[id];
+            _inventoryItems[id] = null;
+        }
+        else
+        {
+            _inventoryItems[newId] = _hotbarItems[id];
+            _hotbarItems[id] = null;
+        }
+    }
     public void Swap(int id, int newId, bool flag=false)
     {
         if (!flag)
@@ -110,25 +137,32 @@ public class Inventory : MonoBehaviour
             {
                 if (_hotbarItems[i] is not null)
                 {
-                    _inventoryHotbarSlots[i].SetImage(_hotbarItems[i]._icon);
+                    var x = Instantiate(_slotIconPrefab);
+                    x.GetComponent<Image>().sprite = (_hotbarItems[i]._icon);
+                    x.transform.SetParent(_inventoryHotbarSlots[i].transform);
                     if (_hotbarItems[i] is Sword) {
-                        _inventoryHotbarSlots[i].gameObject.GetComponentInChildren<DraggableItem>().isSword = true;
+                        x.GetComponent<DraggableItem>().isSword = true;
                     }
                     else
-                        _inventoryHotbarSlots[i].gameObject.GetComponentInChildren<DraggableItem>().isSword = false;
+                        x.GetComponent<DraggableItem>().isSword = false;
+                    _inventoryHotbarSlots[i].GetComponent<HotbarInventorySlot>()._slotIcon = x.GetComponent<Image>();
                 }
-                else
-                    _inventoryHotbarSlots[i].RemoveImage();
             }
             for (int i = 0; i < 15; i++)
             {
-                if (_inventoryItems[i] is not null) 
-                { 
-                    _inventorySlots[i].SetImage(_inventoryItems[i]._icon);
-                    _inventorySlots[i].gameObject.GetComponentInChildren<DraggableItem>().isSword = false;
+                if (_inventoryItems[i] is not null)
+                {
+                    var x = Instantiate(_slotIconPrefab);
+                    x.GetComponent<Image>().sprite = (_inventoryItems[i]._icon);
+                    x.transform.SetParent(_inventorySlots[i].transform);
+                    if (_inventoryItems[i] is Sword)
+                    {
+                        x.GetComponent<DraggableItem>().isSword = true;
+                    }
+                    else
+                        x.GetComponent<DraggableItem>().isSword = false;
+                    _inventorySlots[i].GetComponent<InventorySlot>()._slotIcon = x.GetComponent<Image>();
                 }
-                else
-                    _inventorySlots[i].RemoveImage();
             }
         }
 
@@ -163,9 +197,10 @@ public class Inventory : MonoBehaviour
 
     void InventoryImagesReset()
     {
-        foreach (var im in _inventoryHotbarSlots) { im.RemoveImage(); }
-        foreach (var im in _inventorySlots) { im.RemoveImage(); }
+        foreach (var im in _inventoryHotbarSlots) { if (im.transform.childCount > 0) Destroy(im.transform.GetChild(0).gameObject); }
+        foreach (var im in _inventorySlots) { if (im.transform.childCount > 0) Destroy(im.transform.GetChild(0).gameObject); }
     }
+
     private void SelectItem(int id)
     {
         if (id != _currentItemID+1 && _hotbarItems[id-1] is not null)

@@ -3298,6 +3298,8 @@ MonoBehaviour:
   _inventorySlots: []
   _hotBar: {fileID: 0}
   _invUI: {fileID: 0}
+  _slotIconPrefab: {fileID: 4153898225191095676, guid: adff2d8acb235754ba601f1d6e425885,
+    type: 3}
   _currentItemID: 0
 --- !u!114 &1747629327
 MonoBehaviour:
@@ -4440,7 +4442,7 @@ PrefabInstance:
     - target: {fileID: 4691008073800598311, guid: a14363adfcdae9c4d931bcd2ab80d86d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7.8986206
+      value: -7.8986816
       objectReference: {fileID: 0}
     - target: {fileID: 4691008073800598311, guid: a14363adfcdae9c4d931bcd2ab80d86d,
         type: 3}

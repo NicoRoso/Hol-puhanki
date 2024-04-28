@@ -16,7 +16,15 @@ public class HotbarInventorySlot : MonoBehaviour, IDropHandler
         {
             GameObject dropped = eventData.pointerDrag;
             DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
-            if (!draggableItem.isSword) draggableItem.parentAfterDrag = transform;
+            try
+            {
+                inventory.Change(draggableItem.parentAfterDrag.gameObject.GetComponent<HotbarInventorySlot>().id, id);
+            }
+            catch
+            {
+                inventory.CrossChange(draggableItem.parentAfterDrag.gameObject.GetComponent<InventorySlot>().id, id);
+            }
+             draggableItem.parentAfterDrag = transform;
         }
         else
         {
