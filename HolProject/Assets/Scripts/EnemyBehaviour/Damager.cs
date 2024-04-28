@@ -17,9 +17,7 @@ public class Damager : MonoBehaviour
     {
         if(other.gameObject.TryGetComponent<PlayerStatSys>(out PlayerStatSys player))
         {
-
-            player.GetDamage(_damage);
-            Debug.Log("прилетела плюха размером в " + _damage);
+            //player - health
             if(_destroyObjectOnCollision)
             {
                 playerConnect?.Invoke();
@@ -27,6 +25,7 @@ public class Damager : MonoBehaviour
             }
             else
             {
+                GetComponent<AudioManager>().Play("hit");
                 damageCollider.enabled = false;
             }
         }

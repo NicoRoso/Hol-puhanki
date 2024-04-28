@@ -10,6 +10,7 @@ public class SkeletonStateManager : MonoBehaviour
     [SerializeField] float _rotationSpeed;
     [SerializeField] public float _attackDistance;
     [SerializeField] bool startWithIdle;
+    [SerializeField] Collider _damager;
 
     public SkeletonBaseState currnetState;
     public SkeletonAttackState skeletonAttack = new SkeletonAttackState();
@@ -23,12 +24,14 @@ public class SkeletonStateManager : MonoBehaviour
     bool isRotating = false;
     EnemyHealth enemyHealth;
     Transform currentTarget;
+    AudioManager audioManager;
     private void Start()
     {
         player = GameObject.FindObjectOfType<PlayerStatSys>().gameObject;
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyHealth = GetComponent<EnemyHealth>();
         animator = GetComponent<Animator>();
+        audioManager = GetComponent<AudioManager>();
         transform.LookAt(player.transform);
         SetTarget(player.transform);
         SetSpeed(0);
@@ -99,13 +102,28 @@ public class SkeletonStateManager : MonoBehaviour
         if (other.gameObject.TryGetComponent<SwordAttack>(out SwordAttack sword))
         {
             enemyHealth.TakeDamage((int)GameObject.FindObjectOfType<PlayerStatSys>().Attack());
-            if (enemyHealth.GetHealth() > 0) animator.SetTrigger("isHit");
+            //if (enemyHealth.GetHealth() > 0) animator.SetTrigger("isHit");
+            audioManager.Play("hit" + Random.Range(1,8));
             if (enemyHealth.GetHealth() <= 0 && !isDead)
             {
                 animator.SetTrigger("isDead");
+                audioManager.Play("death" + Random.Range(1, 3));
                 isDead = true;
                 SetSpeed(0);
             }
         }
+    }
+
+    void PlayStep()
+    {
+        audioManager.Play("step" + Random.Range(0, 11));
+    }
+    void PlayRoar()
+    {
+        audioManager.Play("roar" + Random.Range(0,7));
+    }
+    void SetDamager(int isActive)
+    {
+        _damager.enabled = (isActive==1);
     }
 }

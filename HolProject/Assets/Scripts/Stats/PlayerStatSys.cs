@@ -30,14 +30,16 @@ public class PlayerStatSys : MonoBehaviour
         _parametrs.Add(_critCh); 
         _parametrs.Add(_critDmg);
 
-        OnToMaxHp?.Invoke(_hp);
+        OnToMaxHp?.Invoke((int)_hpMax.value);
         OnToHp?.Invoke(_hp);
 
+        SceneManager.activeSceneChanged += MaxHP;
     }
 
     #region HP section
     public int GetHP() { return _hp; }
     private void MaxHP() {  _hp = (int)_hpMax.value; }
+    private void MaxHP(Scene current, Scene next) {  MaxHP(); }
 
     public void AddHP(int amount) { _hp = (_hp + amount > _hpMax.value ? (int)_hpMax.value : _hp + amount); OnToHp?.Invoke(_hp);}
 
@@ -88,10 +90,19 @@ public class PlayerStatSys : MonoBehaviour
     {
         if (isNotDead)
         {
-            GameObject.FindAnyObjectByType<LoadScreen>().LoadLevel("Skills");
+            if (FindObjectOfType<SkillCount>().skillCount < 3)
+            {
+                GameObject.FindAnyObjectByType<LoadScreen>().LoadLevel("Skills");
+                
+            }
+            else
+            {
+                GameObject.FindAnyObjectByType<LoadScreen>().LoadLevel("Level_0_Library");
+            }
             isNotDead = false;
         }
     }
+
 }
 
 

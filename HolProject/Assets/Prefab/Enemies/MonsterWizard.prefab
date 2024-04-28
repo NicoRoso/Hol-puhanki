@@ -433,6 +433,7 @@ GameObject:
   - component: {fileID: 6274008377988986741}
   - component: {fileID: 6930570458533434461}
   - component: {fileID: 7381496590644685742}
+  - component: {fileID: 3083350113840930805}
   m_Layer: 0
   m_Name: MonsterWizard
   m_TagString: Untagged
@@ -519,6 +520,7 @@ MonoBehaviour:
     type: 3}
   _fireballSpeed: 15
   animator: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!114 &2202890337704007627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,6 +536,7 @@ MonoBehaviour:
   _maxHealth: 7
   _iFrameDuration: 0.5
   _hpBar: {fileID: 5708575338718593912}
+  _timeBeforeGoDown: 15
 --- !u!136 &6274008377988986741
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -607,6 +610,82 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3083350113840930805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404723133704483948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed54c0ee41017946820e4b8521e0680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: hit1
+    clip: {fileID: 8300000, guid: ff3749ae316878d44853bf851d33cb6c, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit2
+    clip: {fileID: 8300000, guid: e8e3ccd31af25a04dbec2121a1766d0f, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit3
+    clip: {fileID: 8300000, guid: 4ecfe64d2f7156a48a189e9d8cd5672c, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: death
+    clip: {fileID: 8300000, guid: d3b766e605b584d4fa5c00fd07710172, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.9
+    source: {fileID: 0}
+  - name: throw1
+    clip: {fileID: 8300000, guid: 8d9bdccf9ee504145a7ee22b33390dcd, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw2
+    clip: {fileID: 8300000, guid: a390f2c309f25dd40802dc7c66e890d4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw3
+    clip: {fileID: 8300000, guid: 1d550a6f5af5a1e40aac19edf7936f0b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw4
+    clip: {fileID: 8300000, guid: 890041011ec58dd4cb80516babcc5680, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw5
+    clip: {fileID: 8300000, guid: 4a492fbda460cd94299ab49e4709568b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
 --- !u!1 &1502698198020312155
 GameObject:
   m_ObjectHideFlags: 0

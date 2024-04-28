@@ -14461,6 +14461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956655280588441167}
   - component: {fileID: 7362021677182712665}
+  - component: {fileID: 4433390113441793972}
   m_Layer: 0
   m_Name: BossSpawner
   m_TagString: Untagged
@@ -14502,3 +14503,30 @@ MonoBehaviour:
   - {fileID: 3471972545152963328}
   - {fileID: 1745040237120357863}
   _imageAppearDuration: 2
+--- !u!114 &4433390113441793972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9062396371729002422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed54c0ee41017946820e4b8521e0680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: portal1
+    clip: {fileID: 8300000, guid: 1edde1110fc81c0418c44320cca66acb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: portal2
+    clip: {fileID: 8300000, guid: 46bead9882c496340a374eb1209a51f0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}

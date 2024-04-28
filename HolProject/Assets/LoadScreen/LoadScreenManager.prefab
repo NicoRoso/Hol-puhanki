@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2823362290808493672}
   - component: {fileID: 3487529998271294337}
-  - component: {fileID: 3518668206222344052}
+  - component: {fileID: 4026668009762310594}
   m_Layer: 5
   m_Name: LoadScreen
   m_TagString: Untagged
@@ -247,7 +247,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3518668206222344052
+--- !u!114 &4026668009762310594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4439528142656336354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bc7a05008b5b6f4895e489c9befb0c9, type: 3}
+  m_Script: {fileID: 11500000, guid: a4517169481ca35438256e7f9d6e828b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5764070160235543827
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 2073262319519751100}
   - component: {fileID: 8623089975877797012}
   - component: {fileID: 8012351463088640469}
-  - component: {fileID: 4691400173492637156}
+  - component: {fileID: 5082642582880405647}
   m_Layer: 5
   m_Name: LoadScreenManager
   m_TagString: Untagged
@@ -557,10 +557,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4691400173492637156
+--- !u!114 &5082642582880405647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -594,7 +594,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8217984980209821812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7b5107d60123174b87406097474b703, type: 3}
+  m_Script: {fileID: 11500000, guid: fb54420b76f3b844290bc97ad12d951c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _loadingScreen: {fileID: 3487529998271294337}

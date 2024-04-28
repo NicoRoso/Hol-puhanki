@@ -4806,6 +4806,8 @@ GameObject:
   - component: {fileID: 3029247105574674772}
   - component: {fileID: 1711747791196981270}
   - component: {fileID: 1247439638380139192}
+  - component: {fileID: 2761608959304750485}
+  - component: {fileID: 2227220202079749580}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -4930,6 +4932,39 @@ MonoBehaviour:
     type: 3}
   _explodeOnPlayer: {fileID: 4391237051751193442, guid: fe0466c5aafa89043bc0fff7d124ef82,
     type: 3}
+--- !u!114 &2761608959304750485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849680003184708499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed54c0ee41017946820e4b8521e0680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: fire
+    clip: {fileID: 8300000, guid: 4e356109a0ab7ec428182a057d8ca5f5, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    spatialBlend: 1
+    source: {fileID: 0}
+--- !u!114 &2227220202079749580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849680003184708499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948b5f001f1cb254fb111f621e8518e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundName: fire
 --- !u!1 &5602568224621665926
 GameObject:
   m_ObjectHideFlags: 0

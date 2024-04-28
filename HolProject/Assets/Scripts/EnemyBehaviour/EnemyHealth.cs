@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int _maxHealth;
     [SerializeField] float _iFrameDuration;
     [SerializeField] Slider _hpBar;
+    [SerializeField] int _timeBeforeGoDown;
     Animator animator;
     bool damageable = true;
     int health;
@@ -26,7 +28,11 @@ public class EnemyHealth : MonoBehaviour
         {
             ShowHP(false);
             health = 0;
-            if(!isDead) animator.SetTrigger("isDead");
+            if(!isDead) 
+            {
+                animator.SetTrigger("isDead");
+                StartCoroutine(StartFadeCountdown());
+            }
             isDead = true;
             foreach(Collider collider in GetComponents<Collider>())
             {
@@ -37,6 +43,14 @@ public class EnemyHealth : MonoBehaviour
         //звук
     
         StartCoroutine(iFrameTimer());
+    }
+    IEnumerator StartFadeCountdown()
+    {
+        yield return new WaitForSeconds(_timeBeforeGoDown);
+        transform.DOMoveY(transform.position.y - 2,5);
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
+        yield break;
     }
     IEnumerator iFrameTimer()
     {
