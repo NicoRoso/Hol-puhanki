@@ -12,7 +12,7 @@ public class BossSpawner : MonoBehaviour
     IEnumerator Spawn(GameObject enemy)
     {
         TurnOnPortal();
-        
+        GetComponent<AudioManager>().Play("portal" + Random.Range(1,3));
         yield return new WaitForSeconds(_imageAppearDuration);
         TurnOnAppear();
         CreateGo(enemy);

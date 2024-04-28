@@ -18,11 +18,9 @@ public class Damager : MonoBehaviour
         if(other.gameObject.TryGetComponent<PlayerStatSys>(out PlayerStatSys player))
         {
             //player - health
-            Debug.Log("прилетела плюха размером в " + _damage);
             if(_destroyObjectOnCollision)
             {
                 playerConnect?.Invoke();
-                //player.GetComponent<AudioManager>().Play("fireballConnect");
                 Destroy(gameObject);
             }
             else

@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 1.6
   _rotationSpeed: 6
-  _attackDistance: 2.5
+  _attackDistance: 1.7
   startWithIdle: 0
   animator: {fileID: 0}
 --- !u!114 &1295553826967142014
@@ -1708,6 +1708,69 @@ MonoBehaviour:
   - name: roar6
     clip: {fileID: 8300000, guid: 7452e0557098899409cca478beedaec3, type: 3}
     volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit1
+    clip: {fileID: 8300000, guid: 196b98fd85e5ec64eb6afcf419a9caa0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit2
+    clip: {fileID: 8300000, guid: 6fcc0e7326989624e8ea74fadea0af1b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit3
+    clip: {fileID: 8300000, guid: 05ce4c94a30f8a64fabc090a8892c323, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit4
+    clip: {fileID: 8300000, guid: d2fe788c1ec424649bad44cd4d81f98a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit5
+    clip: {fileID: 8300000, guid: 56e9d277775ddaf4f8c85a461e4a494f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit6
+    clip: {fileID: 8300000, guid: d968d1c1c45759545b12d6951fb63315, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit7
+    clip: {fileID: 8300000, guid: 2a7c5cdc8b5c9c349b8f36d378e99f16, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: death1
+    clip: {fileID: 8300000, guid: 1cc9e923c0e5b9e42bf247bf4f51fde4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: death2
+    clip: {fileID: 8300000, guid: 2740e83d99644084a9b0bc3d687d413c, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     spatialBlend: 1
