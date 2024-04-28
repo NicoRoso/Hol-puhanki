@@ -1498,6 +1498,7 @@ MonoBehaviour:
   _rotationSpeed: 6
   _attackDistance: 1.7
   startWithIdle: 0
+  _damager: {fileID: 3934136356226314434}
   animator: {fileID: 0}
 --- !u!114 &1295553826967142014
 MonoBehaviour:
@@ -1883,6 +1884,7 @@ GameObject:
   - component: {fileID: 3934136356226314434}
   - component: {fileID: 7539012652859216574}
   - component: {fileID: 743261567021252189}
+  - component: {fileID: 7996129683457804396}
   m_Layer: 0
   m_Name: Damager
   m_TagString: Untagged
@@ -1922,7 +1924,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.35}
   m_Center: {x: 0.03, y: 0.22, z: 0.68}
@@ -1967,3 +1969,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 20
   _destroyObjectOnCollision: 0
+--- !u!114 &7996129683457804396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8751991685376642850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed54c0ee41017946820e4b8521e0680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: hit
+    clip: {fileID: 8300000, guid: 6e98fdcd4b92ea441921762120357fb3, type: 3}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}

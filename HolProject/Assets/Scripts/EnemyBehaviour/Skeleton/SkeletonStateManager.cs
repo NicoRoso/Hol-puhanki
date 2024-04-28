@@ -10,6 +10,7 @@ public class SkeletonStateManager : MonoBehaviour
     [SerializeField] float _rotationSpeed;
     [SerializeField] public float _attackDistance;
     [SerializeField] bool startWithIdle;
+    [SerializeField] Collider _damager;
 
     public SkeletonBaseState currnetState;
     public SkeletonAttackState skeletonAttack = new SkeletonAttackState();
@@ -120,5 +121,9 @@ public class SkeletonStateManager : MonoBehaviour
     void PlayRoar()
     {
         audioManager.Play("roar" + Random.Range(0,7));
+    }
+    void SetDamager(int isActive)
+    {
+        _damager.enabled = (isActive==1);
     }
 }

@@ -253,6 +253,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.28870293
+        functionName: SetDamager
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 790f1774c1ddab4469c524b99804c605,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.37656903
+        functionName: SetDamager
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 790f1774c1ddab4469c524b99804c605,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

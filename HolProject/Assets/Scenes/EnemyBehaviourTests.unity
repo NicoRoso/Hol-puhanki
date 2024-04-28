@@ -855,6 +855,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 6.375
       objectReference: {fileID: 0}
+    - target: {fileID: 1266174825124835090, guid: ae774394c58593a468567327dd90fe77,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.123724
+      objectReference: {fileID: 0}
     - target: {fileID: 1392383445289583640, guid: ae774394c58593a468567327dd90fe77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -864,6 +869,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392383445289583640, guid: ae774394c58593a468567327dd90fe77,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.123724
       objectReference: {fileID: 0}
     - target: {fileID: 5669605018693665612, guid: ae774394c58593a468567327dd90fe77,
         type: 3}
@@ -1510,6 +1520,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterWizard
       objectReference: {fileID: 0}
+    - target: {fileID: 1404723133704483948, guid: f8cde4d7eb81435499fe5e3ae8c77747,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8966916623209139016, guid: f8cde4d7eb81435499fe5e3ae8c77747,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1577,6 +1592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DungeonSkeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289904149058567388, guid: 11453059344e31f4982fbb0b234d25d4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9016444050040615314, guid: 11453059344e31f4982fbb0b234d25d4,
         type: 3}

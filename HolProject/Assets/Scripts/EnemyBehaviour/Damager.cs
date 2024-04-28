@@ -25,6 +25,7 @@ public class Damager : MonoBehaviour
             }
             else
             {
+                GetComponent<AudioManager>().Play("hit");
                 damageCollider.enabled = false;
             }
         }
