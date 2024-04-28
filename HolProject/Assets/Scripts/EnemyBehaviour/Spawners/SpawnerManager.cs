@@ -6,6 +6,7 @@ using UnityEngine;
 public class SpawnerManager : MonoBehaviour
 {
     [SerializeField] List<EnemyWave> _waves = new List<EnemyWave>();
+    [SerializeField] GameObject _nextRoom;
     public Action onEnemiesOver;
     public void SummonWave(int id)
     {
@@ -57,6 +58,7 @@ public class SpawnerManager : MonoBehaviour
 
     void SendMessageToSpawner(SpawnerBehaviour spawner,GameObject enemy)
     {
+        //Debug.Log(spawner + " " + enemy);
         spawner.SpawnEnemy(enemy);
     }
     private void Start()
@@ -70,7 +72,7 @@ public class SpawnerManager : MonoBehaviour
         {
             enemiesOver = true;
             onEnemiesOver?.Invoke();
-            Debug.Log("враги кончились");
+            if(_nextRoom != null) _nextRoom.SetActive(true);
             Destroy(gameObject);
         }
     }

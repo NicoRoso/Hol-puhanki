@@ -45219,10 +45219,14 @@ MonoBehaviour:
   _straightFireballSpeed: 20
   _roundAttackWavesAmount: 10
   _roundAttackWavesSpawnDelay: 0.25
-  _amountOfTps: 3
+  _amountOfTps: 5
   _afterTpsDelay: 1
   _centerPoint: {fileID: 0}
   _tpPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -45232,13 +45236,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   _possibleMinions:
   - {fileID: 8289904149058567388, guid: 11453059344e31f4982fbb0b234d25d4, type: 3}
   - {fileID: 1404723133704483948, guid: f8cde4d7eb81435499fe5e3ae8c77747, type: 3}
   _barrierVisual: {fileID: 7318206714240905470}
   _tpParticle: {fileID: 889851061555662222}
-  bossfightStarted: 1
+  bossfightStarted: 0
   isKillable: 0
 --- !u!114 &2444778400035454684
 MonoBehaviour:
