@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CardsHolder
+  - CinemachineTarget
+  - InfoWindow
   layers:
   - Default
   - TransparentFX

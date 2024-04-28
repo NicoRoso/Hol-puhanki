@@ -12,16 +12,17 @@ public class AudioMusicManager : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        TriggerChange.OnMusicSounded += PlaySound;
     }
 
     private void OnDisable()
     {
-        
+        TriggerChange.OnMusicSounded -= PlaySound;
     }
 
     private void PlaySound(AudioClip clip, float pithchMin, float pitchMax)
     {
+        audioSource.Stop();
         audioSource.pitch = UnityEngine.Random.Range(pithchMin, pitchMax);
         audioSource.PlayOneShot(clip);
     }

@@ -5,32 +5,19 @@ using UnityEngine;
 
 public class BossSpawner : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer _image;
+    [SerializeField] GameObject _particlesAppear;
+    [SerializeField] List<GameObject> _particlesPortal;
     [SerializeField] float _imageAppearDuration;
+    
     IEnumerator Spawn(GameObject enemy)
     {
-        float timer = 0;
-        Color startColor = _image.color;
-        Color endColor = _image.color;
-        endColor.a = 1;
-        while(timer < _imageAppearDuration)
-        {
-            timer += Time.deltaTime;
-            _image.color = Color.Lerp(startColor, endColor, timer / _imageAppearDuration);
-            yield return null;
-        }
-
-        // effects of spawn
+        TurnOnPortal();
+        
+        yield return new WaitForSeconds(_imageAppearDuration);
+        TurnOnAppear();
         CreateGo(enemy);
-        yield return null;
-        timer = 0;
-
-        while (timer < _imageAppearDuration)
-        {
-            timer += Time.deltaTime;
-            _image.color = Color.Lerp(endColor, startColor, timer / _imageAppearDuration);
-            yield return null;
-        }
+        TurnOffPortal();
+        TurnOffParticle(_particlesAppear.GetComponent<ParticleSystem>());
         yield break;
     }
     
@@ -42,4 +29,43 @@ public class BossSpawner : MonoBehaviour
     {
         Instantiate(go, transform.position, Quaternion.identity, null);
     }
+    void TurnOffParticle(ParticleSystem particle)
+    {
+        particle.loop = false;
+    }
+    void TurnOffPortal()
+    {
+        foreach(GameObject go in _particlesPortal)
+        {
+            TurnOffParticle(go.GetComponent<ParticleSystem>());
+        }
+    }
+    private void Start()
+    {
+        foreach(GameObject go in _particlesPortal)
+        {
+            go.SetActive(false);
+        }
+        _particlesAppear.SetActive(false);
+    }
+    void TurnOnPortal()
+    {
+        foreach (GameObject go in _particlesPortal)
+        {
+            go.SetActive(true);
+            go.GetComponent<ParticleSystem>().loop = true;
+            go.GetComponent<ParticleSystem>().time = 0;
+            go.GetComponent<ParticleSystem>().Play();
+
+
+        }
+    }
+    void TurnOnAppear()
+    {
+        _particlesAppear.SetActive(true);
+        _particlesAppear.GetComponent<ParticleSystem>().loop = true;
+        _particlesAppear.GetComponent<ParticleSystem>().time = 0;
+        _particlesAppear.GetComponent<ParticleSystem>().Play();
+    }
+
 }

@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class AudioVoiceManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource audioSource;
+
+    private void Awake()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        DialogManager.OnVoiceSounded += PlaySound;
+    }
+
+    private void OnDisable()
+    {
+        DialogManager.OnVoiceSounded -= PlaySound;
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        audioSource.Stop();
+        audioSource.PlayOneShot(clip);
     }
 }

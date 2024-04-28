@@ -48,6 +48,6 @@ public class DialogueChecker : MonoBehaviour
 
     private void ToTriggerDialogue()
     {
-        if (isTriggering) { OnTriggerd?.Invoke(); }
+        if (isTriggering && Time.timeScale != 0) { OnTriggerd?.Invoke(); }
     }
 }

@@ -15,10 +15,14 @@ public class FireballStateManager : MonoBehaviour
     public FireballStraightAttackState straightAttack = new FireballStraightAttackState();
     public FireballRoundAttackState roundAttack = new FireballRoundAttackState();
 
+    [SerializeField] GameObject _explodeOnDown;
+    [SerializeField] GameObject _explodeOnPlayer;
+
     bool shouldStop = false;
     private void Start()
     {
         SetState(curveAttack);
+        GetComponent<Damager>().playerConnect += ExplodeOnPlayer;
     }
     private void Update()
     {
@@ -82,7 +86,7 @@ public class FireballStateManager : MonoBehaviour
         {
             yield return null;
         }
-        
+        ExplodeOnDown();
         //explosion collider and effect
         Destroy(gameObject);
         yield break;
@@ -134,4 +138,13 @@ public class FireballStateManager : MonoBehaviour
     {
         StartCoroutine(StraightFly());
     }
+    void ExplodeOnDown()
+    {
+        Instantiate(_explodeOnDown, transform.position, Quaternion.identity, null);
+    }
+    void ExplodeOnPlayer()
+    {
+        Instantiate(_explodeOnPlayer, transform.position, Quaternion.identity, null);
+    }
+
 }
