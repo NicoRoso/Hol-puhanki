@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Skill : MonoBehaviour
@@ -9,12 +10,14 @@ public class Skill : MonoBehaviour
     [SerializeField] private string _skillDesc;
     [SerializeField] private List<SkillItem> _skillItems = new List<SkillItem>();
 
+    [SerializeField] private TMP_Text textName;
+    [SerializeField] private TMP_Text textdesc;
 
-    public Skill(string skillName, string skillDesc, List<SkillItem> skills)
+    public void SkillCreate(string skillName, string skillDesc, SkillItem skills)
     {
-        _skillName = skillName;
-        _skillDesc = skillDesc;
-        _skillItems = skills;
+        textName.text = skillName;
+        textdesc.text = skillDesc;
+        _skillItems.Add(skills);
     }
 
     public void GainSkill()
@@ -27,7 +30,9 @@ public class Skill : MonoBehaviour
         }
 
         GameObject.FindGameObjectWithTag("CardsHolder").GetComponent<Animator>().SetTrigger("DisappearCards");
+        FindObjectOfType<SkillCount>().skillCount++;
 
+        GameObject.FindAnyObjectByType<LoadScreen>().LoadLevel("Level_0_Library");
     }
 }
 /*
@@ -53,4 +58,11 @@ public class SkillItem
     public StatName statName;
     public float statValue;
     public bool statIsPercent;
+
+    public SkillItem(StatName statName, float statValue, bool statIsPercent)
+    { 
+        this.statName = statName;
+        this.statValue = statValue;
+        this.statIsPercent = statIsPercent;
+    }
 }

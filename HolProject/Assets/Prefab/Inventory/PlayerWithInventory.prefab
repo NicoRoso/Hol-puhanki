@@ -3110,8 +3110,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125592988478227276}
-  - component: {fileID: 7728609087664771011}
-  - component: {fileID: 1116653462256238824}
   m_Layer: 0
   m_Name: PlayerWithInventory
   m_TagString: Player
@@ -3138,66 +3136,6 @@ Transform:
   - {fileID: 1832137791741083848}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7728609087664771011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4264624882245466685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9bc265ef4e5e7c479f4788b8e990606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerStatSys: {fileID: 0}
-  _hotbarItems:
-  - {fileID: 11400000, guid: 5d4bd8d1397c7364a8733adbf8250fdd, type: 2}
-  - {fileID: 11400000, guid: 7e321e797875fbf488b037a33664d8f8, type: 2}
-  - {fileID: 11400000, guid: 43eecc27033095f47a91746b5ceaa33a, type: 2}
-  - {fileID: 0}
-  _hotbarSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _inventoryHotbarSlots: []
-  _inventoryItems:
-  - {fileID: 11400000, guid: 7e321e797875fbf488b037a33664d8f8, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _inventorySlots: []
-  _hotBar: {fileID: 0}
-  _invUI: {fileID: 0}
-  _slotIconPrefab: {fileID: 4153898225191095676, guid: adff2d8acb235754ba601f1d6e425885,
-    type: 3}
-  _currentItemID: 0
---- !u!114 &1116653462256238824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4264624882245466685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c358bcc7eb4c29146bf570cb6f6f87b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hp: 100
-  _parametrs: []
 --- !u!1 &4350268689856770690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,7 +3292,7 @@ Transform:
   m_GameObject: {fileID: 4436304132973254716}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -6.123724, y: 6.375001, z: -6.1237235}
+  m_LocalPosition: {x: -6.123724, y: 6.375001, z: -6.123724}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5682,7 +5620,7 @@ Transform:
   m_GameObject: {fileID: 7145485389235803216}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -6.123724, y: 6.375001, z: -6.1237235}
+  m_LocalPosition: {x: -6.123724, y: 6.375001, z: -6.123724}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6251,6 +6189,8 @@ MonoBehaviour:
   _footstepsClip:
   - {fileID: 8300000, guid: afd9f3759822c864780161ead74ffc03, type: 3}
   - {fileID: 8300000, guid: 454d8ec2f8df0e74e8f18181f19dc4b8, type: 3}
+  _pause: {fileID: 0}
+  _gravity: 9.81
 --- !u!114 &6653944684231272788
 MonoBehaviour:
   m_ObjectHideFlags: 0

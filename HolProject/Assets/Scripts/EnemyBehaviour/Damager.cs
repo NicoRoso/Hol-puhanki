@@ -19,7 +19,6 @@ public class Damager : MonoBehaviour
         {
 
             player.GetDamage(_damage);
-            Debug.Log("прилетела плюха размером в " + _damage);
             if(_destroyObjectOnCollision)
             {
                 playerConnect?.Invoke();
