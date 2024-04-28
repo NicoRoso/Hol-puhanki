@@ -15,7 +15,8 @@ public class WizardStateManager : MonoBehaviour
     [HideInInspector]
     public Animator animator;
     EnemyHealth enemyHealth;
-
+    [HideInInspector]
+    public AudioManager audioManager;
 
     public WizardBaseState currentState;
     public WizardAttackState wizardAttack = new WizardAttackState();
@@ -29,6 +30,7 @@ public class WizardStateManager : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         enemyHealth = GetComponent<EnemyHealth>();
+        audioManager = GetComponent<AudioManager>();
         player = GameObject.FindObjectOfType<PlayerStatSys>().transform;
         SetTarget(player);
         SwitchState(wizardWalk);
@@ -95,6 +97,7 @@ public class WizardStateManager : MonoBehaviour
         if (other.gameObject.TryGetComponent<SwordAttack>(out SwordAttack sword))
         {           
             enemyHealth.TakeDamage((int)GameObject.FindObjectOfType<PlayerStatSys>().Attack());
+            audioManager.Play("hit" + Random.Range(1,4));
             if (enemyHealth.GetHealth() <= 0)
             {
                 SwitchState(wizzardDeath);
