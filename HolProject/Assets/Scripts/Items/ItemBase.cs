@@ -8,7 +8,8 @@ using UnityEngine;
 [Serializable]
 public class ItemBase : ScriptableObject
 {
-    [SerializeField] string _name;
+    public string _name;
+    public string _desc;
     [SerializeField] GameObject _model;
     public Sprite _icon;
 }
