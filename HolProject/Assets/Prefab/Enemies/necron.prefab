@@ -45344,6 +45344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed54c0ee41017946820e4b8521e0680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mixerGroup: {fileID: 6319778280639870136, guid: dd8d066b1594b78468682167efcf1752,
+    type: 2}
   sounds:
   - name: hit1
     clip: {fileID: 8300000, guid: ff3749ae316878d44853bf851d33cb6c, type: 3}
