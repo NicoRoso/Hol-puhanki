@@ -44,6 +44,7 @@ public class BossStateManager : MonoBehaviour
     [SerializeField] List<BossSpawner> _spawnPoints;
     [SerializeField] List<GameObject> _possibleMinions;
     [SerializeField] GameObject _barrierVisual;
+    [SerializeField] ParticleSystem _tpParticle;
 
     public bool bossfightStarted = false;
     [HideInInspector]
@@ -171,17 +172,23 @@ public class BossStateManager : MonoBehaviour
         int TpsDone = 0;
         while (TpsDone < amountOfTps)
         {
+            SetTpParticles(true);
+            yield return new WaitForSeconds(0.5f);
             TpToPointAndFire(GetRandomTpPointsFromList(amountOfTps)[TpsDone]);
+            SetTpParticles(false);
             TpsDone++;
             yield return new WaitForSeconds(_afterTpsDelay);
         }
         yield return new WaitForSeconds(_afterTpsDelay);
+        SetTpParticles(true);
+        yield return new WaitForSeconds(0.5f);
         transform.position = _centerPoint.position;
         transform.LookAt(player);
         Quaternion newRot = transform.rotation;
         newRot.z = 0;
         newRot.x = 0;
         transform.rotation = newRot;
+        SetTpParticles(false);
         StartCoroutine(WaitforSecondsBeforeNexstState(1));
         yield break;
     }
@@ -283,7 +290,18 @@ public class BossStateManager : MonoBehaviour
                 particleSystem.Stop();
             }
         }
-
+    }
+    void SetTpParticles(bool mode)
+    {
+        if (mode)
+        {
+            _tpParticle.time = 0;
+            _tpParticle.Play();
+        }
+        else
+        {
+            _tpParticle.Stop();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
