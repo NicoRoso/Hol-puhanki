@@ -13,12 +13,16 @@ public class BossHealth : MonoBehaviour
     int health;
     int hitsInARow = 0;
     BossStateManager boss;
+
+    [SerializeField] private GameObject _holyBook;
+
     public int GetHealth()
     {
         return health;
     }
     private void Awake()
     {
+        _holyBook.SetActive(false);
         health = _maxHealth;
         boss = GetComponent<BossStateManager>();
         ShowHP(false);
@@ -30,6 +34,7 @@ public class BossHealth : MonoBehaviour
         ShowHP(true);
         if (health <= 0)
         {
+            _holyBook.SetActive(true);
             ShowHP(false);
             health = 0;
             boss.SwitchState(boss.bossDeath);

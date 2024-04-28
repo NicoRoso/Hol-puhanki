@@ -31,7 +31,7 @@ public class WizardStateManager : MonoBehaviour
         animator = GetComponent<Animator>();
         enemyHealth = GetComponent<EnemyHealth>();
         audioManager = GetComponent<AudioManager>();
-        player = GameObject.FindObjectOfType<PlayerStatSys>().transform;
+        player = GameObject.FindWithTag("Player").transform;
         SetTarget(player);
         SwitchState(wizardWalk);
     }

@@ -34,12 +34,13 @@ public class PlayerStatSys : MonoBehaviour
         OnToHp?.Invoke(_hp);
 
         SceneManager.activeSceneChanged += MaxHP;
+        SceneManager.activeSceneChanged += MaxHP;
     }
 
     #region HP section
     public int GetHP() { return _hp; }
     private void MaxHP() {  _hp = (int)_hpMax.value; }
-    private void MaxHP(Scene current, Scene next) {  MaxHP(); }
+    private void MaxHP(Scene current, Scene next) {  MaxHP(); isNotDead = true ; }
 
     public void AddHP(int amount) { _hp = (_hp + amount > _hpMax.value ? (int)_hpMax.value : _hp + amount); OnToHp?.Invoke(_hp);}
 

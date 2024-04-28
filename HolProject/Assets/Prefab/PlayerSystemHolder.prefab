@@ -60,7 +60,7 @@ MonoBehaviour:
   - {fileID: 0}
   _inventoryHotbarSlots: []
   _inventoryItems:
-  - {fileID: 11400000, guid: 7e321e797875fbf488b037a33664d8f8, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

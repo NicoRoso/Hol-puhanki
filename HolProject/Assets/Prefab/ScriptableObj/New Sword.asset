@@ -18,7 +18,7 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 25e9eb79542576a4d9d334b6a194a1a7, type: 3}
   parametrs:
   - <statName>k__BackingField: 1
-    <value>k__BackingField: 3
+    <value>k__BackingField: 5
     _valueCap: -1
   - <statName>k__BackingField: 3
     <value>k__BackingField: 5

@@ -15,6 +15,7 @@ public class AuidoSFXMangaer : MonoBehaviour
         Movement.OnMovedSounded += PlayRandomClipSound;
         Movement.OnSounded += PlaySound;
         PlayerDash.OnDashedSounded += PlaySound;
+        Gate.OnClosed += Play;
     }
 
     private void OnDisable()
@@ -22,6 +23,7 @@ public class AuidoSFXMangaer : MonoBehaviour
         Movement.OnMovedSounded -= PlayRandomClipSound;
         Movement.OnSounded -= PlaySound;
         PlayerDash.OnDashedSounded -= PlaySound;
+        Gate.OnClosed -= Play;
     }
 
     private void PlaySound(AudioClip clip, float pithchMin, float pitchMax)
@@ -34,5 +36,10 @@ public class AuidoSFXMangaer : MonoBehaviour
         audioSource.pitch = UnityEngine.Random.Range(pithchMin, pitchMax);
         int index = Random.Range(0, clip.Length);
         audioSource.PlayOneShot(clip[index]);
+    }
+
+    private void Play(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

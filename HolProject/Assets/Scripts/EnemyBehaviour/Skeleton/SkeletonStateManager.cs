@@ -27,7 +27,7 @@ public class SkeletonStateManager : MonoBehaviour
     AudioManager audioManager;
     private void Start()
     {
-        player = GameObject.FindObjectOfType<PlayerStatSys>().gameObject;
+        player = GameObject.FindWithTag("Player");
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyHealth = GetComponent<EnemyHealth>();
         animator = GetComponent<Animator>();

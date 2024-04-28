@@ -63,7 +63,7 @@ public class BossStateManager : MonoBehaviour
         bossHealth = GetComponent<BossHealth>();
         audioManager = GetComponent<AudioManager>();
         attacksInARow = 0;
-        player = GameObject.FindObjectOfType<PlayerStatSys>().transform;
+        player = GameObject.FindWithTag("Player").transform;
         SwitchBarrierState(false);
         SwitchState(bossIdle);
     }
