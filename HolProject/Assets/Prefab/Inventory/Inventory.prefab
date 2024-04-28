@@ -2007,6 +2007,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111344947455502836, guid: a14363adfcdae9c4d931bcd2ab80d86d,
         type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d771379784a52941b1bb648a3ce7e14,
+        type: 2}
+    - target: {fileID: 1111344947455502836, guid: a14363adfcdae9c4d931bcd2ab80d86d,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3427783961223350100, guid: 3d771379784a52941b1bb648a3ce7e14,
+        type: 2}
+    - target: {fileID: 1111344947455502836, guid: a14363adfcdae9c4d931bcd2ab80d86d,
+        type: 3}
       propertyPath: m_VerticalAlignment
       value: 256
       objectReference: {fileID: 0}
@@ -2022,6 +2034,18 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 2506367740808994712, guid: a14363adfcdae9c4d931bcd2ab80d86d,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d771379784a52941b1bb648a3ce7e14,
+        type: 2}
+    - target: {fileID: 2506367740808994712, guid: a14363adfcdae9c4d931bcd2ab80d86d,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3427783961223350100, guid: 3d771379784a52941b1bb648a3ce7e14,
+        type: 2}
     - target: {fileID: 4691008073800598311, guid: a14363adfcdae9c4d931bcd2ab80d86d,
         type: 3}
       propertyPath: m_Pivot.x

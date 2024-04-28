@@ -246,6 +246,7 @@ public class Inventory : MonoBehaviour
             StartCoroutine( DrinkPotion((Potion)item));
             _hotbarItems[_currentItemID] = null;
             FindNextItem();
+            OnDrinked?.Invoke();
         }
         else if (item is HealthPotion)
         {
@@ -253,9 +254,8 @@ public class Inventory : MonoBehaviour
             _playerStatSys.AddHP(((HealthPotion)item).value);
             _hotbarItems[_currentItemID] = null;
             FindNextItem();
+            OnDrinked?.Invoke();
         }
-
-        OnDrinked?.Invoke();
     }
 
     void FindNextItem()

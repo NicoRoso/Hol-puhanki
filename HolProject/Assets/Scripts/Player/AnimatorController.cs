@@ -8,7 +8,7 @@ public class AnimatorController : MonoBehaviour
     private const string SPEED = "Speed";
     private const string ATTACK = "AttackIndex";
     private const string IsDashed = "IsDashed";
-    private const string TakeHill = "Hill";
+    private const string TakeHill = "Heal";
     private void Awake()
     {
         _animator = GetComponent<Animator>();

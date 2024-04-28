@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f98b512f61dde4699761da98203f31, type: 3}
   m_Name: New Health Potion
   m_EditorClassIdentifier: 
-  _name: hp1
-  _desc: Heal
+  _name: "\u0417\u0435\u043B\u044C\u0435 \u043B\u0435\u0447\u0435\u043D\u0438\u044F"
+  _desc: "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442
+    \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F"
   _model: {fileID: 0}
-  _icon: {fileID: 21300000, guid: b74c31d447d2f5d41a61081bdf5e7126, type: 3}
+  _icon: {fileID: 21300000, guid: 234fdb2cbbe97684db576a639a3a0599, type: 3}
   value: 5

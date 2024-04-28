@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/level_1_DeadlyDungeon.unity
     guid: 56fa293ea0bc5d4489bfd926d1d0054c
+  - enabled: 1
+    path: Assets/Scenes/Skills.unity
+    guid: a3d3bb387ab6c304b87b9ebb22aa60d6
   m_configObjects: {}
