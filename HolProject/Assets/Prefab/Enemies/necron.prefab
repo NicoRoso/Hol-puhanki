@@ -45252,7 +45252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1aa3a4915cb48543a6ca63a21be2179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 50
   _iFrameDuration: 0.5
   maxHitsInARow: 4
   _hpBar: {fileID: 3898439829233768204}
@@ -45408,6 +45408,48 @@ MonoBehaviour:
   - name: death
     clip: {fileID: 8300000, guid: 91628306f125a4a44b08101f929cf55c, type: 3}
     volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw1
+    clip: {fileID: 8300000, guid: 2d4a2588df6a0e04a8f5b60706db982a, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw2
+    clip: {fileID: 8300000, guid: 8d9bdccf9ee504145a7ee22b33390dcd, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw3
+    clip: {fileID: 8300000, guid: a390f2c309f25dd40802dc7c66e890d4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw4
+    clip: {fileID: 8300000, guid: 1d550a6f5af5a1e40aac19edf7936f0b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw5
+    clip: {fileID: 8300000, guid: 890041011ec58dd4cb80516babcc5680, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw6
+    clip: {fileID: 8300000, guid: 4a492fbda460cd94299ab49e4709568b, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     spatialBlend: 0.7

@@ -520,6 +520,7 @@ MonoBehaviour:
     type: 3}
   _fireballSpeed: 15
   animator: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!114 &2202890337704007627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,6 +642,48 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     spatialBlend: 1
+    source: {fileID: 0}
+  - name: death
+    clip: {fileID: 8300000, guid: d3b766e605b584d4fa5c00fd07710172, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.9
+    source: {fileID: 0}
+  - name: throw1
+    clip: {fileID: 8300000, guid: 8d9bdccf9ee504145a7ee22b33390dcd, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw2
+    clip: {fileID: 8300000, guid: a390f2c309f25dd40802dc7c66e890d4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw3
+    clip: {fileID: 8300000, guid: 1d550a6f5af5a1e40aac19edf7936f0b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw4
+    clip: {fileID: 8300000, guid: 890041011ec58dd4cb80516babcc5680, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw5
+    clip: {fileID: 8300000, guid: 4a492fbda460cd94299ab49e4709568b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
     source: {fileID: 0}
 --- !u!1 &1502698198020312155
 GameObject:

@@ -69,6 +69,7 @@ public class WizardStateManager : MonoBehaviour
     }
     void SummonFireball()
     {
+        audioManager.Play("throw" + Random.Range(1,6));
         SummonStraightFireball(transform.position + transform.forward * 0.1f + new Vector3(0, 1.5f, 0), new FireballStraightAttackState());
     }
     public void RotateToTarget()
