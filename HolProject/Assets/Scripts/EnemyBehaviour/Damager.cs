@@ -17,7 +17,8 @@ public class Damager : MonoBehaviour
     {
         if(other.gameObject.TryGetComponent<PlayerStatSys>(out PlayerStatSys player))
         {
-            //player - health
+
+            player.GetDamage(_damage);
             Debug.Log("прилетела плюха размером в " + _damage);
             if(_destroyObjectOnCollision)
             {
