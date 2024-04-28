@@ -14,6 +14,7 @@ public class TriggerChange : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             OnMusicSounded?.Invoke(_music, 1f, 1f);
+            this.gameObject.SetActive(false);
         }
     }
 }
