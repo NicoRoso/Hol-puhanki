@@ -87977,11 +87977,6 @@ PrefabInstance:
       objectReference: {fileID: 805298904}
     - target: {fileID: 4486774231232484913, guid: 237716a808f8f2b46ac10d1302170b22,
         type: 3}
-      propertyPath: _spawnPoints.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486774231232484913, guid: 237716a808f8f2b46ac10d1302170b22,
-        type: 3}
       propertyPath: _tpPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1390454123}
@@ -88030,11 +88025,6 @@ PrefabInstance:
       propertyPath: _spawnPoints.Array.data[5]
       value: 
       objectReference: {fileID: 527731786}
-    - target: {fileID: 4486774231232484913, guid: 237716a808f8f2b46ac10d1302170b22,
-        type: 3}
-      propertyPath: _spawnPoints.Array.data[6]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8757526925905677121, guid: 237716a808f8f2b46ac10d1302170b22,
         type: 3}
       propertyPath: m_Name

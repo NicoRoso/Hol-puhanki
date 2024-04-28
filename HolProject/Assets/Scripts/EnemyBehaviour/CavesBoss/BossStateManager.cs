@@ -43,7 +43,7 @@ public class BossStateManager : MonoBehaviour
     [SerializeField] List<Transform> _tpPoints;
     [SerializeField] List<BossSpawner> _spawnPoints;
     [SerializeField] List<GameObject> _possibleMinions;
-    [SerializeField] MeshRenderer _barrierVisual;
+    [SerializeField] GameObject _barrierVisual;
 
     public bool bossfightStarted = false;
     [HideInInspector]
@@ -264,10 +264,27 @@ public class BossStateManager : MonoBehaviour
     }
     public void SwitchBarrierState(bool hidden)
     {
-        _barrierVisual.enabled = hidden;
+        //_barrierVisual.enabled = hidden;
+        SetBarriarParticles(hidden);
         isKillable = hidden;
     }
+    void SetBarriarParticles(bool mode)
+    {
+        foreach(ParticleSystem particleSystem in _barrierVisual.GetComponentsInChildren<ParticleSystem>())
+        {
+            if(mode)
+            {
+                particleSystem.loop = true;
+                particleSystem.time = 0;
+                particleSystem.Play();
+            }
+            else
+            {
+                particleSystem.Stop();
+            }
+        }
 
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<SwordAttack>(out SwordAttack sword) && !isKillable)
