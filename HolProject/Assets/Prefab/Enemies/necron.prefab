@@ -45144,6 +45144,7 @@ GameObject:
   - component: {fileID: 7438160653811087868}
   - component: {fileID: 7915869590611316170}
   - component: {fileID: 8510208932018700105}
+  - component: {fileID: 3297607593304293526}
   m_Layer: 0
   m_Name: necron
   m_TagString: Untagged
@@ -45227,7 +45228,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _spawnPoints:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -45329,6 +45329,131 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3297607593304293526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757526925905677121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed54c0ee41017946820e4b8521e0680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: hit1
+    clip: {fileID: 8300000, guid: ff3749ae316878d44853bf851d33cb6c, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit2
+    clip: {fileID: 8300000, guid: e8e3ccd31af25a04dbec2121a1766d0f, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit3
+    clip: {fileID: 8300000, guid: 4ecfe64d2f7156a48a189e9d8cd5672c, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: tpSound
+    clip: {fileID: 8300000, guid: bc9f2090dc21e9d49b59ccdcec70fa69, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.5
+    source: {fileID: 0}
+  - name: forwardAttack
+    clip: {fileID: 8300000, guid: 16166e4eaa1c81245b5e743011d4a662, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.8
+    source: {fileID: 0}
+  - name: roundAttack
+    clip: {fileID: 8300000, guid: 559097094ebfec74684a7af52d120928, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.8
+    source: {fileID: 0}
+  - name: curveAttack
+    clip: {fileID: 8300000, guid: d6378480ca446bd4c867e06de8ed4b99, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.8
+    source: {fileID: 0}
+  - name: down
+    clip: {fileID: 8300000, guid: 173f6b3534734e141b0039b8de294747, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.8
+    source: {fileID: 0}
+  - name: spawnAttack
+    clip: {fileID: 8300000, guid: 9373da0ec48ca1c4db5e105ceaaf715a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.8
+    source: {fileID: 0}
+  - name: death
+    clip: {fileID: 8300000, guid: 91628306f125a4a44b08101f929cf55c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw1
+    clip: {fileID: 8300000, guid: 2d4a2588df6a0e04a8f5b60706db982a, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw2
+    clip: {fileID: 8300000, guid: 8d9bdccf9ee504145a7ee22b33390dcd, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw3
+    clip: {fileID: 8300000, guid: a390f2c309f25dd40802dc7c66e890d4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw4
+    clip: {fileID: 8300000, guid: 1d550a6f5af5a1e40aac19edf7936f0b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw5
+    clip: {fileID: 8300000, guid: 890041011ec58dd4cb80516babcc5680, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
+  - name: throw6
+    clip: {fileID: 8300000, guid: 4a492fbda460cd94299ab49e4709568b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 0.7
+    source: {fileID: 0}
 --- !u!1 &8843838132649350139
 GameObject:
   m_ObjectHideFlags: 0

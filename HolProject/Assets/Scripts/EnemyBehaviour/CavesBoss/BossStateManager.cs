@@ -50,6 +50,7 @@ public class BossStateManager : MonoBehaviour
     [HideInInspector]
     public bool isKillable = false;
     BossHealth bossHealth;
+    AudioManager audioManager;
     int attacksInARow;
     public void SwitchState(BossBaseState newState)
     {
@@ -60,6 +61,7 @@ public class BossStateManager : MonoBehaviour
     private void Start()
     {
         bossHealth = GetComponent<BossHealth>();
+        audioManager = GetComponent<AudioManager>();
         attacksInARow = 0;
         player = GameObject.FindObjectOfType<PlayerStatSys>().transform;
         SwitchBarrierState(false);
@@ -79,6 +81,7 @@ public class BossStateManager : MonoBehaviour
     }
     void SummonCurveWave(float rotSpeed,float flyAwaySpeed)
     {
+        audioManager.Play("throw" + UnityEngine.Random.Range(2, 7));
         SummonCurveFireball(transform.position + new Vector3(1, 1.5f, 0), rotSpeed, flyAwaySpeed);
         SummonCurveFireball(transform.position + new Vector3(-1, 1.5f, 0), rotSpeed, flyAwaySpeed);
         SummonCurveFireball(transform.position + new Vector3(0, 1.5f, 1), rotSpeed, flyAwaySpeed);
@@ -87,6 +90,7 @@ public class BossStateManager : MonoBehaviour
     IEnumerator CurveWavesSpawnCycle(int waves, float breakTime, float rotSpeed, float flyAwaySpeed)
     {
         int wavesPassed = 0;
+        audioManager.Play("curveAttack");
         while(wavesPassed < waves)
         {
             SummonCurveWave(rotSpeed,flyAwaySpeed);
@@ -96,7 +100,9 @@ public class BossStateManager : MonoBehaviour
         yield return new WaitForSeconds(breakTime);
         rotationStop?.Invoke();
         yield return new WaitForSeconds(0.8f);
+        audioManager.Play("down");
         _animator.SetTrigger("centerAttackEndDown");
+        
         StartCoroutine(WaitforSecondsBeforeNexstState(2));
         yield break;
     }
@@ -123,6 +129,7 @@ public class BossStateManager : MonoBehaviour
     //round attack
     void SummonRoundWave()
     {
+        audioManager.Play("throw" + UnityEngine.Random.Range(2, 7));
         SummonStraightFireball(transform.position + transform.forward * 0.1f + new Vector3(0,1.5f,0), new FireballRoundAttackState());
         SummonStraightFireball(transform.position - transform.forward * 0.1f + new Vector3(0, 1.5f, 0), new FireballRoundAttackState());
         SummonStraightFireball(transform.position + transform.right * 0.1f + new Vector3(0, 1.5f, 0), new FireballRoundAttackState());
@@ -135,8 +142,10 @@ public class BossStateManager : MonoBehaviour
     IEnumerator RoundWavesSpawnCycle(int waves, float breakTime)
     {
         int wavesPassed = 0;
+        audioManager.Play("roundAttack");
         while (wavesPassed < waves)
         {
+            
             SummonRoundWave();
             wavesPassed++;
             yield return new WaitForSeconds(breakTime);
@@ -182,6 +191,7 @@ public class BossStateManager : MonoBehaviour
         yield return new WaitForSeconds(_afterTpsDelay);
         SetTpParticles(true);
         yield return new WaitForSeconds(0.5f);
+        audioManager.Play("tpSound");
         transform.position = _centerPoint.position;
         transform.LookAt(player);
         Quaternion newRot = transform.rotation;
@@ -194,9 +204,11 @@ public class BossStateManager : MonoBehaviour
     }
     void TpToPointAndFire(Transform point)
     {
+        audioManager.Play("tpSound");
         transform.position = point.position;
         transform.LookAt(player);
         _animator.SetTrigger("frontAttack");
+        audioManager.Play("forwardAttack");
         Quaternion newRot = transform.rotation;
         newRot.x = 0;
         newRot.z = 0;
@@ -204,6 +216,7 @@ public class BossStateManager : MonoBehaviour
     }
     void TrippleShot()
     {
+        audioManager.Play("throw" + UnityEngine.Random.Range(2, 7));
         SummonStraightFireball(transform.forward + transform.position, new FireballStraightAttackState());
         SummonStraightFireball(transform.forward + transform.right * 0.3f + transform.position, new FireballStraightAttackState());
         SummonStraightFireball(transform.forward - transform.right * 0.3f + transform.position, new FireballStraightAttackState());
@@ -216,6 +229,7 @@ public class BossStateManager : MonoBehaviour
 
     public void SpawnMinions()
     {
+        audioManager.Play("spawnAttack");
         foreach(BossSpawner bossSpawner in _spawnPoints)
         {
             if(UnityEngine.Random.Range(0,2) == 0)
@@ -308,9 +322,10 @@ public class BossStateManager : MonoBehaviour
         if (other.gameObject.TryGetComponent<SwordAttack>(out SwordAttack sword) && !isKillable)
         {
             bossHealth.TakeDamage((int)GameObject.FindObjectOfType<PlayerStatSys>().Attack());
+            audioManager.Play("hit" + UnityEngine.Random.Range(1, 4));
             if (bossHealth.GetHealth() <= 0)
             {
-                
+                audioManager.Play("death");
                 _animator.SetTrigger("isDead");
             }
         }

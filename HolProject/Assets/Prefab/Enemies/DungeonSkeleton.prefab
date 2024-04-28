@@ -1413,6 +1413,7 @@ GameObject:
   - component: {fileID: 5006994751786898817}
   - component: {fileID: 1181328784617051641}
   - component: {fileID: 7820714544563891900}
+  - component: {fileID: 1338285435647937166}
   m_Layer: 0
   m_Name: DungeonSkeleton
   m_TagString: Untagged
@@ -1495,7 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 1.6
   _rotationSpeed: 6
-  _attackDistance: 2.5
+  _attackDistance: 1.7
   startWithIdle: 0
   animator: {fileID: 0}
 --- !u!114 &1295553826967142014
@@ -1586,6 +1587,194 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1338285435647937166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8289904149058567388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed54c0ee41017946820e4b8521e0680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: step1
+    clip: {fileID: 8300000, guid: 65c4d50c1c6b399409413be948821b35, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: step2
+    clip: {fileID: 8300000, guid: dc533ee3652ba63499c5bff2c5613aaf, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: step3
+    clip: {fileID: 8300000, guid: 6461061da0518d848927bb719faacd4a, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: step4
+    clip: {fileID: 8300000, guid: bb2c202dcc4ee93469ba6d364ccd494c, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: step5
+    clip: {fileID: 8300000, guid: 5a08c8aaacefdf04c910f9617eaf242c, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: step6
+    clip: {fileID: 8300000, guid: 7a36751f55a78b84ea88d7436cff425a, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: step7
+    clip: {fileID: 8300000, guid: c592c5099f70caa4f85f86c594bffb42, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: step8
+    clip: {fileID: 8300000, guid: a326cde2d42df254aacb59fd4e826464, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: step9
+    clip: {fileID: 8300000, guid: fc4be7aa84c71cd47af019a4a8940655, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: step10
+    clip: {fileID: 8300000, guid: 29ef4cab37a337d4f879b46b5f1ca506, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: roar1
+    clip: {fileID: 8300000, guid: 104939d91a8d18d4287a51ccbf44311c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: roar2
+    clip: {fileID: 8300000, guid: bf6fa4525932f5742a190b051e6deef2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: roar3
+    clip: {fileID: 8300000, guid: 1d1845cb9cbb4cd47be82ab843f2182c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: roar4
+    clip: {fileID: 8300000, guid: 3f48c2b8930a86e4a8b2b3f367e69ef5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: roar5
+    clip: {fileID: 8300000, guid: 6b4c267066fee17408c9ecf950e74f6e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: roar6
+    clip: {fileID: 8300000, guid: 7452e0557098899409cca478beedaec3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit1
+    clip: {fileID: 8300000, guid: 196b98fd85e5ec64eb6afcf419a9caa0, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit2
+    clip: {fileID: 8300000, guid: 6fcc0e7326989624e8ea74fadea0af1b, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit3
+    clip: {fileID: 8300000, guid: 05ce4c94a30f8a64fabc090a8892c323, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit4
+    clip: {fileID: 8300000, guid: d2fe788c1ec424649bad44cd4d81f98a, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit5
+    clip: {fileID: 8300000, guid: 56e9d277775ddaf4f8c85a461e4a494f, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit6
+    clip: {fileID: 8300000, guid: d968d1c1c45759545b12d6951fb63315, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: hit7
+    clip: {fileID: 8300000, guid: 2a7c5cdc8b5c9c349b8f36d378e99f16, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: death1
+    clip: {fileID: 8300000, guid: 1cc9e923c0e5b9e42bf247bf4f51fde4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
+  - name: death2
+    clip: {fileID: 8300000, guid: 2740e83d99644084a9b0bc3d687d413c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    spatialBlend: 1
+    source: {fileID: 0}
 --- !u!1 &8328448188025508563
 GameObject:
   m_ObjectHideFlags: 0

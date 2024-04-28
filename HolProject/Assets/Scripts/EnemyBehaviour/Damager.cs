@@ -17,8 +17,7 @@ public class Damager : MonoBehaviour
     {
         if(other.gameObject.TryGetComponent<PlayerStatSys>(out PlayerStatSys player))
         {
-
-            player.GetDamage(_damage);
+            //player - health
             if(_destroyObjectOnCollision)
             {
                 playerConnect?.Invoke();
