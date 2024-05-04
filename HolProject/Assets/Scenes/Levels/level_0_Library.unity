@@ -4592,6 +4592,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4935091678726376304, guid: ae774394c58593a468567327dd90fe77,
+        type: 3}
+      propertyPath: _pause
+      value: 
+      objectReference: {fileID: 1782828768}
     - target: {fileID: 5177057496639462790, guid: ae774394c58593a468567327dd90fe77,
         type: 3}
       propertyPath: m_RenderPostProcessing
