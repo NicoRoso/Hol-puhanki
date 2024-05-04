@@ -76,7 +76,7 @@ public class Pause : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Menu");
     }
 
     public void Quit()
